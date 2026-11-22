@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo, useRef } from "react";
 import {
   Play,
   Pause,
@@ -583,6 +583,7 @@ export default function App() {
 
   // Essay Reader modal
   const [activeEssay, setActiveEssay] = useState(null);
+  const essayDialogRef = useRef(null);
 
   // Toast feedback
   const [toast, setToast] = useState("");
@@ -607,16 +608,40 @@ export default function App() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close Essay Reader modal on Escape key
+  // Sync Essay Reader native <dialog> modal and light-dismiss fallback
   useEffect(() => {
-    const onKeyDown = (e) => {
-      if (e.key === "Escape" && activeEssay) {
-        setActiveEssay(null);
+    const dialog = essayDialogRef.current;
+    if (!dialog) return;
+
+    if (activeEssay) {
+      if (!dialog.open) {
+        dialog.showModal();
       }
-    };
-    window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    } else if (dialog.open) {
+      dialog.close();
+    }
   }, [activeEssay]);
+
+  useEffect(() => {
+    const dialog = essayDialogRef.current;
+    if (!dialog) return;
+
+    if (!("closedBy" in HTMLDialogElement.prototype)) {
+      const handleBackdropClick = (event) => {
+        if (event.target !== dialog) return;
+        const rect = dialog.getBoundingClientRect();
+        const isDialogContent =
+          rect.top <= event.clientY &&
+          event.clientY <= rect.top + rect.height &&
+          rect.left <= event.clientX &&
+          event.clientX <= rect.left + rect.width;
+        if (isDialogContent) return;
+        dialog.close();
+      };
+      dialog.addEventListener("click", handleBackdropClick);
+      return () => dialog.removeEventListener("click", handleBackdropClick);
+    }
+  }, []);
 
   const copyText = (text, label) => {
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -764,6 +789,16 @@ export default function App() {
         }
         .animate-spin-slow {
           animation: slowSpin 18s linear infinite;
+        }
+
+        dialog:modal {
+          overscroll-behavior: contain;
+        }
+        dialog::backdrop {
+          background-color: rgba(20, 20, 20, 0.8);
+          backdrop-filter: blur(4px);
+          overflow: hidden;
+          overscroll-behavior: contain;
         }
       `}</style>
 
@@ -2259,7 +2294,7 @@ export default function App() {
           </section>
 
           {/* =================================================================
-              WHAT I WRITE — QUICK HIREABLE SCOPE STRIP
+              WHAT I WRITE - QUICK HIREABLE SCOPE STRIP
           ================================================================== */}
           <section className="px-5 sm:px-10 md:px-14 pb-12">
             <div className="border-t-2 border-dashed border-[#141414]/25 pt-12">
@@ -2401,7 +2436,7 @@ export default function App() {
             </div>
 
             <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 font-mono-code text-xs text-white/60">
-              <p>© {new Date().getFullYear()} Preetpal Singh. All rights reserved.</p>
+              <p>© 2026 Preetpal Singh. All rights reserved.</p>
               <p>Bengaluru • Copywriting • Scriptwriting • Content Strategy</p>
             </div>
           </footer>
@@ -2411,15 +2446,15 @@ export default function App() {
       {/* =====================================================================
           FULL ESSAY ZINE READER MODAL
       ====================================================================== */}
-      {activeEssay && (
-        <div
-          className="fixed inset-0 z-50 bg-[#141414]/80 backdrop-blur-xs flex items-center justify-center p-4"
-          onClick={() => setActiveEssay(null)}
-        >
-          <article
-            onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-2xl max-h-[88vh] overflow-y-auto notebook-grid-paper border-4 border-[#141414] shadow-[10px_10px_0px_#FFD400] p-6 sm:p-10"
-          >
+      <dialog
+        ref={essayDialogRef}
+        {...{ closedby: "any" }}
+        aria-labelledby="essay-modal-title"
+        onClose={() => setActiveEssay(null)}
+        className="m-auto w-[calc(100%-2rem)] max-w-2xl max-h-[88vh] overflow-y-auto notebook-grid-paper border-4 border-[#141414] shadow-[10px_10px_0px_#FFD400] p-0 bg-transparent text-[#141414]"
+      >
+        {activeEssay && (
+          <article className="p-6 sm:p-10">
             <div className="flex items-center justify-between gap-2 pb-4 mb-6 border-b-2 border-[#141414]">
               <span
                 className="px-2.5 py-1 font-mono-code text-xs font-bold text-white border border-[#141414]"
@@ -2427,16 +2462,21 @@ export default function App() {
               >
                 {activeEssay.tag} • {activeEssay.readTime}
               </span>
-              <button
-                type="button"
-                onClick={() => setActiveEssay(null)}
-                className="px-3 py-1 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#D90429]"
-              >
-                CLOSE ✕
-              </button>
+              <form method="dialog">
+                <button
+                  type="submit"
+                  autofocus
+                  className="px-3 py-1 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#D90429] cursor-pointer"
+                >
+                  CLOSE ✕
+                </button>
+              </form>
             </div>
 
-            <h2 className="font-chunky text-3xl sm:text-4xl text-[#141414] leading-tight mb-6">
+            <h2
+              id="essay-modal-title"
+              className="font-chunky text-3xl sm:text-4xl text-[#141414] leading-tight mb-6"
+            >
               {activeEssay.title}
             </h2>
 
@@ -2462,8 +2502,8 @@ export default function App() {
               </a>
             </div>
           </article>
-        </div>
-      )}
+        )}
+      </dialog>
 
       {/* Toast Notification */}
       {toast && (
