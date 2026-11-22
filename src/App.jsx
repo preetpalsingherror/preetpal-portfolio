@@ -1,122 +1,2476 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React, { useState, useEffect, useMemo } from "react";
+import {
+  Play,
+  Pause,
+  RotateCcw,
+  ExternalLink,
+  Copy,
+  BookOpen,
+  ArrowDownRight,
+  Mail,
+  Film,
+  Eye,
+  Sparkles,
+  ChevronLeft,
+  ChevronRight,
+  PenTool,
+  Video
+} from "lucide-react";
 
-function App() {
-  const [count, setCount] = useState(0)
+/**
+ * ============================================================================
+ * PREETPAL SINGH - CENTRALIZED PORTFOLIO DATA & DEEP ANALYSIS CONFIG
+ * ============================================================================
+ * Every word, script, carousel slide, book excerpt, and essay below is 100% yours.
+ * Zero em-dashes, zero corporate fluff.
+ */
+const PORTFOLIO_DATA = {
+  links: {
+    royalEnfieldVideoUrl: "https://youtube.com/shorts/uqAAE6Xod5k",
+    book1AmazonUrl: "https://amzn.in/d/0aWj0did",
+    book2KdpUrl: "https://amzn.in/d/0fXOzRGJ",
+    book3PreviewUrl: "#contact",
+    email: "Preetpal77952@gmail.com",
+    linkedin: "https://www.linkedin.com/in/preetpal-singh-0703b52b4",
+    instagram: "https://www.instagram.com/poets_launchpad",
+    personalInstagram: "https://www.instagram.com/thepreetpalsingh",
+    github: "https://github.com/preetpalsingherror"
+  },
 
-  return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+  tickerItems: [
+    "“SH*T! I HAVE NO IDEAS!” IS PART OF THE PROCESS",
+    "BODY? BUILT. LIFE? CHILL. BLOATING? NONE.",
+    "THE END OF EVERY BORING FRIDAY HAS ARRIVED",
+    "B.TECH CSE PRECISION × HUMAN EMOTION",
+    "2× PUBLISHED AUTHOR • BENGALURU"
+  ],
 
-      <div className="ticks"></div>
+  hero: {
+    stripTop: "A COPYWRITER'S",
+    stripMiddle: "Portfolio",
+    stripBottom: "Preetpal Singh",
+    headline: "Copywriter, Scriptwriter & Content Strategist",
+    subheadline:
+      "I write words people actually finish reading. Bengaluru-based writer, 2× published author, and founder of @poets_launchpad with a B.Tech CSE background, turning technical products, D2C brands, and everyday human friction into stories that hold attention.",
+    badges: [
+      "Bengaluru, IN",
+      "B.Tech CSE",
+      "2× Published Author",
+      "@poets_launchpad"
+    ]
+  },
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+  // Interactive "Raw Thought -> Final Copy" sticky notes to prove human creative process
+  notebookFlips: [
+    {
+      id: "flip-re",
+      brand: "ROYAL ENFIELD",
+      color: "#FFD400",
+      textColor: "#141414",
+      rawNote:
+        "Everyone is running fast on bikes and in life. Classic 350 isn't about going fast, it's about slowing down the race inside your head.",
+      finalLine:
+        "“Without stopping... Without waiting... Without slowing it down. To feel the ride and slowing the race in our mind.”",
+      whyItWorks:
+        "Reframes a slower engine spec into a psychological luxury: mental stillness."
+    },
+    {
+      id: "flip-cosmix",
+      brand: "COSMIX WELLNESS",
+      color: "#FF5C00",
+      textColor: "#FFFDF7",
+      rawNote:
+        "Going gym daily and still feeling fat? Maybe it's not fat, it's bloating from regular whey. Body? Built. Life? Chill. Bloating? No.",
+      finalLine:
+        "“Body? Built. Life? Chill. Bloating? None.”",
+      whyItWorks:
+        "Replaces boring clinical claims ('24g protein') with a punchy, 6-word rhythm lifters actually remember."
+    },
+    {
+      id: "flip-bose",
+      brand: "BOSE INDIA",
+      color: "#2962FF",
+      textColor: "#FFFDF7",
+      rawNote:
+        "Their Black Friday banner is super boring. What if you wish the sun never comes up so the Black Friday music night never ends?",
+      finalLine:
+        "“The end of every boring Friday has arrived. Tonight, wish the sun never rises.”",
+      whyItWorks:
+        "Turns a routine discount timer into a poetic night-time atmosphere that creates urgency without sounding cheap."
+    }
+  ],
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+  projects: {
+    project1: {
+      number: "PROJECT 01 // VIDEO + VOICEOVER",
+      tag: "SPEC COMMERCIAL • 0:35",
+      title: "“Why Classic 350?” | Royal Enfield Spec Commercial",
+      role: "Concept, Scriptwriting, Voiceover & Video Direction",
+      description:
+        "A 35-second narrative commercial contrasting modern digital rush with the unhurried thump of riding a Royal Enfield Classic 350.",
+      duration: 35,
+      fullScript:
+        "Why Classic? In the era of speeding... Where life is running faster than we could realise. Weeks pass by, months pass by, and time doesn't feel slow... Then why Classic 350? To feel the time... to feel the ride... to feel the vibe. Without stopping... Without waiting... Without slowing it down. To feel the ride and slowing the race in our mind. That's why I have Classic 350. Generations passed by, but it always stayed. And it will stay.",
+      deepAnalysis: {
+        coreTension:
+          "Modern motorcycle ads obsess over 0-100 km/h speed, horsepower, and aggressive cuts. For Classic 350 riders, speed is not the product. Presence is.",
+        cadenceBreakdown:
+          "Short, rhythmic clauses separated by intentional pauses mirror the low-RPM thump of a 350cc single-cylinder engine. The script forces the viewer's internal monologue to decelerate.",
+        audioVisualSync:
+          "Opens with frantic city cuts and notification sounds (high cognitive stress), then drops to a clean brass key turn and dry, close-mic voiceover so the silence itself becomes the hook.",
+        metrics: [
+          { label: "HOOK MECHANIC", value: "Philosophical Question" },
+          { label: "EMOTIONAL SHIFT", value: "Rush → Stillness" },
+          { label: "TARGET FORMAT", value: "9:16 Reels / Shorts" }
+        ]
+      },
+      beats: [
+        {
+          id: "beat-1",
+          timestamp: "00:00",
+          start: 0,
+          end: 8,
+          cue: "HOOK & DIGITAL RUSH",
+          xrayNote: "PATTERN INTERRUPT: Opens with a direct question that challenges speed culture.",
+          visual:
+            "Rapid cuts of city traffic, glowing notifications, and a ticking clock. Suddenly cut to a brass key turning in a Classic 350 ignition.",
+          line: "Why Classic? In the era of speeding... Where life is running faster than we could realise."
+        },
+        {
+          id: "beat-2",
+          timestamp: "00:08",
+          start: 8,
+          end: 16,
+          cue: "PACING & THE TURN",
+          xrayNote: "RELATABLE TENSION: Mirrors how fast weeks blur together for young professionals.",
+          visual:
+            "Calendar pages dissolve into blurred highway streetlights. Deep single-cylinder exhaust thump breaks the noise.",
+          line: "Weeks pass by, months pass by, and time doesn't feel slow... Then why Classic 350?"
+        },
+        {
+          id: "beat-3",
+          timestamp: "00:16",
+          start: 16,
+          end: 24,
+          cue: "SENSORY CORE",
+          xrayNote: "RULE OF THREE: 'Time / Ride / Vibe' creates lyrical cadence that sticks in memory.",
+          visual:
+            "Golden-hour sunlight filtering through trees onto a matte-black tank. Unhurried cruising at a steady rhythm.",
+          line: "To feel the time... to feel the ride... to feel the vibe. Without stopping... Without waiting... Without slowing it down."
+        },
+        {
+          id: "beat-4",
+          timestamp: "00:24",
+          start: 24,
+          end: 30,
+          cue: "EMOTIONAL INSIGHT",
+          xrayNote: "REFRAME: Turns a mechanical bike into a mental reset button.",
+          visual:
+            "Close-up of the rider's calm eyes in the side mirror as the city fades behind.",
+          line: "To feel the ride and slowing the race in our mind. That's why I have Classic 350."
+        },
+        {
+          id: "beat-5",
+          timestamp: "00:30",
+          start: 30,
+          end: 35,
+          cue: "TIMELESS LEGACY",
+          xrayNote: "BRAND MOAT: Anchors heritage without sounding dated or nostalgic.",
+          visual:
+            "Silhouette parked against twilight horizon. Crisp title card locks in.",
+          line: "Generations passed by, but it always stayed. And it will stay."
+        }
+      ]
+    },
+
+    project2: {
+      number: "PROJECT 02 // D2C CONTENT STRATEGY & COPY",
+      tag: "BRAND AUDIT + REEL + CAROUSEL",
+      title: "Cosmix Wellness | “No-Nonsense” Lifter Campaign",
+      role: "Consumer Audit, Short-Form Script & Carousel Copy",
+      insight:
+        "Most plant protein ads brag about amino acid numbers. Almost none address what vegetarian lifters actually hate: slow-growth frustration and post-shake bloating.",
+      strategy:
+        "Shift Cosmix's messaging from gentle wellness to bloating-free gym performance, leading with peer-level honesty backed by their digestive herb blend (ginger, fennel, cumin & fenugreek).",
+      deepAudit: {
+        whatWorks:
+          "Cosmix already wins on radical transparency ('Ingredient Decoder') and community proof ('Cosmix Collective'). Buyers trust their labels.",
+        theGap:
+          "Their tone leans heavily into soft lifestyle wellness. Serious vegetarian and sensitive-stomach gym-goers still assume plant protein equals slow muscle growth.",
+        funnelLogic: [
+          {
+            step: "01. STOP THE SCROLL",
+            detail: "Call out an unspoken gym-floor insecurity ('Jealous of non-veg lifters?' / 'Still feeling fat after shakes?') instead of generic '24g protein' claims."
+          },
+          {
+            step: "02. VALIDATE WITHOUT PREACHING",
+            detail: "Use peer-level empathy ('It's normal to feel frustrated') so skeptical whey users don't get defensive."
+          },
+          {
+            step: "03. REAL MECHANISM PROOF",
+            detail: "Name the exact kitchen herbs (ginger, fennel, cumin, fenugreek) plus pea & fermented yeast protein so the promise feels earned."
+          },
+          {
+            step: "04. LOW-FRICTION CTA",
+            detail: "Direct cold traffic to the 6-sachet starter bundle instead of forcing a full 1 kg tub commitment on day one."
+          }
+        ],
+        complianceNote:
+          "Agency Paid-Media Note: 'Still feeling fat?' hits hard in organic creator Reels. If boosting as a paid Meta Ad, swap to 'looking puffy around the waist' to stay 100% compliant with Meta's personal-health ad policies."
+      },
+      carouselSlides: [
+        {
+          num: "01 / 04",
+          tag: "SPEC CAMPAIGN // COSMIX WELLNESS",
+          xrayNote: "HONEST CALLOUT: Names the exact secret envy vegetarian lifters feel.",
+          headline: "Jealous of people who can eat non-veg and build muscle faster?",
+          body: "Read this before you give up on your fitness goals →",
+          footer: "@thepreetpalsingh",
+          dark: false
+        },
+        {
+          num: "02 / 04",
+          tag: "01 / THE REALITY",
+          xrayNote: "EMPATHY BRIDGE: Validates frustration before pitching any product.",
+          headline: "Feeling stuck with slow growth on a veg/vegan diet?",
+          body: "It’s completely normal to feel frustrated when hitting protein targets feels twice as hard. Just don’t let your diet change your goal.",
+          footer: "SWIPE →",
+          dark: false
+        },
+        {
+          num: "03 / 04",
+          tag: "02 / THE FIX",
+          xrayNote: "SPECIFIC PROOF: Real digestive herbs remove the 'plant protein = chalky bloat' objection.",
+          headline: "Hitting your daily protein goal doesn’t have to be complicated.",
+          body: "Add one scoop of Cosmix No-Nonsense Plant Protein Pro: 24g of complete pea & fermented yeast protein paired with ginger, fennel, cumin & fenugreek for whey-level absorption without dairy or fillers.",
+          footer: "COSMIX WELLNESS",
+          dark: true
+        },
+        {
+          num: "04 / 04",
+          tag: "03 / THE RESULT",
+          xrayNote: "SIGNATURE CADENCE: 6 punchy words + low-barrier 6-sachet starter CTA.",
+          headline: "Body? Built. Life? Chill. Bloating? None.",
+          body: "Grab the 6-sachet starter bundle at cosmix.in and keep your training moving.",
+          footer: "Preetpal Singh",
+          dark: false
+        }
+      ],
+      reelScript: {
+        title: "30-Sec High-Retention Reel: “The Vegetarian Lifter’s Protein Trap”",
+        beats: [
+          {
+            time: "0:00 - 0:04",
+            label: "THE HOOK",
+            xrayNote: "REFRAME: Turns body insecurity into a solvable digestion problem.",
+            visual:
+              "Creator lifting t-shirt slightly in gym mirror looking annoyed at a bloated stomach after finishing a shaker.",
+            vo: "“Going to the gym daily and still feeling fat? Maybe it’s not fat. It’s the bloating from your regular protein shake.”"
+          },
+          {
+            time: "0:04 - 0:14",
+            label: "THE RELATABLE SHIFT",
+            xrayNote: "PERSONAL PROOF: 'Like I did' builds instant trust without attacking whey drinkers.",
+            visual:
+              "Quick cut to setting down an old tub of whey and pouring water into a clean shaker.",
+            vo: "“Whey isn’t suited for everyone. If you have a sensitive stomach like I did, heavy dairy and artificial gums sit in your gut all day and ruin your training.”"
+          },
+          {
+            time: "0:14 - 0:24",
+            label: "THE COSMIX SOLUTION",
+            xrayNote: "INGREDIENT CLARITY: Translates the nutrition label into everyday kitchen herbs.",
+            visual:
+              "Scooping Cosmix No-Nonsense Plant Protein. Text pops up: 24g Protein | Pea & Rice Isolate | Ginger, Fennel, Cumin & Fenugreek.",
+            vo: "“That’s why I switched to Cosmix No-Nonsense Plant Protein. It pairs clean pea and rice protein with real digestive herbs (ginger, fennel, cumin, and fenugreek) with zero gums or fillers.”"
+          },
+          {
+            time: "0:24 - 0:30",
+            label: "THE PAYOFF & CTA",
+            xrayNote: "CONTINUITY: Ends on training momentum + low-risk starter pack.",
+            visual:
+              "Creator back under gym lights, locked into a heavy set, followed by the 6-sachet starter bundle.",
+            vo: "“No heavy stomach. No bloating. Just 24 grams of clean protein per scoop so my training never slows down. Try the 6-sachet starter pack and feel the difference.”"
+          }
+        ]
+      }
+    },
+
+    project3: {
+      number: "PROJECT 03 // TECH & HARDWARE REWRITE",
+      tag: "LANDING PAGE + LAUNCH EMAIL",
+      title: "Bose India | Black Friday Campaign Rewrite",
+      role: "Conversion Copywriting, Banner Rewrite & Launch Email",
+      product: "Bose SoundLink Flex (2nd Gen)",
+      beforeCopy: {
+        eyebrow: "WHAT WAS LIVE ON BOSE INDIA",
+        headline: "Black Friday Sale is Live.",
+        subtext: "Bose Soundlink Flex (2nd Gen) | Shop Now.",
+        failures: [
+          "Zero differentiation: any ₹999 speaker could use this exact headline.",
+          "Zero sonic emotion: fails to make the buyer imagine hearing the product.",
+          "Weak CTA: 'Shop Now' creates zero urgency or exclusivity."
+        ]
+      },
+      afterCopy: {
+        eyebrow: "BOSE BLACK FRIDAY // LIMITED DROP",
+        xrayNote: "POETIC URGENCY: Uses night/moon imagery instead of a loud red countdown timer.",
+        headline: "The end of every boring Friday has arrived.",
+        subtext:
+          "Tonight, wish the sun never rises. Turn up the Bose SoundLink Flex (2nd Gen), deep, room-filling sound built to outlast the night, on exclusive Black Friday pricing until the Black Friday moon fades away.",
+        cta: "Claim Black Friday Pricing"
+      },
+      deepStrategy: {
+        thesis:
+          "Premium audio buyers don't buy because something is 'on sale'. They buy because the discount gives them permission to upgrade how their nights feel.",
+        upgrades: [
+          {
+            title: "01. ATMOSPHERE OVER DISCOUNTS",
+            detail: "Swapped generic 'Sale is Live' copy for a vivid late-night mood ('The end of every boring Friday has arrived')."
+          },
+          {
+            title: "02. SPEC-TO-SCENE TRANSLATION",
+            detail: "Rewrote dry engineering terms (PositionIQ, IP67, 12-hour battery) into real life scenes: late-night drives, rooftops, and lasting past sunrise."
+          },
+          {
+            title: "03. POETIC SCARCITY",
+            detail: "'Until the Black Friday moon fades away' signals a hard deadline while protecting Bose's luxury brand equity."
+          }
+        ]
+      },
+      features: [
+        {
+          spec: "PositionIQ™ Technology",
+          headline: "Sound that adapts to the room, not the other way around.",
+          body: "Standing upright on your desk, hanging from a backpack, or lying flat outdoors, it senses its orientation and tunes bass and clarity in real time."
+        },
+        {
+          spec: "IP67 Waterproof & Dustproof",
+          headline: "Built for late-night drives, rooftops, and rough weather.",
+          body: "Wrapped in a powder-coated steel grille and silicone body that shrugs off drops, dust, and rain, and even floats if it hits water."
+        },
+        {
+          spec: "12-Hour Battery + Party Mode",
+          headline: "One charge carries you straight past sunrise.",
+          body: "Pair two Bose speakers together in Stereo or Party Mode for wide, distortion-free sound that keeps the night alive without hunting for a charger."
+        }
+      ],
+      launchEmail: {
+        subject: "The end of every boring Friday is here.",
+        preview:
+          "Wish the sun never comes up. Bose SoundLink Flex (2nd Gen) is officially on Black Friday sale.",
+        body: `Every Friday feels the same, until tonight.
+
+Black Friday has arrived, and it’s the one night you’ll wish the morning sun never comes back. Because for a limited window, the Bose SoundLink Flex (2nd Gen) is officially on Black Friday sale.
+
+Small enough to carry in one hand. Loud and deep enough to take over the entire room. With PositionIQ™ auto-tuning, IP67 weatherproofing, and 12 hours of uninterrupted playback, it’s engineered to make every track hit harder, whether you’re hosting at home or taking the night outdoors.
+
+Once Black Friday’s moon goes away, so does this price.
+
+Team Bose India`
+      }
+    }
+  },
+
+  books: [
+    {
+      id: "book-1",
+      status: "Published on Amazon",
+      isInProgress: false,
+      stripColor: "#FFD400",
+      textColor: "#141414",
+      coverBg: "bg-[#18181B]",
+      coverAccent: "#FF5C00",
+      title: "Tere Layi: For You. Always",
+      subtitle: "Bilingual Poetry Collection",
+      languages: "English • Hindi / Punjabi",
+      synopsis:
+        "A self-published bilingual poetry collection about emotion, memory, and human connection, written for the quiet moments that stay long after a conversation ends.",
+      ctaLabel: "View on Amazon",
+      linkKey: "book1AmazonUrl"
+    },
+    {
+      id: "book-2",
+      status: "Published on Kindle Direct Publishing",
+      isInProgress: false,
+      stripColor: "#FF5C00",
+      textColor: "#FFFDF7",
+      coverBg: "bg-[#1E3A8A]",
+      coverAccent: "#FFD400",
+      title: "The Living Thoughts",
+      subtitle: "Reflective Prose & Verse Collection",
+      languages: "English",
+      synopsis:
+        "Short prose and verse examining stillness, self-inquiry, and why slowing down in a noisy, hyper-connected world is its own kind of strength.",
+      ctaLabel: "Read on Kindle (KDP)",
+      linkKey: "book2KdpUrl"
+    },
+    {
+      id: "book-3",
+      status: "In Progress",
+      isInProgress: true,
+      stripColor: "#2962FF",
+      textColor: "#FFFDF7",
+      coverBg: "bg-[#27272A]",
+      coverAccent: "#00C853",
+      title: "The Winter Smells Like You (Sardiya)",
+      subtitle: "Bilingual Manuscript • 100+ Entries",
+      languages: "Hindi • Urdu • English",
+      synopsis:
+        "My upcoming manuscript of 100+ entries blending Hindi, Urdu, and English verse, tracing warmth, memory, and winter stillness across languages.",
+      ctaLabel: "Manuscript Updates / Contact",
+      linkKey: "book3PreviewUrl"
+    }
+  ],
+
+  community: {
+    name: "The Poet's Launchpad",
+    handle: "@poets_launchpad",
+    role: "Founder & Creative Lead",
+    summary:
+      "Built an independent community and web hub for emerging writers, conceptualizing, writing campaign copy, and running multi-edition poetry competitions from scratch.",
+    highlights: [
+      { label: "Community & Web Platform", value: "Independent Hub" },
+      { label: "Flagship Competitions", value: "3 Editions Executed" },
+      { label: "Publishing Pipeline", value: "Anthology & Print" }
+    ],
+    editions: [
+      {
+        id: "vq1",
+        badge: "EDITION 01",
+        title: "Verse Quest 1.0",
+        tagColor: "#FFD400",
+        description:
+          "Launched the inaugural community poetry sprint, building organic Instagram reach, prompt hooks, and active writer participation from zero."
+      },
+      {
+        id: "vq2",
+        badge: "EDITION 02 • BOOK EDITION",
+        title: "Verse Quest 2.0 (Book Edition)",
+        tagColor: "#FF5C00",
+        description:
+          "Turned competition entries into a published anthology edition, giving emerging writers real published book credits."
+      },
+      {
+        id: "qov",
+        badge: "EDITION 03",
+        title: "Quest of Verse",
+        tagColor: "#2962FF",
+        description:
+          "Designed a free-for-all multi-round poetry challenge across Hindi, Urdu, and English writers with tight editorial curation."
+      }
+    ]
+  },
+
+  scopeOfWork: [
+    {
+      num: "01",
+      title: "30-60s Video & Reel Scripts",
+      accent: "#FFD400",
+      textColor: "#141414",
+      detail: "High-retention hooks, pacing notes, and voiceover scripts built for Reels, Shorts, and brand spec commercials."
+    },
+    {
+      num: "02",
+      title: "D2C Carousels & Audits",
+      accent: "#FF5C00",
+      textColor: "#FFFDF7",
+      detail: "Consumer psychology teardowns, swipe-momentum Instagram carousels, and Meta-compliant organic/paid ad variations."
+    },
+    {
+      num: "03",
+      title: "Landing Pages & Launch Emails",
+      accent: "#2962FF",
+      textColor: "#FFFDF7",
+      detail: "Before/after hero banner rewrites, spec-to-benefit product copy, and high-converting launch or seasonal emails."
+    }
+  ],
+
+  essays: [
+    {
+      id: "essay-personal",
+      tag: "PERSONAL ESSAY // IN MY OWN WORDS",
+      readTime: "3 MIN READ",
+      date: "ESSAY 01",
+      accent: "#FF5C00",
+      title: "Where I Belong, How I Belong, and Why I’m Here",
+      excerpt:
+        "I joined engineering not knowing where I would end up. Then I asked myself: if I only follow a safe routine, where will all this creativity go?",
+      paragraphs: [
+        "My name is Preetpal Singh, and I’m 20 years old.",
+        "Right now, I’m pursuing a degree in Computer Science Engineering. When I first joined, I honestly didn’t know where I would end up, but I think I finally know where I belong.",
+        "Since 7th grade, I’ve carried a creative side that never really left me. I started out writing poems and songs just to entertain my friends, myself, and maybe a couple of girlfriends along the way (okay, less than a couple). Over the years, notebooks turned into published books, late-night lyrics, and building a poetry community from scratch.",
+        "Still, one question kept bothering me: If I just become another engineer working a routine job, when will I write? Where will all this creativity go? What is the point of being given a gift if you never actually use it in your entire life?",
+        "Yes, money matters. I’m practical about building a real career. But creativity matters just as much. I couldn’t let a talent I’ve carried since I was twelve sit in a corner unused just to fit a safe, predictable box.",
+        "So I decided to finally jump into the space where I can live, and not lie. Where my engineering brain and my writer’s instinct work on the same team, turning ideas, brands, and stories into things people actually feel."
+      ]
+    }
+  ]
+};
+
+function resolveVideoSource(url) {
+  if (!url || !url.trim()) return null;
+  const clean = url.trim();
+
+  if (/\.(mp4|webm|ogg|mov)(\?.*)?$/i.test(clean)) {
+    return { type: "video", src: clean };
+  }
+
+  const yt = clean.match(
+    /(?:youtube\.com\/(?:watch\?v=|shorts\/|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{6,})/
+  );
+  if (yt && yt[1]) {
+    return { type: "iframe", src: `https://www.youtube.com/embed/${yt[1]}?rel=0` };
+  }
+
+  const vimeo = clean.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vimeo && vimeo[1]) {
+    return { type: "iframe", src: `https://player.vimeo.com/video/${vimeo[1]}` };
+  }
+
+  const drive = clean.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/);
+  if (drive && drive[1]) {
+    return { type: "iframe", src: `https://drive.google.com/file/d/${drive[1]}/preview` };
+  }
+
+  return { type: "iframe", src: clean };
 }
 
-export default App
+function MaskingTape({ className = "", rotate = "-rotate-2" }) {
+  return (
+    <div
+      aria-hidden="true"
+      className={`pointer-events-none select-none w-24 h-6 bg-[#EFE4C8]/85 border-x border-[#D8C9A3]/70 shadow-sm backdrop-blur-[1px] ${rotate} ${className}`}
+      style={{
+        clipPath:
+          "polygon(3% 0%, 97% 2%, 100% 25%, 98% 50%, 100% 78%, 96% 100%, 2% 98%, 0% 72%, 2% 45%, 0% 18%)"
+      }}
+    />
+  );
+}
+
+export default function App() {
+  const links = PORTFOLIO_DATA.links;
+
+  // Global Creative Feature 1: "Red-Pen Copywriter X-Ray Mode"
+  const [xrayMode, setXrayMode] = useState(false);
+
+  // Global Creative Feature 2: Scroll Reading Progress
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  // Interactive Sticky-Note Flipper State (Raw Thought -> Final Copy)
+  const [flippedNotes, setFlippedNotes] = useState({});
+
+  // Project 1 interactive state
+  const p1 = PORTFOLIO_DATA.projects.project1;
+  const [p1Tab, setP1Tab] = useState("script");
+  const [rePlayerMode, setRePlayerMode] = useState("video"); // 'video' | 'beats'
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+
+  // Project 2 interactive state (Carousel Grid / Phone Swipe / Reel / Deep Audit)
+  const p2 = PORTFOLIO_DATA.projects.project2;
+  const [p2View, setP2View] = useState("carousel");
+  const [carouselMode, setCarouselMode] = useState("grid"); // 'grid' | 'phone'
+  const [activeSlideIdx, setActiveSlideIdx] = useState(0);
+
+  // Project 3 interactive state (Before vs After / Launch Email / Deep Strategy)
+  const p3 = PORTFOLIO_DATA.projects.project3;
+  const [p3View, setP3View] = useState("landing");
+  const [boseCompareMode, setBoseCompareMode] = useState("split"); // 'split' | 'after'
+
+  // Community edition active tab
+  const [activeEditionIdx, setActiveEditionIdx] = useState(0);
+
+  // Essay Reader modal
+  const [activeEssay, setActiveEssay] = useState(null);
+
+  // Toast feedback
+  const [toast, setToast] = useState("");
+
+  const showToast = (msg) => {
+    setToast(msg);
+    setTimeout(() => {
+      setToast((prev) => (prev === msg ? "" : prev));
+    }, 2600);
+  };
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight =
+        document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight > 0) {
+        setScrollProgress(Math.min(100, Math.round((scrollTop / docHeight) * 100)));
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Close Essay Reader modal on Escape key
+  useEffect(() => {
+    const onKeyDown = (e) => {
+      if (e.key === "Escape" && activeEssay) {
+        setActiveEssay(null);
+      }
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [activeEssay]);
+
+  const copyText = (text, label) => {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => showToast(label));
+    } else {
+      const el = document.createElement("textarea");
+      el.value = text;
+      el.style.position = "fixed";
+      el.style.opacity = "0";
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand("copy");
+      document.body.removeChild(el);
+      showToast(label);
+    }
+  };
+
+  useEffect(() => {
+    if (!isPlaying) return;
+    const timer = setInterval(() => {
+      setCurrentTime((prev) => {
+        if (prev >= p1.duration) {
+          setIsPlaying(false);
+          return p1.duration;
+        }
+        return Number((prev + 0.1).toFixed(1));
+      });
+    }, 100);
+    return () => clearInterval(timer);
+  }, [isPlaying, p1.duration]);
+
+  const activeBeat = useMemo(() => {
+    return (
+      p1.beats.find((b) => currentTime >= b.start && currentTime < b.end) ||
+      (currentTime >= p1.duration
+        ? p1.beats[p1.beats.length - 1]
+        : p1.beats[0])
+    );
+  }, [currentTime, p1]);
+
+  const resolvedVideo = useMemo(
+    () => resolveVideoSource(links.royalEnfieldVideoUrl),
+    [links.royalEnfieldVideoUrl]
+  );
+
+  const formatTime = (sec) => {
+    const s = Math.floor(sec);
+    return `00:${s < 10 ? `0${s}` : s}`;
+  };
+
+  const toggleNoteFlip = (id) => {
+    setFlippedNotes((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
+
+  return (
+    <div className="min-h-screen bg-[#C69C72] text-[#141414] font-sans-clean selection:bg-[#FF1E6E] selection:text-white relative overflow-x-hidden">
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@700&family=Fredoka:wght@600;700&family=JetBrains+Mono:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+        .font-condensed { font-family: 'Anton', Impact, sans-serif; }
+        .font-chunky { font-family: 'Fredoka', sans-serif; }
+        .font-handwritten { font-family: 'Caveat', cursive; }
+        .font-mono-code { font-family: 'JetBrains Mono', monospace; }
+        .font-sans-clean { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; }
+
+        .kraft-bg {
+          background-color: #C49A6C;
+          background-image:
+            repeating-linear-gradient(45deg, rgba(84, 53, 24, 0.05) 0px, rgba(84, 53, 24, 0.05) 2px, transparent 2px, transparent 6px),
+            radial-gradient(rgba(60, 36, 15, 0.08) 1px, transparent 0);
+          background-size: 16px 16px;
+        }
+
+        .notebook-grid-paper {
+          background-color: #FAF6EE;
+          background-image:
+            linear-gradient(to right, rgba(203, 184, 157, 0.34) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(203, 184, 157, 0.34) 1px, transparent 1px);
+          background-size: 28px 28px;
+        }
+
+        .ruled-notepad {
+          background-color: #FFFDF9;
+          background-image: linear-gradient(to bottom, transparent 31px, rgba(41, 98, 255, 0.14) 32px);
+          background-size: 100% 32px;
+        }
+
+        .torn-strip-yellow {
+          clip-path: polygon(
+            2% 6%, 14% 1%, 28% 5%, 44% 0%, 62% 4%, 79% 1%, 96% 5%,
+            100% 24%, 97% 48%, 100% 74%, 98% 95%,
+            82% 99%, 65% 94%, 47% 100%, 29% 95%, 12% 99%, 1% 94%,
+            3% 68%, 0% 42%, 3% 19%
+          );
+        }
+
+        .torn-strip-orange {
+          clip-path: polygon(
+            1% 4%, 19% 0%, 37% 4%, 56% 1%, 75% 5%, 94% 1%, 99% 6%,
+            98% 32%, 100% 58%, 97% 85%, 99% 97%,
+            84% 95%, 64% 100%, 42% 95%, 21% 99%, 3% 95%,
+            0% 71%, 2% 44%, 0% 20%
+          );
+        }
+
+        .torn-strip-blue {
+          clip-path: polygon(
+            2% 3%, 22% 7%, 45% 2%, 68% 6%, 89% 1%, 99% 5%,
+            97% 36%, 100% 67%, 98% 96%,
+            78% 93%, 55% 99%, 31% 94%, 8% 98%, 1% 92%,
+            3% 58%, 0% 28%
+          );
+        }
+
+        .torn-footer-top {
+          clip-path: polygon(
+            0% 18px, 6% 4px, 13% 16px, 21% 2px, 30% 15px, 39% 3px,
+            48% 17px, 57% 2px, 66% 14px, 75% 1px, 84% 16px, 92% 4px, 100% 15px,
+            100% 100%, 0% 100%
+          );
+        }
+
+        .halftone-green {
+          background-color: #00B84D;
+          background-image: radial-gradient(#063B1B 1.6px, transparent 1.6px);
+          background-size: 6px 6px;
+        }
+
+        @keyframes marqueeScroll {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-marquee {
+          display: flex;
+          width: max-content;
+          animation: marqueeScroll 28s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+
+        @keyframes slowSpin {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: slowSpin 18s linear infinite;
+        }
+      `}</style>
+
+      {/* =====================================================================
+          1. HOT-PINK SCROLLING TICKER TAPE BANNER + SCROLL PROGRESS BAR
+      ====================================================================== */}
+      <div className="sticky top-0 z-40 bg-[#FF1E6E] text-white border-b-2 border-[#141414] overflow-hidden shadow-md">
+        <div className="py-2">
+          <div className="animate-marquee font-condensed tracking-wider text-sm sm:text-base uppercase">
+            {[...PORTFOLIO_DATA.tickerItems, ...PORTFOLIO_DATA.tickerItems].map(
+              (item, idx) => (
+                <span key={idx} className="mx-5 flex items-center gap-5 whitespace-nowrap">
+                  <span>{item}</span>
+                  <span className="text-[#FFD400]">|</span>
+                </span>
+              )
+            )}
+          </div>
+        </div>
+        {/* Live Reading Progress Bar */}
+        <div className="h-1 w-full bg-[#141414]/30">
+          <div
+            className="h-full bg-[#FFD400] transition-all duration-150"
+            style={{ width: `${scrollProgress}%` }}
+          />
+        </div>
+      </div>
+
+      {/* =====================================================================
+          MAIN KRAFT CARDBOARD FRAME + CREAM GRAPH-PAPER SHEET
+      ====================================================================== */}
+      <div className="kraft-bg px-2.5 sm:px-6 md:px-10 pb-10">
+        <div className="max-w-6xl mx-auto notebook-grid-paper border-x-4 border-b-4 border-[#141414] shadow-[0_24px_60px_rgba(20,20,20,0.28)] relative">
+          {/* Compact Zine Navigation Bar + Red-Pen X-Ray Switch */}
+          <header className="px-4 sm:px-10 pt-5 pb-4 border-b-2 border-dashed border-[#141414]/25 flex flex-wrap items-center justify-between gap-3">
+            <div className="flex items-center gap-2 font-mono-code text-xs font-bold uppercase tracking-wider">
+              <span className="px-2.5 py-1 bg-[#141414] text-[#FFD400] rounded-sm">
+                PORTFOLIO // 2026
+              </span>
+              <span className="text-[#141414]/80 hidden md:inline">
+                PREETPAL SINGH • BENGALURU
+              </span>
+            </div>
+
+            <nav className="flex flex-wrap items-center gap-1.5 sm:gap-2.5 font-mono-code text-[11px] sm:text-xs font-bold">
+              <a
+                href="#notebook-lab"
+                className="px-2 py-1 rounded hover:bg-[#FF1E6E] hover:text-white transition-colors hidden sm:inline-block"
+              >
+                PROCESS
+              </a>
+              <a
+                href="#work-section"
+                className="px-2 py-1 rounded hover:bg-[#FFD400] transition-colors"
+              >
+                01. WORK
+              </a>
+              <a
+                href="#books-section"
+                className="px-2 py-1 rounded hover:bg-[#FF5C00] hover:text-white transition-colors"
+              >
+                02. BOOKS
+              </a>
+              <a
+                href="#community-section"
+                className="px-2 py-1 rounded hover:bg-[#2962FF] hover:text-white transition-colors hidden sm:inline-block"
+              >
+                03. COMMUNITY
+              </a>
+              <a
+                href="#essays-section"
+                className="px-2 py-1 rounded hover:bg-[#00B84D] hover:text-white transition-colors"
+              >
+                04. STORY
+              </a>
+
+              {/* Creative Interactive Toggle: Copywriter's Red-Pen X-Ray Mode */}
+              <button
+                type="button"
+                onClick={() => {
+                  const next = !xrayMode;
+                  setXrayMode(next);
+                  showToast(
+                    next
+                      ? "Red-Pen X-Ray ON: Copywriter psychology notes unlocked!"
+                      : "Red-Pen X-Ray OFF: Clean reading view."
+                  );
+                }}
+                className={`px-3 py-1.5 border-2 border-[#141414] shadow-[2px_2px_0px_#141414] transition-all flex items-center gap-1.5 ${
+                  xrayMode
+                    ? "bg-[#D90429] text-white"
+                    : "bg-[#FFD400] text-[#141414] hover:bg-[#D90429] hover:text-white"
+                }`}
+                title="Reveal hidden copywriter psychology notes on every campaign"
+              >
+                <Eye className="w-3.5 h-3.5" />
+                <span>{xrayMode ? "X-RAY: ON" : "X-RAY NOTES"}</span>
+              </button>
+            </nav>
+          </header>
+
+          {/* =================================================================
+              HERO SECTION: STACKED TORN-PAPER COLLAGE + HALFTONE BADGE
+          ================================================================== */}
+          <section className="px-5 sm:px-10 md:px-14 pt-10 pb-16 sm:pt-14 sm:pb-20 border-b-2 border-[#141414]">
+            <div className="max-w-4xl mx-auto flex flex-col items-center text-center mb-10 sm:mb-12 relative">
+              {/* Strip 1: Bright Yellow Torn Paper */}
+              <div className="relative z-10 -rotate-1 drop-shadow-[0_6px_0px_rgba(20,20,20,0.18)]">
+                <div className="torn-strip-yellow bg-[#FFD400] px-8 sm:px-14 py-2.5 sm:py-3.5">
+                  <span className="font-condensed text-4xl sm:text-6xl md:text-7xl tracking-wide text-[#D90429] uppercase leading-none block">
+                    {PORTFOLIO_DATA.hero.stripTop}
+                  </span>
+                </div>
+              </div>
+
+              {/* Strip 2: Vibrant Orange Torn Paper */}
+              <div className="relative z-20 -mt-2 sm:-mt-3 rotate-[0.8deg] drop-shadow-[0_8px_0px_rgba(20,20,20,0.2)]">
+                <div className="torn-strip-orange bg-[#FF5C00] px-10 sm:px-20 py-3 sm:py-4">
+                  <h1 className="font-chunky text-5xl sm:text-7xl md:text-8xl font-bold text-[#FAF6EE] tracking-tight leading-none">
+                    {PORTFOLIO_DATA.hero.stripMiddle}
+                  </h1>
+                </div>
+              </div>
+
+              {/* Strip 3 + Halftone Green Stamp */}
+              <div className="relative z-30 -mt-2 sm:-mt-3 flex flex-col sm:flex-row items-center justify-center">
+                <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full halftone-green border-4 border-[#FAF6EE] shadow-[0_6px_0px_#141414] flex items-center justify-center relative -mb-4 sm:mb-0 sm:-mr-6 z-40 shrink-0">
+                  <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow p-1">
+                    <defs>
+                      <path
+                        id="badgeCirclePath"
+                        d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"
+                      />
+                    </defs>
+                    <text
+                      fill="#042912"
+                      fontSize="9.5"
+                      fontWeight="800"
+                      letterSpacing="2.1"
+                      className="font-mono-code uppercase"
+                    >
+                      <textPath href="#badgeCirclePath">
+                        AUTHOR • SCRIPTWRITER • CSE •
+                      </textPath>
+                    </text>
+                  </svg>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-[#042912]">
+                    <span className="font-condensed text-2xl sm:text-3xl leading-none tracking-tight">
+                      PS
+                    </span>
+                    <span className="font-mono-code text-[9px] font-bold uppercase tracking-widest">
+                      BLR
+                    </span>
+                  </div>
+                </div>
+
+                <div className="-rotate-1 drop-shadow-[0_7px_0px_rgba(20,20,20,0.22)]">
+                  <div className="torn-strip-blue bg-[#2962FF] px-9 sm:px-14 py-2.5 sm:py-3.5">
+                    <span className="font-handwritten text-4xl sm:text-6xl text-[#FCE7F3] leading-none block">
+                      {PORTFOLIO_DATA.hero.stripBottom}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pinned Bio Card */}
+            <div className="max-w-3xl mx-auto relative mt-8">
+              <MaskingTape className="mx-auto -mb-3 relative z-20" rotate="-rotate-2" />
+              <div className="bg-white border-2 border-[#141414] p-6 sm:p-8 shadow-[6px_6px_0px_#141414] relative">
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-[#141414]/15">
+                  <span className="font-condensed text-lg sm:text-xl uppercase tracking-wide text-[#D90429]">
+                    {PORTFOLIO_DATA.hero.headline}
+                  </span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {PORTFOLIO_DATA.hero.badges.map((b) => (
+                      <span
+                        key={b}
+                        className="font-mono-code text-[10px] font-bold px-2 py-0.5 bg-[#FAF6EE] border border-[#141414] text-[#141414]"
+                      >
+                        {b}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-base sm:text-lg text-[#27272A] leading-relaxed mb-7">
+                  {PORTFOLIO_DATA.hero.subheadline}
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                  <a
+                    href="#work-section"
+                    className="px-6 py-3 bg-[#FF5C00] text-white font-chunky text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center gap-2"
+                  >
+                    <span>Explore 3 Case Studies</span>
+                    <ArrowDownRight className="w-5 h-5" />
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const next = !xrayMode;
+                      setXrayMode(next);
+                      showToast(
+                        next
+                          ? "Red-Pen X-Ray ON: Scroll down to inspect copy psychology!"
+                          : "Red-Pen X-Ray OFF."
+                      );
+                    }}
+                    className={`px-5 py-3 font-chunky text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center gap-2 ${
+                      xrayMode ? "bg-[#D90429] text-white" : "bg-[#FFD400] text-[#141414]"
+                    }`}
+                  >
+                    <PenTool className="w-4 h-4" />
+                    <span>{xrayMode ? "Hide Red-Pen Notes" : "Turn On Red-Pen X-Ray"}</span>
+                  </button>
+
+                  <a
+                    href="#contact"
+                    className="px-5 py-3 bg-[#FAF6EE] text-[#141414] font-mono-code text-xs font-bold border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:bg-[#141414] hover:text-[#FFD400] transition-colors"
+                  >
+                    GET IN TOUCH
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* =================================================================
+              CREATIVE INTERACTIVE STRIP: INSIDE MY NOTEBOOK (RAW -> FINAL)
+          ================================================================== */}
+          <section
+            id="notebook-lab"
+            className="scroll-mt-16 px-5 sm:px-10 md:px-14 py-12 sm:py-16 border-b-2 border-[#141414] bg-[#141414] text-[#FAF6EE]"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+              <div>
+                <span className="inline-block px-3 py-1 bg-[#FF1E6E] text-white font-mono-code text-xs font-bold uppercase tracking-wider mb-2">
+                  INTERACTIVE // PROOF OF HUMAN THINKING
+                </span>
+                <h2 className="font-condensed text-3xl sm:text-5xl uppercase tracking-wide text-[#FFD400]">
+                  Inside My Notebook: Raw Thought to Final Hook
+                </h2>
+              </div>
+              <span className="font-mono-code text-xs text-white/75">
+                CLICK ANY STICKY NOTE TO FLIP IT ↻
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {PORTFOLIO_DATA.notebookFlips.map((note, idx) => {
+                const isFlipped = !!flippedNotes[note.id];
+                return (
+                  <button
+                    key={note.id}
+                    type="button"
+                    onClick={() => toggleNoteFlip(note.id)}
+                    className={`text-left p-6 border-2 border-[#FAF6EE] transition-all duration-200 relative group cursor-pointer ${
+                      idx === 1 ? "md:rotate-1" : "md:-rotate-1"
+                    } hover:rotate-0 hover:-translate-y-1`}
+                    style={{
+                      backgroundColor: isFlipped ? "#FAF6EE" : note.color,
+                      color: isFlipped ? "#141414" : note.textColor,
+                      boxShadow: isFlipped
+                        ? "6px 6px 0px #FFD400"
+                        : "6px 6px 0px rgba(255,255,255,0.25)"
+                    }}
+                  >
+                    <div className="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-current/25 font-mono-code text-[10px] font-bold uppercase">
+                      <span>{note.brand}</span>
+                      <span className="px-2 py-0.5 bg-[#141414] text-[#FFD400]">
+                        {isFlipped ? "FINAL LINE ✓" : "RAW DRAFT ↻"}
+                      </span>
+                    </div>
+
+                    {!isFlipped ? (
+                      <div>
+                        <p className="font-handwritten text-2xl sm:text-3xl leading-snug mb-4">
+                          “{note.rawNote}”
+                        </p>
+                        <span className="font-mono-code text-[11px] font-bold underline">
+                          Click to see how I sharpened it →
+                        </span>
+                      </div>
+                    ) : (
+                      <div>
+                        <p className="font-chunky text-xl text-[#141414] leading-snug mb-3">
+                          {note.finalLine}
+                        </p>
+                        <div className="bg-[#FFD400]/35 border-l-4 border-[#D90429] p-2.5 text-xs text-[#141414] leading-relaxed">
+                          <strong className="font-mono-code text-[10px] uppercase block text-[#D90429] mb-0.5">
+                            WHY IT WORKS:
+                          </strong>
+                          {note.whyItWorks}
+                        </div>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* =================================================================
+              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 3 PROJECTS)
+          ================================================================== */}
+          <section
+            id="work-section"
+            className="scroll-mt-16 px-5 sm:px-10 md:px-14 py-16 sm:py-20 border-b-2 border-[#141414] space-y-14"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div>
+                <span className="inline-block px-3 py-1 bg-[#2962FF] text-white font-mono-code text-xs font-bold uppercase tracking-wider border border-[#141414] mb-3">
+                  SECTION 01 // CAMPAIGNS &amp; DEEP TEARDOWNS
+                </span>
+                <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
+                  Three Projects. Deep Strategy.
+                </h2>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setXrayMode((v) => !v)}
+                className={`self-start sm:self-auto px-4 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] shadow-[3px_3px_0px_#141414] transition-colors inline-flex items-center gap-2 ${
+                  xrayMode ? "bg-[#D90429] text-white" : "bg-[#FFD400] text-[#141414]"
+                }`}
+              >
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>
+                  {xrayMode
+                    ? "RED-PEN X-RAY ACTIVE"
+                    : "CLICK TO REVEAL RED-PEN NOTES"}
+                </span>
+              </button>
+            </div>
+
+            {/* ---------------------------------------------------------------
+                PROJECT 01: ROYAL ENFIELD CLASSIC 350 SPEC COMMERCIAL
+            ---------------------------------------------------------------- */}
+            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+              <MaskingTape className="absolute -top-3 left-8" rotate="-rotate-3" />
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold">
+                      {p1.number}
+                    </span>
+                    <span className="px-2.5 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-xs font-bold">
+                      {p1.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414]">
+                    {p1.title}
+                  </h3>
+                </div>
+
+                {/* Project 1 Mode Switcher */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setP1Tab("script")}
+                    className={`px-4 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p1Tab === "script"
+                        ? "bg-[#FFD400] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]/50"
+                    }`}
+                  >
+                    01. VIDEO &amp; SCRIPT
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP1Tab("analysis")}
+                    className={`px-4 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p1Tab === "analysis"
+                        ? "bg-[#141414] text-[#FFD400] shadow-[3px_3px_0px_#FF5C00]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#141414]/10"
+                    }`}
+                  >
+                    02. DEEP STRATEGY TEARDOWN
+                  </button>
+                </div>
+              </div>
+
+              {p1Tab === "script" ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+                  {/* 9:16 Vertical Video / Storyboard Player */}
+                  <div className="lg:col-span-5 flex flex-col items-center">
+                    {/* Toggle between Live YouTube Film & Interactive Beat Sync */}
+                    <div className="inline-flex border-2 border-[#141414] bg-[#FAF6EE] mb-4">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setIsPlaying(false);
+                          setRePlayerMode("video");
+                        }}
+                        className={`px-3 py-1.5 font-mono-code text-[11px] font-bold inline-flex items-center gap-1.5 ${
+                          rePlayerMode === "video"
+                            ? "bg-[#141414] text-[#FFD400]"
+                            : "text-[#141414]"
+                        }`}
+                      >
+                        <Video className="w-3.5 h-3.5" />
+                        <span>WATCH FILM</span>
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setRePlayerMode("beats")}
+                        className={`px-3 py-1.5 font-mono-code text-[11px] font-bold inline-flex items-center gap-1.5 ${
+                          rePlayerMode === "beats"
+                            ? "bg-[#141414] text-[#FFD400]"
+                            : "text-[#141414]"
+                        }`}
+                      >
+                        <Play className="w-3.5 h-3.5" />
+                        <span>BEAT SYNC</span>
+                      </button>
+                    </div>
+
+                    <div className="w-full max-w-[320px] aspect-[9/16] bg-[#141414] border-4 border-[#141414] shadow-[6px_6px_0px_#FF5C00] relative overflow-hidden flex flex-col justify-between">
+                      {rePlayerMode === "video" && resolvedVideo ? (
+                        resolvedVideo.type === "video" ? (
+                          <video
+                            src={resolvedVideo.src}
+                            controls
+                            playsInline
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <iframe
+                            src={resolvedVideo.src}
+                            title={p1.title}
+                            className="w-full h-full object-cover"
+                            frameBorder="0"
+                            allow="autoplay; fullscreen; picture-in-picture"
+                            allowFullScreen
+                          />
+                        )
+                      ) : (
+                        <>
+                          <div className="px-4 py-3 bg-[#1F1F23] border-b border-white/15 flex items-center justify-between font-mono-code text-[11px] text-white">
+                            <span className="flex items-center gap-1.5 text-[#FFD400]">
+                              <span
+                                className={`w-2 h-2 rounded-full bg-[#FF1E6E] ${
+                                  isPlaying ? "animate-ping" : ""
+                                }`}
+                              />
+                              9:16 SPEC CUT
+                            </span>
+                            <span>{formatTime(currentTime)} / 00:35</span>
+                          </div>
+
+                          <div className="px-6 my-auto text-center">
+                            <span className="inline-block px-2.5 py-1 bg-[#FF5C00] text-white font-mono-code text-[10px] font-bold uppercase mb-3">
+                              {activeBeat.cue}
+                            </span>
+                            <p className="font-handwritten text-3xl text-[#FFD400] leading-snug mb-5 min-h-[112px] flex items-center justify-center">
+                              “{activeBeat.line}”
+                            </p>
+                            <div className="bg-white/10 border border-white/15 p-3 text-left">
+                              <span className="block font-mono-code text-[10px] text-[#00E676] uppercase mb-1">
+                                DIRECTOR'S FRAME NOTE:
+                              </span>
+                              <p className="text-xs text-white/85 leading-relaxed">
+                                {activeBeat.visual}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="p-4 bg-[#1F1F23] border-t border-white/15">
+                            <input
+                              type="range"
+                              min={0}
+                              max={p1.duration}
+                              step={0.1}
+                              value={currentTime}
+                              onChange={(e) => setCurrentTime(parseFloat(e.target.value))}
+                              className="w-full accent-[#FFD400] h-1.5 bg-white/20 cursor-pointer mb-3"
+                              aria-label="Scrub 35-second commercial timeline"
+                            />
+
+                            <div className="flex items-center justify-between gap-2">
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  if (currentTime >= p1.duration) setCurrentTime(0);
+                                  setIsPlaying((p) => !p);
+                                }}
+                                className="px-3.5 py-2 bg-[#FFD400] text-[#141414] font-mono-code text-xs font-bold flex items-center gap-1.5 hover:bg-[#FF5C00] hover:text-white transition-colors"
+                              >
+                                {isPlaying ? (
+                                  <>
+                                    <Pause className="w-3.5 h-3.5" />
+                                    <span>PAUSE</span>
+                                  </>
+                                ) : (
+                                  <>
+                                    <Play className="w-3.5 h-3.5" />
+                                    <span>PREVIEW 35S BEAT</span>
+                                  </>
+                                )}
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => {
+                                  setIsPlaying(false);
+                                  setCurrentTime(0);
+                                }}
+                                className="p-2 bg-white/10 text-white hover:bg-white/20 transition-colors"
+                                title="Reset Timeline"
+                              >
+                                <RotateCcw className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    </div>
+
+                    <div className="mt-4 text-center">
+                      <a
+                        href={links.royalEnfieldVideoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 font-mono-code text-xs font-bold text-[#2962FF] underline hover:text-[#FF5C00]"
+                      >
+                        <span>Watch on YouTube Shorts</span>
+                        <ExternalLink className="w-3.5 h-3.5" />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Ruled Notepad Full Written Script */}
+                  <div className="lg:col-span-7 ruled-notepad border-2 border-[#141414] p-6 sm:p-8 shadow-[5px_5px_0px_#141414]">
+                    <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-5 border-b-2 border-[#141414]">
+                      <div className="flex items-center gap-2">
+                        <Film className="w-4 h-4 text-[#D90429]" />
+                        <span className="font-mono-code text-xs font-bold uppercase tracking-wider">
+                          VOICEOVER SCRIPT // CLICK ANY BEAT TO SYNC
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          copyText(p1.fullScript, "Royal Enfield script copied!")
+                        }
+                        className="px-3 py-1 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#FF5C00] transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <Copy className="w-3.5 h-3.5" />
+                        <span>COPY SCRIPT</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-4">
+                      {p1.beats.map((beat) => {
+                        const isCurrent = activeBeat.id === beat.id;
+                        return (
+                          <div
+                            key={beat.id}
+                            onClick={() => {
+                              setRePlayerMode("beats");
+                              setCurrentTime(beat.start);
+                              setIsPlaying(true);
+                            }}
+                            className={`p-3 border-l-4 transition-all cursor-pointer ${
+                              isCurrent
+                                ? "bg-[#FFD400]/35 border-[#D90429]"
+                                : "border-[#141414]/25 hover:bg-[#FAF6EE] hover:border-[#2962FF]"
+                            }`}
+                          >
+                            <div className="flex items-center gap-2 font-mono-code text-[11px] font-bold text-[#52525B] mb-1">
+                              <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400]">
+                                {beat.timestamp}
+                              </span>
+                              <span>{beat.cue}</span>
+                            </div>
+                            <p className="text-base sm:text-lg font-medium text-[#141414] leading-relaxed">
+                              “{beat.line}”
+                            </p>
+
+                            {/* Red-Pen X-Ray Annotation */}
+                            {xrayMode && (
+                              <div className="mt-2 inline-block bg-[#D90429] text-white font-mono-code text-[11px] font-bold px-2.5 py-1 shadow-[2px_2px_0px_#141414]">
+                                ✎ {beat.xrayNote}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                /* Project 1 Deep Strategy Teardown */
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    {p1.deepAnalysis.metrics.map((m) => (
+                      <div
+                        key={m.label}
+                        className="bg-[#FAF6EE] border-2 border-[#141414] p-4"
+                      >
+                        <span className="block font-mono-code text-[10px] font-bold text-[#52525B] uppercase">
+                          {m.label}
+                        </span>
+                        <span className="font-chunky text-xl text-[#141414]">
+                          {m.value}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#FFD400]">
+                      <span className="inline-block px-2 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-[10px] font-bold mb-2">
+                        01. CULTURAL TENSION
+                      </span>
+                      <p className="text-sm text-[#27272A] leading-relaxed">
+                        {p1.deepAnalysis.coreTension}
+                      </p>
+                    </div>
+                    <div className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#FF5C00]">
+                      <span className="inline-block px-2 py-0.5 bg-[#FF5C00] text-white border border-[#141414] font-mono-code text-[10px] font-bold mb-2">
+                        02. CADENCE &amp; RHYTHM
+                      </span>
+                      <p className="text-sm text-[#27272A] leading-relaxed">
+                        {p1.deepAnalysis.cadenceBreakdown}
+                      </p>
+                    </div>
+                    <div className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#2962FF]">
+                      <span className="inline-block px-2 py-0.5 bg-[#2962FF] text-white border border-[#141414] font-mono-code text-[10px] font-bold mb-2">
+                        03. AUDIO-VISUAL CONTRAST
+                      </span>
+                      <p className="text-sm text-[#27272A] leading-relaxed">
+                        {p1.deepAnalysis.audioVisualSync}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </article>
+
+            {/* ---------------------------------------------------------------
+                PROJECT 02: COSMIX WELLNESS, CONTENT AUDIT + CAROUSEL + REEL
+            ---------------------------------------------------------------- */}
+            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+              <MaskingTape className="absolute -top-3 right-10" rotate="rotate-2" />
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold">
+                      {p2.number}
+                    </span>
+                    <span className="px-2.5 py-0.5 bg-[#00B84D] text-white border border-[#141414] font-mono-code text-xs font-bold">
+                      {p2.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414]">
+                    {p2.title}
+                  </h3>
+                </div>
+
+                {/* Deliverable Switcher Tabs */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setP2View("carousel")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p2View === "carousel"
+                        ? "bg-[#FFD400] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]/50"
+                    }`}
+                  >
+                    01. 4-SLIDE CAROUSEL
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP2View("reel")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p2View === "reel"
+                        ? "bg-[#FF5C00] text-white shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FF5C00]/20"
+                    }`}
+                  >
+                    02. 30S REEL SCRIPT
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP2View("audit")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p2View === "audit"
+                        ? "bg-[#141414] text-[#FFD400] shadow-[3px_3px_0px_#00B84D]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#141414]/10"
+                    }`}
+                  >
+                    03. DEEP AUDIT &amp; FUNNEL
+                  </button>
+                </div>
+              </div>
+
+              {p2View === "carousel" && (
+                <div>
+                  {/* Grid vs Interactive Phone Swipe Toggle */}
+                  <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
+                    <p className="text-sm text-[#3F3F46] max-w-xl">
+                      Written and art-directed to convert vegetarian lifters without sounding like generic gym-bro supplement hype.
+                    </p>
+                    <div className="inline-flex border-2 border-[#141414] bg-[#FAF6EE]">
+                      <button
+                        type="button"
+                        onClick={() => setCarouselMode("grid")}
+                        className={`px-3 py-1.5 font-mono-code text-[11px] font-bold ${
+                          carouselMode === "grid"
+                            ? "bg-[#141414] text-[#FFD400]"
+                            : "text-[#141414]"
+                        }`}
+                      >
+                        4-UP GRID
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => setCarouselMode("phone")}
+                        className={`px-3 py-1.5 font-mono-code text-[11px] font-bold ${
+                          carouselMode === "phone"
+                            ? "bg-[#141414] text-[#FFD400]"
+                            : "text-[#141414]"
+                        }`}
+                      >
+                        INTERACTIVE SWIPE
+                      </button>
+                    </div>
+                  </div>
+
+                  {carouselMode === "grid" ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                      {p2.carouselSlides.map((slide) => (
+                        <div key={slide.num} className="flex flex-col gap-2">
+                          <div
+                            className={`aspect-[4/5] p-5 border-2 border-[#141414] shadow-[4px_4px_0px_#141414] flex flex-col justify-between ${
+                              slide.dark
+                                ? "bg-[#1D3528] text-[#F6F3EC]"
+                                : "bg-[#F6F3EC] text-[#1A1A1A]"
+                            }`}
+                          >
+                            <span className="font-mono-code text-[9px] font-bold tracking-widest uppercase text-[#C86D51]">
+                              {slide.tag}
+                            </span>
+
+                            <div className="my-auto py-3">
+                              <h4 className="font-chunky text-xl leading-snug mb-3">
+                                {slide.headline}
+                              </h4>
+                              <div className="w-8 h-0.5 bg-[#C86D51] mb-3" />
+                              <p
+                                className={`text-xs leading-relaxed ${
+                                  slide.dark ? "text-[#F6F3EC]/90" : "text-[#27272A]"
+                                }`}
+                              >
+                                {slide.body}
+                              </p>
+                            </div>
+
+                            <div className="pt-2.5 border-t border-[#C86D51]/50 flex items-center justify-between font-mono-code text-[10px] font-bold">
+                              <span>{slide.footer}</span>
+                              <span className="text-[#C86D51]">{slide.num}</span>
+                            </div>
+                          </div>
+
+                          {xrayMode && (
+                            <div className="bg-[#D90429] text-white font-mono-code text-[10px] font-bold p-2 border border-[#141414]">
+                              ✎ {slide.xrayNote}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    /* Interactive Single-Card Instagram Swipe Simulator */
+                    <div className="max-w-sm mx-auto">
+                      <div className="bg-[#141414] p-3 border-4 border-[#141414] shadow-[8px_8px_0px_#00B84D]">
+                        <div className="flex items-center justify-between text-white font-mono-code text-[10px] px-1 pb-2.5">
+                          <span>@cosmixwellness • SPEC</span>
+                          <span>SLIDE {activeSlideIdx + 1} OF 4</span>
+                        </div>
+
+                        {(() => {
+                          const slide = p2.carouselSlides[activeSlideIdx];
+                          return (
+                            <div
+                              className={`aspect-[4/5] p-6 flex flex-col justify-between transition-all ${
+                                slide.dark
+                                  ? "bg-[#1D3528] text-[#F6F3EC]"
+                                  : "bg-[#F6F3EC] text-[#1A1A1A]"
+                              }`}
+                            >
+                              <span className="font-mono-code text-[10px] font-bold tracking-widest uppercase text-[#C86D51]">
+                                {slide.tag}
+                              </span>
+                              <div className="my-auto py-4">
+                                <h4 className="font-chunky text-2xl leading-snug mb-3">
+                                  {slide.headline}
+                                </h4>
+                                <div className="w-10 h-0.5 bg-[#C86D51] mb-3" />
+                                <p
+                                  className={`text-sm leading-relaxed ${
+                                    slide.dark ? "text-[#F6F3EC]/90" : "text-[#27272A]"
+                                  }`}
+                                >
+                                  {slide.body}
+                                </p>
+                              </div>
+                              <div className="pt-3 border-t border-[#C86D51]/50 flex items-center justify-between font-mono-code text-xs font-bold">
+                                <span>{slide.footer}</span>
+                                <span className="text-[#C86D51]">{slide.num}</span>
+                              </div>
+                            </div>
+                          );
+                        })()}
+
+                        <div className="flex items-center justify-between pt-3">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setActiveSlideIdx((i) => (i === 0 ? 3 : i - 1))
+                            }
+                            className="px-3 py-1.5 bg-[#FAF6EE] text-[#141414] font-mono-code text-xs font-bold inline-flex items-center gap-1 hover:bg-[#FFD400]"
+                          >
+                            <ChevronLeft className="w-4 h-4" />
+                            <span>PREV</span>
+                          </button>
+                          <div className="flex gap-1.5">
+                            {[0, 1, 2, 3].map((dot) => (
+                              <button
+                                key={dot}
+                                type="button"
+                                onClick={() => setActiveSlideIdx(dot)}
+                                aria-label={`Go to slide ${dot + 1}`}
+                                className={`w-2.5 h-2.5 rounded-full transition-all ${
+                                  activeSlideIdx === dot
+                                    ? "bg-[#FFD400] scale-125"
+                                    : "bg-white/30"
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              setActiveSlideIdx((i) => (i === 3 ? 0 : i + 1))
+                            }
+                            className="px-3 py-1.5 bg-[#FFD400] text-[#141414] font-mono-code text-xs font-bold inline-flex items-center gap-1 hover:bg-[#FF5C00] hover:text-white"
+                          >
+                            <span>NEXT</span>
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {p2View === "reel" && (
+                <div className="ruled-notepad border-2 border-[#141414] p-6 sm:p-8 shadow-[5px_5px_0px_#141414]">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-5 border-b-2 border-[#141414]">
+                    <span className="font-chunky text-xl text-[#141414]">
+                      {p2.reelScript.title}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          p2.reelScript.beats.map((b) => `${b.label}: ${b.vo}`).join("\n\n"),
+                          "Cosmix Reel script copied!"
+                        )
+                      }
+                      className="px-3 py-1 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#FF5C00] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY REEL SCRIPT</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+                    {p2.reelScript.beats.map((b) => (
+                      <div
+                        key={b.time}
+                        className="bg-white border-2 border-[#141414] p-4"
+                      >
+                        <div className="flex items-center justify-between font-mono-code text-[11px] font-bold mb-2">
+                          <span className="px-2 py-0.5 bg-[#FFD400] border border-[#141414]">
+                            {b.time}
+                          </span>
+                          <span className="text-[#D90429]">{b.label}</span>
+                        </div>
+                        <p className="text-xs text-[#52525B] italic mb-2">
+                          Visual: {b.visual}
+                        </p>
+                        <p className="text-sm font-semibold text-[#141414] leading-relaxed">
+                          {b.vo}
+                        </p>
+                        {xrayMode && (
+                          <div className="mt-2 bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2 py-1">
+                            ✎ {b.xrayNote}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="bg-[#FFD400]/30 border-l-4 border-[#141414] px-4 py-2.5 font-mono-code text-xs text-[#141414]">
+                    {p2.deepAudit.complianceNote}
+                  </div>
+                </div>
+              )}
+
+              {p2View === "audit" && (
+                <div className="space-y-6">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-[#FAF6EE] border-2 border-[#141414] p-5">
+                      <span className="block font-mono-code text-xs font-bold text-[#00B84D] uppercase mb-1.5">
+                        WHAT COSMIX ALREADY NAILS
+                      </span>
+                      <p className="text-sm text-[#27272A] leading-relaxed">
+                        {p2.deepAudit.whatWorks}
+                      </p>
+                    </div>
+                    <div className="bg-[#FAF6EE] border-2 border-[#141414] p-5">
+                      <span className="block font-mono-code text-xs font-bold text-[#D90429] uppercase mb-1.5">
+                        THE UNTAPPED CONVERSION GAP
+                      </span>
+                      <p className="text-sm text-[#27272A] leading-relaxed">
+                        {p2.deepAudit.theGap}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <span className="block font-mono-code text-xs font-bold uppercase mb-3">
+                      4-STEP PERSUASION FUNNEL ARCHITECTURE:
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      {p2.deepAudit.funnelLogic.map((step) => (
+                        <div
+                          key={step.step}
+                          className="bg-white border-2 border-[#141414] p-4 shadow-[4px_4px_0px_#141414]"
+                        >
+                          <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold mb-2">
+                            {step.step}
+                          </span>
+                          <p className="text-xs sm:text-sm text-[#27272A] leading-relaxed">
+                            {step.detail}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-[#FFD400]/30 border-l-4 border-[#141414] px-4 py-3 font-mono-code text-xs text-[#141414]">
+                    {p2.deepAudit.complianceNote}
+                  </div>
+                </div>
+              )}
+            </article>
+
+            {/* ---------------------------------------------------------------
+                PROJECT 03: BOSE INDIA, BLACK FRIDAY CAMPAIGN REWRITE
+            ---------------------------------------------------------------- */}
+            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+              <MaskingTape className="absolute -top-3 left-10" rotate="-rotate-2" />
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold">
+                      {p3.number}
+                    </span>
+                    <span className="px-2.5 py-0.5 bg-[#2962FF] text-white border border-[#141414] font-mono-code text-xs font-bold">
+                      {p3.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414]">
+                    {p3.title}
+                  </h3>
+                </div>
+
+                {/* Deliverable Switcher Tabs */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setP3View("landing")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p3View === "landing"
+                        ? "bg-[#2962FF] text-white shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#2962FF]/20"
+                    }`}
+                  >
+                    01. BEFORE vs AFTER HERO
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP3View("email")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p3View === "email"
+                        ? "bg-[#FFD400] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]/50"
+                    }`}
+                  >
+                    02. BLACK FRIDAY EMAIL
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP3View("strategy")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p3View === "strategy"
+                        ? "bg-[#141414] text-[#FFD400] shadow-[3px_3px_0px_#2962FF]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#141414]/10"
+                    }`}
+                  >
+                    03. CONVERSION TEARDOWN
+                  </button>
+                </div>
+              </div>
+
+              {p3View === "landing" && (
+                <div className="space-y-8">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-mono-code text-xs font-bold text-[#52525B]">
+                      TARGET PRODUCT: {p3.product.toUpperCase()}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setBoseCompareMode((m) => (m === "split" ? "after" : "split"))
+                      }
+                      className="px-3 py-1 bg-[#FAF6EE] border-2 border-[#141414] font-mono-code text-[11px] font-bold hover:bg-[#FFD400]"
+                    >
+                      {boseCompareMode === "split"
+                        ? "EXPAND FULL AFTER BANNER →"
+                        : "SHOW BEFORE vs AFTER SPLIT"}
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    {/* BEFORE (Generic Live Banner) */}
+                    {boseCompareMode === "split" && (
+                      <div className="lg:col-span-5 bg-[#F4F4F5] border-2 border-dashed border-[#141414] p-6 flex flex-col justify-between">
+                        <div>
+                          <span className="inline-block px-2 py-0.5 bg-[#71717A] text-white font-mono-code text-[10px] font-bold uppercase mb-4">
+                            {p3.beforeCopy.eyebrow}
+                          </span>
+                          <div className="bg-white border border-[#D4D4D8] p-5 mb-4">
+                            <p className="font-chunky text-2xl text-[#52525B] mb-1">
+                              {p3.beforeCopy.headline}
+                            </p>
+                            <p className="text-sm text-[#71717A]">
+                              {p3.beforeCopy.subtext}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="border-t border-[#141414]/15 pt-3">
+                          <strong className="font-mono-code text-[10px] uppercase text-[#D90429] block mb-1.5">
+                            3 REASONS IT UNDERPERFORMS:
+                          </strong>
+                          <ul className="space-y-1 text-xs text-[#3F3F46]">
+                            {p3.beforeCopy.failures.map((f, i) => (
+                              <li key={i}>• {f}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* AFTER (Preetpal's Poetic Conversion Rewrite) */}
+                    <div
+                      className={`${
+                        boseCompareMode === "split" ? "lg:col-span-7" : "lg:col-span-12"
+                      } bg-[#141414] text-[#FAF6EE] border-2 border-[#141414] p-6 sm:p-8 shadow-[6px_6px_0px_#FFD400] flex flex-col justify-between`}
+                    >
+                      <div>
+                        <span className="inline-block px-2.5 py-0.5 bg-[#FF1E6E] text-white font-mono-code text-[10px] font-bold uppercase mb-4">
+                          {p3.afterCopy.eyebrow}
+                        </span>
+                        <h4 className="font-condensed text-3xl sm:text-5xl uppercase tracking-wide text-[#FFD400] leading-none mb-4">
+                          {p3.afterCopy.headline}
+                        </h4>
+                        <p className="text-sm sm:text-base text-white/90 leading-relaxed mb-5 max-w-2xl">
+                          {p3.afterCopy.subtext}
+                        </p>
+
+                        {xrayMode && (
+                          <div className="mb-5 inline-block bg-[#D90429] text-white font-mono-code text-[11px] font-bold px-3 py-1.5 border border-white/30">
+                            ✎ {p3.afterCopy.xrayNote}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/15">
+                        <span className="px-4 py-2 bg-[#FFD400] text-[#141414] font-mono-code text-xs font-bold uppercase">
+                          {p3.afterCopy.cta} →
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            copyText(
+                              `${p3.afterCopy.headline}\n${p3.afterCopy.subtext}`,
+                              "Bose hero rewrite copied!"
+                            )
+                          }
+                          className="font-mono-code text-xs text-white/75 hover:text-[#FFD400] underline"
+                        >
+                          Copy Hero Copy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3 Feature-to-Benefit Blocks */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {p3.features.map((feat) => (
+                      <div
+                        key={feat.spec}
+                        className="bg-[#FAF6EE] border-2 border-[#141414] p-5"
+                      >
+                        <span className="inline-block px-2 py-0.5 bg-[#2962FF] text-white font-mono-code text-[10px] font-bold uppercase mb-2.5">
+                          {feat.spec}
+                        </span>
+                        <h5 className="font-chunky text-lg text-[#141414] leading-snug mb-2">
+                          “{feat.headline}”
+                        </h5>
+                        <p className="text-xs sm:text-sm text-[#3F3F46] leading-relaxed">
+                          {feat.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {p3View === "email" && (
+                <div className="ruled-notepad border-2 border-[#141414] p-6 sm:p-8 shadow-[5px_5px_0px_#141414] max-w-3xl mx-auto">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b-2 border-[#141414]">
+                    <div className="space-y-1 font-mono-code text-xs">
+                      <p>
+                        <strong className="text-[#D90429]">SUBJECT:</strong>{" "}
+                        {p3.launchEmail.subject}
+                      </p>
+                      <p className="text-[#52525B]">
+                        <strong>PREVIEW:</strong> {p3.launchEmail.preview}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          `Subject: ${p3.launchEmail.subject}\n\n${p3.launchEmail.body}`,
+                          "Bose launch email copied!"
+                        )
+                      }
+                      className="px-3 py-1.5 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#2962FF] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY EMAIL</span>
+                    </button>
+                  </div>
+
+                  <div className="whitespace-pre-line text-base text-[#141414] leading-relaxed mb-6">
+                    {p3.launchEmail.body}
+                  </div>
+
+                  <div className="inline-block px-5 py-2.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold uppercase">
+                    [Shop SoundLink Flex | Black Friday Offer]
+                  </div>
+                </div>
+              )}
+
+              {p3View === "strategy" && (
+                <div className="space-y-6">
+                  <div className="bg-[#FAF6EE] border-2 border-[#141414] p-5">
+                    <span className="block font-mono-code text-xs font-bold text-[#2962FF] uppercase mb-1.5">
+                      CORE CONVERSION THESIS
+                    </span>
+                    <p className="text-base font-medium text-[#141414] leading-relaxed">
+                      {p3.deepStrategy.thesis}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {p3.deepStrategy.upgrades.map((u) => (
+                      <div
+                        key={u.title}
+                        className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#2962FF]"
+                      >
+                        <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold mb-2">
+                          {u.title}
+                        </span>
+                        <p className="text-sm text-[#27272A] leading-relaxed">
+                          {u.detail}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </article>
+          </section>
+
+          {/* =================================================================
+              SECTION 02: PUBLISHED BOOKS & LITERARY WORK
+          ================================================================== */}
+          <section
+            id="books-section"
+            className="scroll-mt-16 px-5 sm:px-10 md:px-14 py-16 sm:py-20 border-b-2 border-[#141414]"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div>
+                <span className="inline-block px-3 py-1 bg-[#FF5C00] text-white font-mono-code text-xs font-bold uppercase tracking-wider border border-[#141414] mb-3">
+                  SECTION 02 // AUTHORSHIP &amp; VERSE
+                </span>
+                <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
+                  Published Books &amp; Literary Work
+                </h2>
+              </div>
+              <span className="font-handwritten text-2xl sm:text-3xl text-[#2962FF] rotate-1">
+                “100+ bilingual entries &amp; counting.”
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-7">
+              {PORTFOLIO_DATA.books.map((book, index) => {
+                const bookHref = links[book.linkKey] || "#contact";
+                const isExternal = bookHref.startsWith("http");
+
+                return (
+                  <article
+                    key={book.id}
+                    className="bg-white border-2 border-[#141414] p-6 shadow-[6px_6px_0px_#141414] flex flex-col justify-between relative"
+                  >
+                    <MaskingTape
+                      className="mx-auto -mt-9 mb-3"
+                      rotate={index % 2 === 0 ? "-rotate-2" : "rotate-2"}
+                    />
+
+                    <div>
+                      <div className="flex flex-wrap items-center justify-between gap-2 mb-5">
+                        <span
+                          className="px-2.5 py-1 font-mono-code text-[11px] font-bold uppercase border border-[#141414] inline-flex items-center gap-1.5"
+                          style={{
+                            backgroundColor: book.stripColor,
+                            color: book.textColor
+                          }}
+                        >
+                          {book.isInProgress && (
+                            <span className="w-2 h-2 rounded-full bg-[#FFD400] animate-ping" />
+                          )}
+                          <span>{book.status}</span>
+                        </span>
+                        <span className="font-mono-code text-[11px] font-bold text-[#52525B]">
+                          {book.languages}
+                        </span>
+                      </div>
+
+                      <div
+                        className={`${book.coverBg} border-2 border-[#141414] p-5 mb-5 text-white relative overflow-hidden`}
+                      >
+                        <div
+                          className="w-2 h-full absolute left-0 top-0"
+                          style={{ backgroundColor: book.coverAccent }}
+                        />
+                        <div className="pl-2">
+                          <span className="block font-mono-code text-[10px] tracking-widest uppercase text-white/70 mb-4">
+                            PREETPAL SINGH
+                          </span>
+                          <h3 className="font-chunky text-2xl leading-tight mb-1">
+                            {book.title}
+                          </h3>
+                          <p
+                            className="font-mono-code text-xs font-bold"
+                            style={{ color: book.coverAccent }}
+                          >
+                            {book.subtitle}
+                          </p>
+                        </div>
+                      </div>
+
+                      <p className="text-sm text-[#27272A] leading-relaxed mb-6">
+                        {book.synopsis}
+                      </p>
+                    </div>
+
+                    <a
+                      href={bookHref}
+                      target={isExternal ? "_blank" : undefined}
+                      rel={isExternal ? "noopener noreferrer" : undefined}
+                      className="w-full py-3 px-4 bg-[#141414] text-white font-mono-code text-xs font-bold uppercase tracking-wider border-2 border-[#141414] hover:bg-[#FFD400] hover:text-[#141414] transition-colors flex items-center justify-center gap-2"
+                    >
+                      <BookOpen className="w-4 h-4" />
+                      <span>{book.ctaLabel}</span>
+                      {isExternal && <ExternalLink className="w-3.5 h-3.5" />}
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
+          </section>
+
+          {/* =================================================================
+              SECTION 03: COMMUNITY BUILDING & CAMPAIGN STRATEGY
+          ================================================================== */}
+          <section
+            id="community-section"
+            className="scroll-mt-16 px-5 sm:px-10 md:px-14 py-16 sm:py-20 border-b-2 border-[#141414]"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div>
+                <span className="inline-block px-3 py-1 bg-[#00B84D] text-white font-mono-code text-xs font-bold uppercase tracking-wider border border-[#141414] mb-3">
+                  SECTION 03 // COMMUNITY &amp; CAMPAIGN STRATEGY
+                </span>
+                <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
+                  The Poet's Launchpad
+                </h2>
+              </div>
+
+              <a
+                href={links.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 bg-[#FFD400] border-2 border-[#141414] shadow-[3px_3px_0px_#141414] font-mono-code text-xs font-bold inline-flex items-center gap-1.5 hover:bg-[#FF1E6E] hover:text-white transition-colors self-start sm:self-auto"
+              >
+                <span>@poets_launchpad</span>
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            </div>
+
+            <div className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414]">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-8 mb-8 border-b-2 border-[#141414]">
+                <div className="lg:col-span-7">
+                  <span className="inline-block px-2.5 py-0.5 bg-[#2962FF] text-white font-mono-code text-xs font-bold uppercase mb-3">
+                    {PORTFOLIO_DATA.community.role}
+                  </span>
+                  <h3 className="font-chunky text-2xl sm:text-3xl text-[#141414] mb-3">
+                    Building an Independent Literary Movement &amp; Competition Engine
+                  </h3>
+                  <p className="text-base text-[#27272A] leading-relaxed">
+                    {PORTFOLIO_DATA.community.summary}
+                  </p>
+                </div>
+
+                <div className="lg:col-span-5 grid grid-cols-1 gap-3">
+                  {PORTFOLIO_DATA.community.highlights.map((item) => (
+                    <div
+                      key={item.label}
+                      className="bg-[#FAF6EE] border-2 border-[#141414] px-4 py-3 flex items-center justify-between"
+                    >
+                      <span className="font-mono-code text-xs font-bold text-[#52525B]">
+                        {item.label}
+                      </span>
+                      <span className="font-chunky text-base text-[#141414]">
+                        {item.value}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <div className="flex flex-wrap items-center justify-between gap-3 mb-5">
+                  <span className="font-mono-code text-xs font-bold uppercase tracking-wider">
+                    CAMPAIGN ARCHITECTURE // FLAGSHIP EDITIONS:
+                  </span>
+                  <div className="flex flex-wrap gap-2">
+                    {PORTFOLIO_DATA.community.editions.map((ed, idx) => (
+                      <button
+                        key={ed.id}
+                        type="button"
+                        onClick={() => setActiveEditionIdx(idx)}
+                        className={`px-3 py-1 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                          activeEditionIdx === idx
+                            ? "bg-[#141414] text-[#FFD400] shadow-[2px_2px_0px_#FF5C00]"
+                            : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]"
+                        }`}
+                      >
+                        {ed.title}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  {PORTFOLIO_DATA.community.editions.map((ed, idx) => {
+                    const isFocused = activeEditionIdx === idx;
+                    return (
+                      <div
+                        key={ed.id}
+                        onClick={() => setActiveEditionIdx(idx)}
+                        className={`p-5 border-2 border-[#141414] cursor-pointer transition-all ${
+                          isFocused
+                            ? "bg-[#FAF6EE] shadow-[5px_5px_0px_#141414] -translate-y-1"
+                            : "bg-white hover:bg-[#FAF6EE]/60"
+                        }`}
+                      >
+                        <span
+                          className="inline-block px-2 py-0.5 font-mono-code text-[10px] font-bold uppercase border border-[#141414] mb-3"
+                          style={{
+                            backgroundColor: ed.tagColor,
+                            color: ed.tagColor === "#2962FF" ? "#FFFFFF" : "#141414"
+                          }}
+                        >
+                          {ed.badge}
+                        </span>
+                        <h4 className="font-chunky text-xl text-[#141414] mb-2">
+                          {ed.title}
+                        </h4>
+                        <p className="text-sm text-[#3F3F46] leading-relaxed">
+                          {ed.description}
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* =================================================================
+              SECTION 04: PERSONAL ESSAY (WRITTEN BY PREETPAL SINGH)
+          ================================================================== */}
+          <section
+            id="essays-section"
+            className="scroll-mt-16 px-5 sm:px-10 md:px-14 py-16 sm:py-20"
+          >
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+              <div>
+                <span className="inline-block px-3 py-1 bg-[#FFD400] text-[#141414] font-mono-code text-xs font-bold uppercase tracking-wider border border-[#141414] mb-3">
+                  SECTION 04 // PERSONAL ESSAY
+                </span>
+                <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
+                  In My Own Words
+                </h2>
+              </div>
+              <span className="font-handwritten text-2xl sm:text-3xl text-[#D90429] -rotate-1">
+                “Where I can live, and not lie.”
+              </span>
+            </div>
+
+            {PORTFOLIO_DATA.essays.map((essay) => (
+              <article
+                key={essay.id}
+                className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] max-w-4xl mx-auto relative"
+              >
+                <MaskingTape className="mx-auto -mt-9 mb-4" rotate="-rotate-2" />
+
+                <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-6 border-b-2 border-[#141414]">
+                  <span
+                    className="px-2.5 py-1 font-mono-code text-[10px] font-bold uppercase text-white border border-[#141414]"
+                    style={{ backgroundColor: essay.accent }}
+                  >
+                    {essay.tag}
+                  </span>
+                  <span className="font-mono-code text-xs font-bold text-[#52525B]">
+                    {essay.readTime}
+                  </span>
+                </div>
+
+                <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414] leading-snug mb-6">
+                  {essay.title}
+                </h3>
+
+                <div className="space-y-4 text-base sm:text-lg text-[#27272A] leading-relaxed mb-8">
+                  {essay.paragraphs.map((para, idx) => (
+                    <p key={idx}>{para}</p>
+                  ))}
+                </div>
+
+                <div className="pt-4 border-t-2 border-dashed border-[#141414]/20 flex flex-wrap items-center justify-between gap-3">
+                  <span className="font-handwritten text-3xl text-[#141414]">
+                    ~ Preetpal Singh
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => setActiveEssay(essay)}
+                    className="px-4 py-2 bg-[#FFD400] border-2 border-[#141414] font-mono-code text-xs font-bold hover:bg-[#141414] hover:text-[#FFD400] transition-colors"
+                  >
+                    OPEN READER VIEW →
+                  </button>
+                </div>
+              </article>
+            ))}
+          </section>
+
+          {/* =================================================================
+              WHAT I WRITE — QUICK HIREABLE SCOPE STRIP
+          ================================================================== */}
+          <section className="px-5 sm:px-10 md:px-14 pb-12">
+            <div className="border-t-2 border-dashed border-[#141414]/25 pt-12">
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-6">
+                <span className="font-mono-code text-xs font-bold uppercase tracking-wider text-[#52525B]">
+                  WHAT YOU CAN HIRE ME TO WRITE
+                </span>
+                <span className="font-mono-code text-xs font-bold text-[#D90429]">
+                  INTERNSHIPS • FREELANCE • BRAND SPRINTS
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                {PORTFOLIO_DATA.scopeOfWork.map((item) => (
+                  <div
+                    key={item.num}
+                    className="bg-white border-2 border-[#141414] p-5 shadow-[5px_5px_0px_#141414]"
+                  >
+                    <span
+                      className="inline-block px-2 py-0.5 font-mono-code text-[10px] font-bold border border-[#141414] mb-3"
+                      style={{
+                        backgroundColor: item.accent,
+                        color: item.textColor
+                      }}
+                    >
+                      SCOPE {item.num}
+                    </span>
+                    <h3 className="font-chunky text-xl text-[#141414] mb-2">
+                      {item.title}
+                    </h3>
+                    <p className="text-sm text-[#3F3F46] leading-relaxed">
+                      {item.detail}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* =================================================================
+              TORN-PAPER DARK FOOTER & CONTACT SECTION
+          ================================================================== */}
+          <footer
+            id="contact"
+            className="torn-footer-top bg-[#141414] text-[#FAF6EE] px-6 sm:px-12 pt-14 pb-12 mt-4"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start pb-12 border-b border-white/15">
+              <div className="lg:col-span-7">
+                <span className="inline-block px-3 py-1 bg-[#FF1E6E] text-white font-mono-code text-xs font-bold uppercase mb-4">
+                  OPEN FOR INTERNSHIPS &amp; FREELANCE CAMPAIGNS
+                </span>
+                <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-wide text-[#FFD400] leading-none mb-4">
+                  Let’s Write Something People Don’t Skip.
+                </h2>
+                <p className="text-base text-white/80 max-w-xl leading-relaxed mb-7">
+                  Looking for a Copywriter, Scriptwriter, or Content Strategist who understands both human emotion and technical products? Drop a message.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <a
+                    href={`mailto:${links.email}`}
+                    className="px-6 py-3 bg-[#FF5C00] text-white font-chunky text-base border-2 border-[#FAF6EE] hover:bg-[#FFD400] hover:text-[#141414] transition-colors inline-flex items-center gap-2"
+                  >
+                    <Mail className="w-4 h-4" />
+                    <span>{links.email}</span>
+                  </a>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      copyText(links.email, `Copied ${links.email} to clipboard!`)
+                    }
+                    className="px-4 py-3 bg-white/10 text-white font-mono-code text-xs font-bold border border-white/30 hover:border-[#FFD400] hover:text-[#FFD400] transition-colors"
+                  >
+                    COPY EMAIL
+                  </button>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5 bg-[#1F1F23] border-2 border-white/20 p-6">
+                <span className="block font-mono-code text-xs font-bold uppercase text-[#FFD400] mb-4">
+                  CONNECT &amp; PROFILES
+                </span>
+                <ul className="space-y-3 font-mono-code text-sm">
+                  <li>
+                    <a
+                      href={`mailto:${links.email}`}
+                      className="flex items-center justify-between py-2 border-b border-white/10 hover:text-[#FFD400] transition-colors"
+                    >
+                      <span>EMAIL</span>
+                      <span>{links.email} ↗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={links.linkedin}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between py-2 border-b border-white/10 hover:text-[#2962FF] transition-colors"
+                    >
+                      <span>LINKEDIN</span>
+                      <span>Preetpal Singh ↗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={links.instagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between py-2 border-b border-white/10 hover:text-[#FF1E6E] transition-colors"
+                    >
+                      <span>COMMUNITY IG</span>
+                      <span>@poets_launchpad ↗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={links.personalInstagram}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between py-2 border-b border-white/10 hover:text-[#FF5C00] transition-colors"
+                    >
+                      <span>PERSONAL IG</span>
+                      <span>@thepreetpalsingh ↗</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={links.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between py-2 hover:text-[#00E676] transition-colors"
+                    >
+                      <span>GITHUB</span>
+                      <span>@preetpalsingherror ↗</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 font-mono-code text-xs text-white/60">
+              <p>© {new Date().getFullYear()} Preetpal Singh. All rights reserved.</p>
+              <p>Bengaluru • Copywriting • Scriptwriting • Content Strategy</p>
+            </div>
+          </footer>
+        </div>
+      </div>
+
+      {/* =====================================================================
+          FULL ESSAY ZINE READER MODAL
+      ====================================================================== */}
+      {activeEssay && (
+        <div
+          className="fixed inset-0 z-50 bg-[#141414]/80 backdrop-blur-xs flex items-center justify-center p-4"
+          onClick={() => setActiveEssay(null)}
+        >
+          <article
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-2xl max-h-[88vh] overflow-y-auto notebook-grid-paper border-4 border-[#141414] shadow-[10px_10px_0px_#FFD400] p-6 sm:p-10"
+          >
+            <div className="flex items-center justify-between gap-2 pb-4 mb-6 border-b-2 border-[#141414]">
+              <span
+                className="px-2.5 py-1 font-mono-code text-xs font-bold text-white border border-[#141414]"
+                style={{ backgroundColor: activeEssay.accent }}
+              >
+                {activeEssay.tag} • {activeEssay.readTime}
+              </span>
+              <button
+                type="button"
+                onClick={() => setActiveEssay(null)}
+                className="px-3 py-1 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#D90429]"
+              >
+                CLOSE ✕
+              </button>
+            </div>
+
+            <h2 className="font-chunky text-3xl sm:text-4xl text-[#141414] leading-tight mb-6">
+              {activeEssay.title}
+            </h2>
+
+            <div className="space-y-5 text-base sm:text-lg text-[#27272A] leading-relaxed">
+              {activeEssay.paragraphs.map((para, idx) => (
+                <p key={idx}>{para}</p>
+              ))}
+            </div>
+
+            <div className="mt-8 pt-6 border-t-2 border-dashed border-[#141414]/25 flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="font-chunky text-lg text-[#141414]">Preetpal Singh</p>
+                <p className="font-mono-code text-xs text-[#52525B]">
+                  Copywriter, Scriptwriter &amp; Content Strategist
+                </p>
+              </div>
+              <a
+                href="#contact"
+                onClick={() => setActiveEssay(null)}
+                className="px-4 py-2 bg-[#FFD400] border-2 border-[#141414] font-mono-code text-xs font-bold"
+              >
+                DISCUSS THIS ESSAY →
+              </a>
+            </div>
+          </article>
+        </div>
+      )}
+
+      {/* Toast Notification */}
+      {toast && (
+        <div className="fixed bottom-5 right-5 z-50 bg-[#141414] text-[#FFD400] border-2 border-[#FFD400] px-4 py-2.5 shadow-[4px_4px_0px_#FF1E6E] font-mono-code text-xs font-bold">
+          {toast}
+        </div>
+      )}
+    </div>
+  );
+}
