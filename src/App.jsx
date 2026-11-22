@@ -97,6 +97,18 @@ const PORTFOLIO_DATA = {
         "“The end of every boring Friday has arrived. Tonight, wish the sun never rises.”",
       whyItWorks:
         "Turns a routine discount timer into a poetic night-time atmosphere that creates urgency without sounding cheap."
+    },
+    {
+      id: "flip-peakflo",
+      brand: "PEAKFLO",
+      color: "#00B84D",
+      textColor: "#141414",
+      rawNote:
+        "Your work has to be your safe place, not everyday headaches with repetitive finance and ops tasks. Peakflo fixes it with agentic workflows so you can actually execute real work.",
+      finalLine:
+        "“Work should feel like your safe place, not an everyday headache.”",
+      whyItWorks:
+        "Replaces dense enterprise buzzwords ('agentic workflow orchestration') with human emotional relief that stressed finance and ops teams immediately feel."
     }
   ],
 
@@ -368,6 +380,92 @@ Once Black Friday’s moon goes away, so does this price.
 
 Team Bose India`
       }
+    },
+
+    project4: {
+      number: "PROJECT 04 // B2B SAAS & AI REWRITE",
+      tag: "HERO REWRITE + FEATURE BLOCKS + COLD EMAIL",
+      title: "Peakflo | Turning Enterprise AI Jargon Into Human Relief",
+      role: "B2B SaaS Copywriting, Positioning Rewrite & Outbound Email",
+      product: "Peakflo Agentic Workflows (peakflo.co)",
+      beforeCopy: {
+        eyebrow: "WHAT WAS LIVE ON PEAKFLO.CO",
+        headline: "Agentic workflows that automate and execute your business operations",
+        subtext:
+          "Peakflo's Agentic Workflows integrate seamlessly with your finance and operations processes continuously learning from your workflows to automate tasks, enhance accuracy, and accelerate decision-making. | Schedule a Demo",
+        failures: [
+          "Jargon overload: 'Agentic workflows' and 'enhance accuracy' sound like an engineering manual, not human relief.",
+          "Zero emotional hook: ignores the real daily stress of chasing approvals and fixing repetitive ops mistakes.",
+          "High-friction CTA: 'Schedule a Demo' asks for a 30-minute calendar commitment before proving how easy it is."
+        ]
+      },
+      afterCopy: {
+        eyebrow: "PEAKFLO // AGENTIC FINANCE & OPS",
+        xrayNote:
+          "EMOTIONAL ANCHOR: Reframes B2B software from 'technical automation' into mental peace and control at work.",
+        headline: "Work should feel like your safe place, not an everyday headache.",
+        subtext:
+          "Stop drowning in repetitive finance and operations busywork. Peakflo's AI agents learn your rules, flag mistakes before they happen, and run the daily grind in the background so your team can focus on real decisions.",
+        cta: "See How It Works"
+      },
+      deepStrategy: {
+        thesis:
+          "B2B buyers are still human beings. CFOs and ops leads do not wake up wishing for 'agentic orchestration': they wake up wishing their workday felt calm, predictable, and under control.",
+        upgrades: [
+          {
+            title: "01. RELIEF BEFORE FEATURES",
+            detail:
+              "Led with 'safe place, not an everyday headache' so the reader feels understood before seeing a single AI buzzword."
+          },
+          {
+            title: "02. JARGON TRANSLATION",
+            detail:
+              "Translated 'self-evaluation' and 'knowledge-based insights' into concrete office wins: catching errors early and answering questions without spreadsheet digging."
+          },
+          {
+            title: "03. AUTONOMY OVER RIGIDITY",
+            detail:
+              "Positioned the custom workflow builder as freedom from waiting on engineers, turning a technical feature into personal control."
+          }
+        ]
+      },
+      features: [
+        {
+          spec: "SELF-EVALUATION & CONTINUOUS OPTIMIZATION",
+          headline: "Workflows that catch mistakes and get smarter every week.",
+          body: "Instead of breaking whenever an edge case shows up, Peakflo's agents review their own outputs, spot anomalies early, and quietly tighten your process over time."
+        },
+        {
+          spec: "KNOWLEDGE-BASED INSIGHTS",
+          headline: "Answers pulled straight from your company's real numbers.",
+          body: "No more digging through five spreadsheets to answer one founder question. Get clear, context-aware insights grounded in your live finance and ops data."
+        },
+        {
+          spec: "CUSTOM WORKFLOW BUILDER",
+          headline: "Build your own workflow around how your team actually works.",
+          body: "You do not need to bend your business to fit rigid software. Map out custom approvals, reminders, and handoffs in minutes without waiting on engineering."
+        }
+      ],
+      outboundEmail: {
+        subject: "Work shouldn't feel like an everyday headache.",
+        preview:
+          "What if your finance and ops busywork ran quietly in the background?",
+        body: `Hi [First Name],
+
+Work is supposed to be where you build things, not where you spend four hours a day chasing approvals, cross-checking spreadsheets, and fixing repetitive ops headaches.
+
+That is why we built Peakflo.
+
+Instead of forcing your team into rigid software, Peakflo lets you build custom AI workflows that run your everyday finance and operations tasks in the background. They evaluate their own work, pull instant answers from your company's knowledge base, and get sharper every week without extra manual babysitting.
+
+Less daily firefighting. More space to actually think.
+
+Worth a quick 10-minute look this week?
+
+Best,
+Team Peakflo`,
+        ctaBadge: "[See Peakflo in Action →]"
+      }
     }
   },
 
@@ -577,6 +675,11 @@ export default function App() {
   const p3 = PORTFOLIO_DATA.projects.project3;
   const [p3View, setP3View] = useState("landing");
   const [boseCompareMode, setBoseCompareMode] = useState("split"); // 'split' | 'after'
+
+  // Project 4 interactive state (Before vs After / Outbound Email / B2B SaaS Teardown)
+  const p4 = PORTFOLIO_DATA.projects.project4;
+  const [p4View, setP4View] = useState("landing");
+  const [peakfloCompareMode, setPeakfloCompareMode] = useState("split"); // 'split' | 'after'
 
   // Community edition active tab
   const [activeEditionIdx, setActiveEditionIdx] = useState(0);
@@ -994,7 +1097,7 @@ export default function App() {
                     href="#work-section"
                     className="px-6 py-3 bg-[#FF5C00] text-white font-chunky text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center gap-2"
                   >
-                    <span>Explore 3 Case Studies</span>
+                    <span>Explore 4 Case Studies</span>
                     <ArrowDownRight className="w-5 h-5" />
                   </a>
 
@@ -1049,7 +1152,7 @@ export default function App() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {PORTFOLIO_DATA.notebookFlips.map((note, idx) => {
                 const isFlipped = !!flippedNotes[note.id];
                 return (
@@ -1058,7 +1161,7 @@ export default function App() {
                     type="button"
                     onClick={() => toggleNoteFlip(note.id)}
                     className={`text-left p-6 border-2 border-[#FAF6EE] transition-all duration-200 relative group cursor-pointer ${
-                      idx === 1 ? "md:rotate-1" : "md:-rotate-1"
+                      idx % 2 === 1 ? "md:rotate-1" : "md:-rotate-1"
                     } hover:rotate-0 hover:-translate-y-1`}
                     style={{
                       backgroundColor: isFlipped ? "#FAF6EE" : note.color,
@@ -1104,7 +1207,7 @@ export default function App() {
           </section>
 
           {/* =================================================================
-              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 3 PROJECTS)
+              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 4 PROJECTS)
           ================================================================== */}
           <section
             id="work-section"
@@ -1116,7 +1219,7 @@ export default function App() {
                   SECTION 01 // CAMPAIGNS &amp; DEEP TEARDOWNS
                 </span>
                 <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
-                  Three Projects. Deep Strategy.
+                  Four Projects. Deep Strategy.
                 </h2>
               </div>
 
@@ -1995,6 +2098,248 @@ export default function App() {
                       <div
                         key={u.title}
                         className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#2962FF]"
+                      >
+                        <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold mb-2">
+                          {u.title}
+                        </span>
+                        <p className="text-sm text-[#27272A] leading-relaxed">
+                          {u.detail}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </article>
+
+            {/* ---------------------------------------------------------------
+                PROJECT 04: PEAKFLO, B2B SAAS & AI REWRITE
+            ---------------------------------------------------------------- */}
+            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+              <MaskingTape className="absolute -top-3 right-10" rotate="rotate-2" />
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold">
+                      {p4.number}
+                    </span>
+                    <span className="px-2.5 py-0.5 bg-[#00B84D] text-[#141414] border border-[#141414] font-mono-code text-xs font-bold">
+                      {p4.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414]">
+                    {p4.title}
+                  </h3>
+                </div>
+
+                {/* Deliverable Switcher Tabs */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setP4View("landing")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p4View === "landing"
+                        ? "bg-[#00B84D] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#00B84D]/25"
+                    }`}
+                  >
+                    01. BEFORE vs AFTER HERO
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP4View("email")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p4View === "email"
+                        ? "bg-[#FFD400] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]/50"
+                    }`}
+                  >
+                    02. OUTBOUND COLD EMAIL
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP4View("strategy")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p4View === "strategy"
+                        ? "bg-[#141414] text-[#FFD400] shadow-[3px_3px_0px_#00B84D]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#141414]/10"
+                    }`}
+                  >
+                    03. B2B SAAS TEARDOWN
+                  </button>
+                </div>
+              </div>
+
+              {p4View === "landing" && (
+                <div className="space-y-8">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-mono-code text-xs font-bold text-[#52525B]">
+                      TARGET PRODUCT: {p4.product.toUpperCase()}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setPeakfloCompareMode((m) => (m === "split" ? "after" : "split"))
+                      }
+                      className="px-3 py-1 bg-[#FAF6EE] border-2 border-[#141414] font-mono-code text-[11px] font-bold hover:bg-[#FFD400]"
+                    >
+                      {peakfloCompareMode === "split"
+                        ? "EXPAND FULL AFTER BANNER →"
+                        : "SHOW BEFORE vs AFTER SPLIT"}
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    {/* BEFORE (What was live on peakflo.co) */}
+                    {peakfloCompareMode === "split" && (
+                      <div className="lg:col-span-5 bg-[#F4F4F5] border-2 border-dashed border-[#141414] p-6 flex flex-col justify-between">
+                        <div>
+                          <span className="inline-block px-2 py-0.5 bg-[#71717A] text-white font-mono-code text-[10px] font-bold uppercase mb-4">
+                            {p4.beforeCopy.eyebrow}
+                          </span>
+                          <div className="bg-white border border-[#D4D4D8] p-5 mb-4">
+                            <p className="font-chunky text-2xl text-[#52525B] mb-2 leading-snug">
+                              {p4.beforeCopy.headline}
+                            </p>
+                            <p className="text-sm text-[#71717A] leading-relaxed">
+                              {p4.beforeCopy.subtext}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="border-t border-[#141414]/15 pt-3">
+                          <strong className="font-mono-code text-[10px] uppercase text-[#D90429] block mb-1.5">
+                            3 REASONS IT UNDERPERFORMS:
+                          </strong>
+                          <ul className="space-y-1 text-xs text-[#3F3F46]">
+                            {p4.beforeCopy.failures.map((f, i) => (
+                              <li key={i}>• {f}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* AFTER (Preetpal's Human-Relief Rewrite) */}
+                    <div
+                      className={`${
+                        peakfloCompareMode === "split" ? "lg:col-span-7" : "lg:col-span-12"
+                      } bg-[#141414] text-[#FAF6EE] border-2 border-[#141414] p-6 sm:p-8 shadow-[6px_6px_0px_#00B84D] flex flex-col justify-between`}
+                    >
+                      <div>
+                        <span className="inline-block px-2.5 py-0.5 bg-[#00B84D] text-[#141414] font-mono-code text-[10px] font-bold uppercase mb-4">
+                          {p4.afterCopy.eyebrow}
+                        </span>
+                        <h4 className="font-condensed text-3xl sm:text-5xl uppercase tracking-wide text-[#FFD400] leading-none mb-4">
+                          {p4.afterCopy.headline}
+                        </h4>
+                        <p className="text-sm sm:text-base text-white/90 leading-relaxed mb-5 max-w-2xl">
+                          {p4.afterCopy.subtext}
+                        </p>
+
+                        {xrayMode && (
+                          <div className="mb-5 inline-block bg-[#D90429] text-white font-mono-code text-[11px] font-bold px-3 py-1.5 border border-white/30">
+                            ✎ {p4.afterCopy.xrayNote}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/15">
+                        <span className="px-4 py-2 bg-[#FFD400] text-[#141414] font-mono-code text-xs font-bold uppercase">
+                          {p4.afterCopy.cta} →
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            copyText(
+                              `${p4.afterCopy.headline}\n${p4.afterCopy.subtext}`,
+                              "Peakflo hero rewrite copied!"
+                            )
+                          }
+                          className="font-mono-code text-xs text-white/75 hover:text-[#FFD400] underline"
+                        >
+                          Copy Hero Copy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 3 Tech-to-Human Feature Cards */}
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {p4.features.map((feat) => (
+                      <div
+                        key={feat.spec}
+                        className="bg-[#FAF6EE] border-2 border-[#141414] p-5"
+                      >
+                        <span className="inline-block px-2 py-0.5 bg-[#00B84D] text-[#141414] border border-[#141414] font-mono-code text-[10px] font-bold uppercase mb-2.5">
+                          {feat.spec}
+                        </span>
+                        <h5 className="font-chunky text-lg text-[#141414] leading-snug mb-2">
+                          “{feat.headline}”
+                        </h5>
+                        <p className="text-xs sm:text-sm text-[#3F3F46] leading-relaxed">
+                          {feat.body}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {p4View === "email" && (
+                <div className="ruled-notepad border-2 border-[#141414] p-6 sm:p-8 shadow-[5px_5px_0px_#141414] max-w-3xl mx-auto">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b-2 border-[#141414]">
+                    <div className="space-y-1 font-mono-code text-xs">
+                      <p>
+                        <strong className="text-[#D90429]">SUBJECT:</strong>{" "}
+                        {p4.outboundEmail.subject}
+                      </p>
+                      <p className="text-[#52525B]">
+                        <strong>PREVIEW:</strong> {p4.outboundEmail.preview}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          `Subject: ${p4.outboundEmail.subject}\n\n${p4.outboundEmail.body}`,
+                          "Peakflo outbound cold email copied!"
+                        )
+                      }
+                      className="px-3 py-1.5 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#00B84D] hover:text-[#141414] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY EMAIL</span>
+                    </button>
+                  </div>
+
+                  <div className="whitespace-pre-line text-base text-[#141414] leading-relaxed mb-6">
+                    {p4.outboundEmail.body}
+                  </div>
+
+                  <div className="inline-block px-5 py-2.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold uppercase">
+                    {p4.outboundEmail.ctaBadge}
+                  </div>
+                </div>
+              )}
+
+              {p4View === "strategy" && (
+                <div className="space-y-6">
+                  <div className="bg-[#FAF6EE] border-2 border-[#141414] p-5">
+                    <span className="block font-mono-code text-xs font-bold text-[#00B84D] uppercase mb-1.5">
+                      CORE B2B SAAS THESIS
+                    </span>
+                    <p className="text-base font-medium text-[#141414] leading-relaxed">
+                      {p4.deepStrategy.thesis}
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {p4.deepStrategy.upgrades.map((u) => (
+                      <div
+                        key={u.title}
+                        className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#00B84D]"
                       >
                         <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold mb-2">
                           {u.title}
