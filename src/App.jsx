@@ -109,6 +109,18 @@ const PORTFOLIO_DATA = {
         "“Work should feel like your safe place, not an everyday headache.”",
       whyItWorks:
         "Replaces dense enterprise buzzwords ('agentic workflow orchestration') with human emotional relief that stressed finance and ops teams immediately feel."
+    },
+    {
+      id: "flip-mokobara",
+      brand: "MOKOBARA",
+      color: "#FF1E6E",
+      textColor: "#FFFDF7",
+      rawNote:
+        "Cute shoulder bags barely fit a phone so girls carry two bags. Bliss has 7 liters and a front zip pocket for keys. Looks like a date bag, packs like a carry on.",
+      finalLine:
+        "“Looks like a dinner date. Packs like a carry-on.”",
+      whyItWorks:
+        "Bridges Mokobara's core travel DNA ('carry-on') with everyday fashion utility in 9 punchy words."
     }
   ],
 
@@ -466,6 +478,94 @@ Best,
 Team Peakflo`,
         ctaBadge: "[See Peakflo in Action →]"
       }
+    },
+
+    project5: {
+      number: "PROJECT 05 // D2C CAMPAIGN & REEL SCRIPTS",
+      tag: "PDP REWRITE + 2 REEL SCRIPTS + FAQ MICROCOPY",
+      title: "Project 05 | Mokobara: Bliss Shoulder Bag (D2C Campaign & Reel Scripts)",
+      role: "D2C Product Copywriting, First-Person Reel Scripts & Objection Microcopy",
+      brand: "Mokobara (Bengaluru, D2C Travel & Lifestyle)",
+      product: "Bliss Shoulder Bag in Tan Lines / Plush Suede (INR 4,499)",
+      coreInsight:
+        "Most compact date-night shoulder bags barely fit a phone, forcing buyers to carry an extra bulky tote. Bliss pairs a sleek plush-suede silhouette with 7 liters of real capacity and a quick-access front zip pocket, turning one bag into an all-day companion.",
+      beforeCopy: {
+        eyebrow: "WHAT WAS LIVE ON MOKOBARA",
+        headline: "Meet Bliss.",
+        subtext:
+          "Your cutey-sized date for dinners, parties, or just regular days out. With 7 liters she can box your cut-fruit lunch (and perhaps even a bottle of wine).",
+        failures: [
+          "Buries the main functional win (7 liters of real space + quick-access front pocket) inside casual filler.",
+          "Misses Mokobara's signature travel and carry-on brand DNA in the hook.",
+          "Does not solve the real daily pain point: carrying a tiny aesthetic bag plus an extra bulky tote."
+        ]
+      },
+      afterCopy: {
+        eyebrow: "MOKOBARA // BLISS SHOULDER BAG (TAN LINES • INR 4,499)",
+        xrayNote:
+          "CONTRAST HOOK: Pairs evening style ('dinner date') with Mokobara's travel heritage ('carry-on') in two clean beats.",
+        headline: "Looks like a dinner date. Packs like a carry-on.",
+        subtext:
+          "Plush suede on the outside, 7 liters of room on the inside. Slip your lunch, charger, and evening essentials into one sleek silhouette, with a front zip pocket so you never dig around for your keys.",
+        cta: "Carry Bliss"
+      },
+      reelScripts: [
+        {
+          id: "moko-reel-1",
+          badge: "SCRIPT 01 // SOLO DATE PREP",
+          title: "First-Person “The Bag Speaks” POV: Solo Date Prep",
+          xrayNote:
+            "PERSONIFICATION HOOK: Letting the bag speak like a calm best friend turns a 7-liter capacity spec into an emotional self-care ritual.",
+          visual:
+            "Creator puts on the Tan Lines suede Bliss Bag in front of a mirror, dropping keys into the front pocket and sliding a lunch box and perfume inside.",
+          lines: [
+            {
+              speaker: "Voiceover (The Bag)",
+              text: "“Forget about the hectic day. Let's plan our own date. Everything you need? Sorted inside me. Oh my Bliss, we are ready for tonight. Let's clock it.”"
+            }
+          ]
+        },
+        {
+          id: "moko-reel-2",
+          badge: "SCRIPT 02 // FAST-PACED BANTER HOOK",
+          title: "First-Person “The Bag Speaks” POV: Fast-Paced Banter Hook",
+          xrayNote:
+            "DIALOGUE INTERRUPT: Fast two-way banter stops the scroll in under 2 seconds and demonstrates the front zip pocket naturally.",
+          visual:
+            "Quick cut between the Tan Lines Bliss Shoulder Bag sitting on the counter and the creator rushing around a bedroom looking stressed before heading out.",
+          lines: [
+            {
+              speaker: "Bag",
+              text: "“Hey queen, why haven't we left yet? Our date is waiting.”"
+            },
+            {
+              speaker: "Creator",
+              text: "“I literally can't find anything together.”"
+            },
+            {
+              speaker: "Bag",
+              text: "“That's already sorted. Keys and lip balm are in my front zip pocket. Everything else fits inside my 7 liters. Forget the mess and roll with me.”"
+            }
+          ]
+        }
+      ],
+      microcopy: [
+        {
+          label: "ON CAPACITY",
+          xrayNote: "OBJECTION BUSTER: Proves 7L fits a real lunch box without sounding like a boring dimension chart.",
+          copy: "“Think it won't fit? Wake up, queen. 7 liters of smart space handles your lunch box and evening plans with way less drama than your schedule.”"
+        },
+        {
+          label: "ON VERSATILITY",
+          xrayNote: "TIME-STAMPED SCENES: 9 AM, 2 PM, and 9 PM anchors justify the INR 4,499 price through all-day cost-per-wear.",
+          copy: "“What do you mean 'only for dates'? I'm more versatile than your moods, built for 9 AM errands, 2 PM coffee runs, and 9 PM dinners.”"
+        },
+        {
+          label: "ON SUEDE CARE",
+          xrayNote: "FRICTION REMOVAL: Neutralizes the #1 hesitation buyers have before ordering plush suede.",
+          copy: "“Maintaining me is easier than carrying your overthinking around. A quick brush keeps the plush suede looking fresh.”"
+        }
+      ]
     }
   },
 
@@ -680,6 +780,11 @@ export default function App() {
   const p4 = PORTFOLIO_DATA.projects.project4;
   const [p4View, setP4View] = useState("landing");
   const [peakfloCompareMode, setPeakfloCompareMode] = useState("split"); // 'split' | 'after'
+
+  // Project 5 interactive state (Mokobara Bliss Shoulder Bag)
+  const p5 = PORTFOLIO_DATA.projects.project5;
+  const [p5View, setP5View] = useState("hero"); // 'hero' | 'reels' | 'microcopy'
+  const [mokobaraCompareMode, setMokobaraCompareMode] = useState("split"); // 'split' | 'after'
 
   // Community edition active tab
   const [activeEditionIdx, setActiveEditionIdx] = useState(0);
@@ -1097,7 +1202,7 @@ export default function App() {
                     href="#work-section"
                     className="px-6 py-3 bg-[#FF5C00] text-white font-chunky text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center gap-2"
                   >
-                    <span>Explore 4 Case Studies</span>
+                    <span>Explore 5 Case Studies</span>
                     <ArrowDownRight className="w-5 h-5" />
                   </a>
 
@@ -1152,7 +1257,7 @@ export default function App() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
               {PORTFOLIO_DATA.notebookFlips.map((note, idx) => {
                 const isFlipped = !!flippedNotes[note.id];
                 return (
@@ -1207,7 +1312,7 @@ export default function App() {
           </section>
 
           {/* =================================================================
-              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 4 PROJECTS)
+              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 5 PROJECTS)
           ================================================================== */}
           <section
             id="work-section"
@@ -1219,7 +1324,7 @@ export default function App() {
                   SECTION 01 // CAMPAIGNS &amp; DEEP TEARDOWNS
                 </span>
                 <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
-                  Four Projects. Deep Strategy.
+                  Five Projects. Deep Strategy.
                 </h2>
               </div>
 
@@ -2347,6 +2452,374 @@ export default function App() {
                         <p className="text-sm text-[#27272A] leading-relaxed">
                           {u.detail}
                         </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </article>
+
+            {/* ---------------------------------------------------------------
+                PROJECT 05: MOKOBARA BLISS SHOULDER BAG (D2C CAMPAIGN & REELS)
+            ---------------------------------------------------------------- */}
+            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+              <MaskingTape className="absolute -top-3 left-10" rotate="-rotate-2" />
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold">
+                      {p5.number}
+                    </span>
+                    <span className="px-2.5 py-0.5 bg-[#FF1E6E] text-white border border-[#141414] font-mono-code text-xs font-bold">
+                      {p5.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414]">
+                    {p5.title}
+                  </h3>
+                </div>
+
+                {/* Deliverable Switcher Tabs */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setP5View("hero")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p5View === "hero"
+                        ? "bg-[#FFD400] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]/50"
+                    }`}
+                  >
+                    01. BRIEF &amp; PDP HERO REWRITE
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP5View("reels")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p5View === "reels"
+                        ? "bg-[#FF1E6E] text-white shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FF1E6E]/20"
+                    }`}
+                  >
+                    02. “THE BAG SPEAKS” REELS
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP5View("microcopy")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p5View === "microcopy"
+                        ? "bg-[#141414] text-[#FFD400] shadow-[3px_3px_0px_#FF1E6E]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#141414]/10"
+                    }`}
+                  >
+                    03. OBJECTION MICROCOPY
+                  </button>
+                </div>
+              </div>
+
+              {/* 1. THE BRIEF & INSIGHT BANNER (Always visible at top of Project 05) */}
+              <div className="bg-[#FAF6EE] border-2 border-[#141414] p-5 mb-8 shadow-[4px_4px_0px_#141414]">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+                  <div className="md:col-span-4 space-y-2 md:border-r-2 md:border-dashed md:border-[#141414]/25 md:pr-4">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                        BRAND
+                      </span>
+                      <span className="font-chunky text-base text-[#141414]">
+                        {p5.brand}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                        PRODUCT
+                      </span>
+                      <span className="font-chunky text-base text-[#D90429]">
+                        {p5.product}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="md:col-span-8">
+                    <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold uppercase mb-1.5">
+                      01. THE BRIEF &amp; CORE INSIGHT
+                    </span>
+                    <p className="text-sm sm:text-base text-[#141414] leading-relaxed">
+                      {p5.coreInsight}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {p5View === "hero" && (
+                <div className="space-y-8">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="font-mono-code text-xs font-bold text-[#52525B]">
+                      02. PRODUCT PAGE HERO REWRITE (BEFORE VS. AFTER)
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setMokobaraCompareMode((m) => (m === "split" ? "after" : "split"))
+                      }
+                      className="px-3 py-1 bg-[#FAF6EE] border-2 border-[#141414] font-mono-code text-[11px] font-bold hover:bg-[#FFD400]"
+                    >
+                      {mokobaraCompareMode === "split"
+                        ? "EXPAND FULL AFTER BANNER →"
+                        : "SHOW BEFORE vs AFTER SPLIT"}
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+                    {/* BEFORE (Live Copy) */}
+                    {mokobaraCompareMode === "split" && (
+                      <div className="lg:col-span-5 bg-[#F4F4F5] border-2 border-dashed border-[#141414] p-6 flex flex-col justify-between">
+                        <div>
+                          <span className="inline-block px-2 py-0.5 bg-[#71717A] text-white font-mono-code text-[10px] font-bold uppercase mb-4">
+                            {p5.beforeCopy.eyebrow}
+                          </span>
+                          <div className="bg-white border border-[#D4D4D8] p-5 mb-4">
+                            <p className="font-chunky text-2xl text-[#52525B] mb-2 leading-snug">
+                              {p5.beforeCopy.headline}
+                            </p>
+                            <p className="text-sm text-[#71717A] leading-relaxed">
+                              {p5.beforeCopy.subtext}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="border-t border-[#141414]/15 pt-3">
+                          <strong className="font-mono-code text-[10px] uppercase text-[#D90429] block mb-1.5">
+                            WHY I SHARPENED IT:
+                          </strong>
+                          <ul className="space-y-1 text-xs text-[#3F3F46]">
+                            {p5.beforeCopy.failures.map((f, i) => (
+                              <li key={i}>• {f}</li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* AFTER (My Rewrite) */}
+                    <div
+                      className={`${
+                        mokobaraCompareMode === "split" ? "lg:col-span-7" : "lg:col-span-12"
+                      } bg-[#141414] text-[#FAF6EE] border-2 border-[#141414] p-6 sm:p-8 shadow-[6px_6px_0px_#FF1E6E] flex flex-col justify-between`}
+                    >
+                      <div>
+                        <span className="inline-block px-2.5 py-0.5 bg-[#FF1E6E] text-white font-mono-code text-[10px] font-bold uppercase mb-4">
+                          {p5.afterCopy.eyebrow}
+                        </span>
+                        <h4 className="font-condensed text-3xl sm:text-5xl uppercase tracking-wide text-[#FFD400] leading-none mb-4">
+                          {p5.afterCopy.headline}
+                        </h4>
+                        <p className="text-sm sm:text-base text-white/90 leading-relaxed mb-5 max-w-2xl">
+                          {p5.afterCopy.subtext}
+                        </p>
+
+                        {xrayMode && (
+                          <div className="mb-5 inline-block bg-[#D90429] text-white font-mono-code text-[11px] font-bold px-3 py-1.5 border border-white/30">
+                            ✎ {p5.afterCopy.xrayNote}
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-white/15">
+                        <span className="px-4 py-2 bg-[#FFD400] text-[#141414] font-mono-code text-xs font-bold uppercase">
+                          {p5.afterCopy.cta} →
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            copyText(
+                              `${p5.afterCopy.headline}\n${p5.afterCopy.subtext}\nCTA: ${p5.afterCopy.cta} →`,
+                              "Mokobara Bliss hero rewrite copied!"
+                            )
+                          }
+                          className="font-mono-code text-xs text-white/75 hover:text-[#FFD400] underline"
+                        >
+                          Copy Hero Copy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Quick Preview Strip of Objection-Busting Microcopy */}
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+                      <span className="font-mono-code text-xs font-bold uppercase text-[#141414]">
+                        OBJECTION-BUSTING PDP MICROCOPY (FAQ &amp; TOOLTIPS):
+                      </span>
+                      <button
+                        type="button"
+                        onClick={() => setP5View("reels")}
+                        className="font-mono-code text-xs font-bold text-[#2962FF] underline hover:text-[#FF1E6E]"
+                      >
+                        Read both “The Bag Speaks” Reel Scripts →
+                      </button>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                      {p5.microcopy.map((item) => (
+                        <div
+                          key={item.label}
+                          className="bg-[#FAF6EE] border-2 border-[#141414] p-5 flex flex-col justify-between"
+                        >
+                          <div>
+                            <span className="inline-block px-2 py-0.5 bg-[#FF1E6E] text-white border border-[#141414] font-mono-code text-[10px] font-bold uppercase mb-3">
+                              {item.label}
+                            </span>
+                            <p className="text-sm font-medium text-[#141414] leading-relaxed">
+                              {item.copy}
+                            </p>
+                          </div>
+                          {xrayMode && (
+                            <div className="mt-3 bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2 py-1">
+                              ✎ {item.xrayNote}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {p5View === "reels" && (
+                <div className="ruled-notepad border-2 border-[#141414] p-6 sm:p-8 shadow-[5px_5px_0px_#141414]">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-6 border-b-2 border-[#141414]">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#D90429]">
+                        03. SHORT-FORM REEL SCRIPTS
+                      </span>
+                      <span className="font-chunky text-xl sm:text-2xl text-[#141414]">
+                        First-Person “The Bag Speaks” POV (2 Variations)
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          p5.reelScripts
+                            .map(
+                              (s) =>
+                                `${s.badge}\nVisual: ${s.visual}\n` +
+                                s.lines.map((l) => `${l.speaker}: ${l.text}`).join("\n")
+                            )
+                            .join("\n\n"),
+                          "Both Mokobara Reel scripts copied!"
+                        )
+                      }
+                      className="px-3 py-1.5 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#FF1E6E] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY BOTH REEL SCRIPTS</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {p5.reelScripts.map((script) => (
+                      <div
+                        key={script.id}
+                        className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#141414] flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="px-2.5 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-[11px] font-bold">
+                              {script.badge}
+                            </span>
+                            <span className="font-mono-code text-[10px] font-bold text-[#52525B]">
+                              9:16 REEL / SHORT
+                            </span>
+                          </div>
+
+                          <h4 className="font-chunky text-lg text-[#141414] mb-3">
+                            {script.title}
+                          </h4>
+
+                          <div className="bg-[#FAF6EE] border-l-4 border-[#141414] p-3 mb-4">
+                            <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B] mb-0.5">
+                              VISUAL DIRECTION:
+                            </span>
+                            <p className="text-xs text-[#27272A] leading-relaxed">
+                              {script.visual}
+                            </p>
+                          </div>
+
+                          <div className="space-y-3 mb-4">
+                            {script.lines.map((line, lIdx) => (
+                              <div
+                                key={lIdx}
+                                className="p-3 bg-[#FFFDF9] border border-[#141414]/20"
+                              >
+                                <span className="block font-mono-code text-[10px] font-bold uppercase text-[#D90429] mb-1">
+                                  {line.speaker}:
+                                </span>
+                                <p className="text-sm sm:text-base font-semibold text-[#141414] leading-relaxed">
+                                  {line.text}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {xrayMode && (
+                          <div className="mt-2 bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2.5 py-1.5">
+                            ✎ {script.xrayNote}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {p5View === "microcopy" && (
+                <div className="space-y-6">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#FF1E6E]">
+                        04. OBJECTION-BUSTING MICROCOPY (PDP FAQ / TOOLTIPS)
+                      </span>
+                      <h4 className="font-chunky text-xl sm:text-2xl text-[#141414]">
+                        Turning Hesitations Into High-Attitude Brand Voice
+                      </h4>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          p5.microcopy
+                            .map((m) => `${m.label}: ${m.copy}`)
+                            .join("\n\n"),
+                          "Mokobara FAQ microcopy copied!"
+                        )
+                      }
+                      className="px-3 py-1.5 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#FF1E6E] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY ALL MICROCOPY</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {p5.microcopy.map((item) => (
+                      <div
+                        key={item.label}
+                        className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#FF1E6E] flex flex-col justify-between"
+                      >
+                        <div>
+                          <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold mb-3">
+                            {item.label}
+                          </span>
+                          <p className="text-base font-medium text-[#141414] leading-relaxed">
+                            {item.copy}
+                          </p>
+                        </div>
+                        {xrayMode && (
+                          <div className="mt-4 bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2.5 py-1.5">
+                            ✎ {item.xrayNote}
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
