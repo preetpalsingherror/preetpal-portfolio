@@ -60,6 +60,64 @@ const PORTFOLIO_DATA = {
     ]
   },
 
+  brandIndex: [
+    {
+      num: "01",
+      anchorId: "project-01",
+      brandId: "re",
+      brandName: "Royal Enfield",
+      category: "Automotive • Heritage",
+      accent: "#FFD400",
+      workDone: "35s Spec Film, Voiceover & Storyboard",
+      hookLine: "“To feel the ride and slowing the race in our mind.”",
+      deliverables: ["35s Film", "Voiceover", "5-Beat Script"]
+    },
+    {
+      num: "02",
+      anchorId: "project-02",
+      brandId: "cosmix",
+      brandName: "Cosmix Wellness",
+      category: "D2C Nutrition • Fitness",
+      accent: "#00B84D",
+      workDone: "4-Slide IG Carousel, 30s Reel & Funnel Audit",
+      hookLine: "“Body? Built. Life? Chill. Bloating? None.”",
+      deliverables: ["4-Slide Carousel", "30s Reel", "Brand Audit"]
+    },
+    {
+      num: "03",
+      anchorId: "project-03",
+      brandId: "bose",
+      brandName: "Bose India",
+      category: "Premium Audio • Hardware",
+      accent: "#2962FF",
+      workDone: "Black Friday Hero Rewrite, Specs & Launch Email",
+      hookLine: "“The end of every boring Friday has arrived.”",
+      deliverables: ["Hero Rewrite", "3 Spec Blocks", "Launch Email"]
+    },
+    {
+      num: "04",
+      anchorId: "project-04",
+      brandId: "peakflo",
+      brandName: "Peakflo",
+      category: "B2B SaaS • Agentic AI",
+      accent: "#00B84D",
+      workDone: "Homepage Positioning, AI Feature Copy & Cold Email",
+      hookLine: "“Work should feel like your safe place, not an everyday headache.”",
+      deliverables: ["SaaS Hero", "3 AI Blocks", "Outbound Email"]
+    },
+    {
+      num: "05",
+      anchorId: "project-05",
+      brandId: "mokobara",
+      brandName: "Mokobara",
+      category: "D2C Travel & Lifestyle",
+      accent: "#FF1E6E",
+      workDone: "Bliss Bag PDP Rewrite, 2 POV Reels & FAQ Microcopy",
+      hookLine: "“Looks like a dinner date. Packs like a carry-on.”",
+      deliverables: ["PDP Hero", "2 Reel Scripts", "FAQ Microcopy"]
+    }
+  ],
+
   // Interactive "Raw Thought -> Final Copy" sticky notes to prove human creative process
   notebookFlips: [
     {
@@ -746,6 +804,115 @@ function MaskingTape({ className = "", rotate = "-rotate-2" }) {
   );
 }
 
+function BrandLogoBadge({ brandId, size = "md" }) {
+  const isLg = size === "lg";
+  const boxClass = isLg
+    ? "h-12 px-4 border-2 border-[#141414] shadow-[3px_3px_0px_#141414]"
+    : "h-10 px-3 border-2 border-[#141414] shadow-[2px_2px_0px_#141414]";
+
+  if (brandId === "re") {
+    return (
+      <div
+        className={`${boxClass} bg-[#141414] text-[#FFD400] inline-flex items-center gap-2 shrink-0`}
+      >
+        <span className="w-6 h-6 rounded-full border border-[#FFD400] flex items-center justify-center font-condensed text-xs tracking-tighter bg-[#D90429] text-white">
+          RE
+        </span>
+        <div className="leading-none text-left">
+          <span className="font-condensed tracking-widest text-sm sm:text-base uppercase block">
+            ROYAL ENFIELD
+          </span>
+          <span className="font-mono-code text-[8px] text-white/75 tracking-widest block">
+            CLASSIC 350
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (brandId === "cosmix") {
+    return (
+      <div
+        className={`${boxClass} bg-[#1D3528] text-[#F6F3EC] inline-flex items-center gap-2 shrink-0`}
+      >
+        <span className="w-6 h-6 rounded-full bg-[#C86D51] text-[#FFFDF7] flex items-center justify-center font-chunky text-xs font-bold">
+          C
+        </span>
+        <div className="leading-none text-left">
+          <span className="font-chunky tracking-widest text-sm sm:text-base uppercase block">
+            COSMIX
+          </span>
+          <span className="font-mono-code text-[8px] text-[#C86D51] tracking-widest block">
+            NO-NONSENSE PLANT
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (brandId === "bose") {
+    return (
+      <div
+        className={`${boxClass} bg-[#141414] text-white inline-flex items-center gap-2.5 shrink-0`}
+      >
+        <span className="w-6 h-6 bg-[#2962FF] text-white flex items-center justify-center font-condensed text-xs italic">
+          B
+        </span>
+        <div className="leading-none text-left">
+          <span className="font-condensed italic tracking-[0.22em] text-base sm:text-lg uppercase block">
+            BOSE
+          </span>
+          <span className="font-mono-code text-[8px] text-[#FFD400] tracking-widest block">
+            SOUNDLINK FLEX
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (brandId === "peakflo") {
+    return (
+      <div
+        className={`${boxClass} bg-[#FAF6EE] text-[#141414] inline-flex items-center gap-2 shrink-0`}
+      >
+        <span className="w-6 h-6 bg-[#00B84D] border border-[#141414] text-[#141414] flex items-center justify-center font-mono-code text-xs font-extrabold">
+          P↗
+        </span>
+        <div className="leading-none text-left">
+          <span className="font-chunky tracking-tight text-base sm:text-lg font-bold block">
+            peakflo<span className="text-[#00B84D]">.co</span>
+          </span>
+          <span className="font-mono-code text-[8px] text-[#52525B] tracking-widest uppercase block">
+            YC W22 • AGENTIC AI
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  if (brandId === "mokobara") {
+    return (
+      <div
+        className={`${boxClass} bg-[#FFD400] text-[#141414] inline-flex items-center gap-2 shrink-0`}
+      >
+        <span className="w-6 h-6 bg-[#141414] text-[#FFD400] flex items-center justify-center font-mono-code text-xs font-bold">
+          [M]
+        </span>
+        <div className="leading-none text-left">
+          <span className="font-mono-code font-extrabold tracking-[0.2em] text-xs sm:text-sm uppercase block">
+            MOKOBARA
+          </span>
+          <span className="font-mono-code text-[8px] text-[#141414]/75 tracking-widest uppercase block">
+            BLISS • GOING PLACES
+          </span>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
 export default function App() {
   const links = PORTFOLIO_DATA.links;
 
@@ -1345,10 +1512,107 @@ export default function App() {
             </div>
 
             {/* ---------------------------------------------------------------
+                CLASSY BRAND ROSTER & DELIVERABLE DIRECTORY (CLICK TO JUMP)
+            ---------------------------------------------------------------- */}
+            <div className="bg-white border-2 border-[#141414] p-5 sm:p-7 shadow-[6px_6px_0px_#141414]">
+              <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b-2 border-[#141414]">
+                <div className="flex items-center gap-2">
+                  <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold uppercase">
+                    BRAND ROSTER // 05 CASE STUDIES
+                  </span>
+                  <span className="font-mono-code text-xs font-bold text-[#52525B] hidden sm:inline">
+                    BRANDS, LOGOS &amp; DELIVERABLES AT A GLANCE
+                  </span>
+                </div>
+                <span className="font-mono-code text-[11px] font-bold text-[#D90429]">
+                  CLICK ANY BRAND CARD TO JUMP ↓
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                {PORTFOLIO_DATA.brandIndex.map((item) => (
+                  <a
+                    key={item.num}
+                    href={`#${item.anchorId}`}
+                    className="group bg-[#FAF6EE] border-2 border-[#141414] p-4 shadow-[4px_4px_0px_#141414] hover:bg-white hover:-translate-y-1 hover:shadow-[6px_6px_0px_#141414] transition-all flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between gap-2 mb-3">
+                        <span className="font-mono-code text-[10px] font-bold px-2 py-0.5 bg-[#141414] text-[#FFD400]">
+                          PROJECT {item.num}
+                        </span>
+                        <span className="font-mono-code text-[10px] font-bold text-[#52525B] group-hover:text-[#D90429] transition-colors">
+                          VIEW ↓
+                        </span>
+                      </div>
+
+                      <div className="mb-3">
+                        <BrandLogoBadge brandId={item.brandId} size="md" />
+                      </div>
+
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B] mb-1">
+                        {item.category}
+                      </span>
+
+                      <p className="font-chunky text-sm text-[#141414] leading-snug mb-2">
+                        {item.workDone}
+                      </p>
+
+                      <p className="text-xs italic text-[#3F3F46] leading-relaxed mb-3 border-l-2 border-[#141414]/30 pl-2">
+                        {item.hookLine}
+                      </p>
+                    </div>
+
+                    <div className="pt-2.5 border-t border-[#141414]/15 flex flex-wrap gap-1">
+                      {item.deliverables.map((d) => (
+                        <span
+                          key={d}
+                          className="font-mono-code text-[9px] font-bold px-1.5 py-0.5 bg-white border border-[#141414]"
+                        >
+                          {d}
+                        </span>
+                      ))}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* ---------------------------------------------------------------
                 PROJECT 01: ROYAL ENFIELD CLASSIC 350 SPEC COMMERCIAL
             ---------------------------------------------------------------- */}
-            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+            <article
+              id="project-01"
+              className="scroll-mt-20 bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative"
+            >
               <MaskingTape className="absolute -top-3 left-8" rotate="-rotate-3" />
+
+              {/* Classy Brand Identity & Scope Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-dashed border-[#141414]/25">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BrandLogoBadge brandId="re" size="lg" />
+                  <div>
+                    <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                      ROLE &amp; DELIVERABLES
+                    </span>
+                    <span className="font-chunky text-sm sm:text-base text-[#141414]">
+                      {p1.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {["35s Video Film", "Voiceover Direction", "5-Beat Script"].map(
+                    (pill) => (
+                      <span
+                        key={pill}
+                        className="px-2.5 py-1 bg-[#FAF6EE] border border-[#141414] font-mono-code text-[10px] font-bold uppercase"
+                      >
+                        ✓ {pill}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
 
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
                 <div>
@@ -1654,8 +1918,38 @@ export default function App() {
             {/* ---------------------------------------------------------------
                 PROJECT 02: COSMIX WELLNESS, CONTENT AUDIT + CAROUSEL + REEL
             ---------------------------------------------------------------- */}
-            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+            <article
+              id="project-02"
+              className="scroll-mt-20 bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative"
+            >
               <MaskingTape className="absolute -top-3 right-10" rotate="rotate-2" />
+
+              {/* Classy Brand Identity & Scope Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-dashed border-[#141414]/25">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BrandLogoBadge brandId="cosmix" size="lg" />
+                  <div>
+                    <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                      ROLE &amp; DELIVERABLES
+                    </span>
+                    <span className="font-chunky text-sm sm:text-base text-[#141414]">
+                      {p2.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {["4-Slide IG Carousel", "30s Reel Script", "4-Step Funnel Audit"].map(
+                    (pill) => (
+                      <span
+                        key={pill}
+                        className="px-2.5 py-1 bg-[#FAF6EE] border border-[#141414] font-mono-code text-[10px] font-bold uppercase"
+                      >
+                        ✓ {pill}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
 
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
                 <div>
@@ -1978,8 +2272,38 @@ export default function App() {
             {/* ---------------------------------------------------------------
                 PROJECT 03: BOSE INDIA, BLACK FRIDAY CAMPAIGN REWRITE
             ---------------------------------------------------------------- */}
-            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+            <article
+              id="project-03"
+              className="scroll-mt-20 bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative"
+            >
               <MaskingTape className="absolute -top-3 left-10" rotate="-rotate-2" />
+
+              {/* Classy Brand Identity & Scope Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-dashed border-[#141414]/25">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BrandLogoBadge brandId="bose" size="lg" />
+                  <div>
+                    <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                      ROLE &amp; DELIVERABLES
+                    </span>
+                    <span className="font-chunky text-sm sm:text-base text-[#141414]">
+                      {p3.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {["Hero Banner Rewrite", "3 Spec-to-Benefit Blocks", "Launch Email"].map(
+                    (pill) => (
+                      <span
+                        key={pill}
+                        className="px-2.5 py-1 bg-[#FAF6EE] border border-[#141414] font-mono-code text-[10px] font-bold uppercase"
+                      >
+                        ✓ {pill}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
 
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
                 <div>
@@ -2220,8 +2544,38 @@ export default function App() {
             {/* ---------------------------------------------------------------
                 PROJECT 04: PEAKFLO, B2B SAAS & AI REWRITE
             ---------------------------------------------------------------- */}
-            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+            <article
+              id="project-04"
+              className="scroll-mt-20 bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative"
+            >
               <MaskingTape className="absolute -top-3 right-10" rotate="rotate-2" />
+
+              {/* Classy Brand Identity & Scope Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-dashed border-[#141414]/25">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BrandLogoBadge brandId="peakflo" size="lg" />
+                  <div>
+                    <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                      ROLE &amp; DELIVERABLES
+                    </span>
+                    <span className="font-chunky text-sm sm:text-base text-[#141414]">
+                      {p4.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {["SaaS Hero Rewrite", "3 AI Feature Blocks", "Outbound Cold Email"].map(
+                    (pill) => (
+                      <span
+                        key={pill}
+                        className="px-2.5 py-1 bg-[#FAF6EE] border border-[#141414] font-mono-code text-[10px] font-bold uppercase"
+                      >
+                        ✓ {pill}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
 
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
                 <div>
@@ -2462,8 +2816,38 @@ export default function App() {
             {/* ---------------------------------------------------------------
                 PROJECT 05: MOKOBARA BLISS SHOULDER BAG (D2C CAMPAIGN & REELS)
             ---------------------------------------------------------------- */}
-            <article className="bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative">
+            <article
+              id="project-05"
+              className="scroll-mt-20 bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative"
+            >
               <MaskingTape className="absolute -top-3 left-10" rotate="-rotate-2" />
+
+              {/* Classy Brand Identity & Scope Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-dashed border-[#141414]/25">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BrandLogoBadge brandId="mokobara" size="lg" />
+                  <div>
+                    <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                      ROLE &amp; DELIVERABLES
+                    </span>
+                    <span className="font-chunky text-sm sm:text-base text-[#141414]">
+                      {p5.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {["PDP Hero Rewrite", "2 POV Reel Scripts", "3 FAQ Microcopy Blocks"].map(
+                    (pill) => (
+                      <span
+                        key={pill}
+                        className="px-2.5 py-1 bg-[#FAF6EE] border border-[#141414] font-mono-code text-[10px] font-bold uppercase"
+                      >
+                        ✓ {pill}
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
 
               <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
                 <div>
