@@ -1332,9 +1332,9 @@ export default function App() {
       <div className="kraft-bg px-2.5 sm:px-6 md:px-10 pb-10">
         <div className="max-w-6xl mx-auto notebook-grid-paper border-x-4 border-b-4 border-[#141414] shadow-[0_24px_60px_rgba(20,20,20,0.28)] relative">
           {/* Compact Zine Navigation Bar + Red-Pen X-Ray Switch */}
-          <header className="px-4 sm:px-10 pt-5 pb-4 border-b-2 border-dashed border-[#141414]/25 flex flex-wrap items-center justify-between gap-3">
-            <div className="flex items-center gap-2 font-mono-code text-xs font-bold uppercase tracking-wider">
-              <span className="px-2.5 py-1 bg-[#141414] text-[#FFD400] rounded-sm">
+          <header className="px-3.5 sm:px-10 pt-4 pb-3.5 border-b-2 border-dashed border-[#141414]/25 flex flex-wrap items-center justify-between gap-2.5">
+            <div className="flex items-center gap-2 font-mono-code text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+              <span className="px-2 py-1 bg-[#141414] text-[#FFD400] rounded-sm">
                 PORTFOLIO // 2026
               </span>
               <span className="text-[#141414]/80 hidden md:inline">
@@ -1342,10 +1342,10 @@ export default function App() {
               </span>
             </div>
 
-            <nav className="flex flex-wrap items-center gap-1.5 sm:gap-2.5 font-mono-code text-[11px] sm:text-xs font-bold">
+            <nav className="flex flex-wrap items-center gap-1 sm:gap-2 font-mono-code text-[10px] sm:text-xs font-bold">
               <a
                 href="#notebook-lab"
-                className="px-2 py-1 rounded hover:bg-[#FF1E6E] hover:text-white transition-colors hidden sm:inline-block"
+                className="px-2 py-1 rounded hover:bg-[#FF1E6E] hover:text-white transition-colors"
               >
                 PROCESS
               </a>
@@ -1363,7 +1363,7 @@ export default function App() {
               </a>
               <a
                 href="#community-section"
-                className="px-2 py-1 rounded hover:bg-[#2962FF] hover:text-white transition-colors hidden sm:inline-block"
+                className="px-2 py-1 rounded hover:bg-[#2962FF] hover:text-white transition-colors"
               >
                 03. COMMUNITY
               </a>
@@ -1386,7 +1386,7 @@ export default function App() {
                       : "Red-Pen X-Ray OFF: Clean reading view."
                   );
                 }}
-                className={`px-3 py-1.5 border-2 border-[#141414] shadow-[2px_2px_0px_#141414] transition-all flex items-center gap-1.5 ${
+                className={`px-2.5 sm:px-3 py-1 sm:py-1.5 border-2 border-[#141414] shadow-[2px_2px_0px_#141414] transition-all flex items-center gap-1.5 ${
                   xrayMode
                     ? "bg-[#D90429] text-white"
                     : "bg-[#FFD400] text-[#141414] hover:bg-[#D90429] hover:text-white"
@@ -1400,24 +1400,189 @@ export default function App() {
           </header>
 
           {/* =================================================================
-              HERO SECTION: INTERACTIVE CURSIVE MIND-MAP (CENTER NAME + 6 BRANDS)
+              HERO SECTION: INTERACTIVE CURSIVE MIND-MAP (MOBILE + DESKTOP)
           ================================================================== */}
-          <section className="px-4 sm:px-8 md:px-12 pt-8 pb-16 sm:pt-12 sm:pb-20 border-b-2 border-[#141414]">
-            <div className="max-w-5xl mx-auto mb-10 sm:mb-12">
-              <div className="text-center mb-6">
-                <span className="inline-block px-3 py-1 bg-[#141414] text-[#FFD400] font-mono-code text-[11px] font-bold uppercase tracking-widest border border-[#141414] shadow-[3px_3px_0px_#FF1E6E]">
-                  CREATIVE MIND MAP // CLICK ANY BRAND BRANCH TO JUMP ↓
+          <section className="px-3.5 sm:px-8 md:px-12 pt-6 pb-12 sm:pt-12 sm:pb-20 border-b-2 border-[#141414]">
+            <div className="max-w-5xl mx-auto mb-8 sm:mb-12">
+              <div className="text-center mb-4 sm:mb-6">
+                <span className="inline-block px-3 py-1 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] sm:text-[11px] font-bold uppercase tracking-widest border border-[#141414] shadow-[3px_3px_0px_#FF1E6E]">
+                  CREATIVE MIND MAP // TAP ANY BRAND BRANCH TO JUMP ↓
                 </span>
               </div>
 
-              {/* DESKTOP / TABLET 3-COLUMN MIND MAP WITH CURVED SVG BRANCHES */}
-              <div className="relative grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-                {/* Hand-Drawn Curved SVG Connector Lines (Visible on lg screens) */}
+              {/* =============================================================
+                  1. MOBILE & TABLET MIND MAP (< lg screens):
+                     Center Cursive Hub at Top + Curved SVG Tree Branches + 2x3 Grid
+              ============================================================== */}
+              <div className="lg:hidden">
+                {/* Center Cursive Name Hub for Mobile */}
+                <div className="max-w-xs mx-auto relative z-20">
+                  <MaskingTape
+                    className="mx-auto -mb-3 relative z-30"
+                    rotate="-rotate-2"
+                  />
+                  <div className="bg-[#FFFDF9] border-3 border-[#141414] px-5 py-5 shadow-[6px_6px_0px_#141414] text-center relative">
+                    <span className="inline-block px-2 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-[9px] font-bold uppercase tracking-widest mb-1.5">
+                      A COPYWRITER&apos;S PORTFOLIO
+                    </span>
+
+                    <h1 className="font-handwritten text-5xl font-bold text-[#2962FF] leading-none py-1">
+                      {PORTFOLIO_DATA.hero.stripBottom}
+                    </h1>
+
+                    {/* Hand-drawn crimson underline SVG */}
+                    <svg
+                      viewBox="0 0 240 16"
+                      className="w-40 h-3.5 mx-auto -mt-0.5 mb-1.5"
+                      fill="none"
+                    >
+                      <path
+                        d="M 6 11 Q 120 2, 234 10"
+                        stroke="#D90429"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                      />
+                      <path
+                        d="M 28 14 Q 130 7, 210 13"
+                        stroke="#FF5C00"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                      />
+                    </svg>
+
+                    <p className="font-mono-code text-[10px] font-bold uppercase tracking-wider text-[#141414]">
+                      COPYWRITER • SCRIPTWRITER
+                    </p>
+                    <p className="font-mono-code text-[9px] font-bold text-[#52525B] mt-0.5">
+                      B.TECH CSE • 2× AUTHOR • BLR
+                    </p>
+
+                    {/* Compact Halftone Stamp on Mobile */}
+                    <div className="w-12 h-12 rounded-full halftone-green border-2 border-[#141414] shadow-[2px_2px_0px_#141414] flex items-center justify-center absolute -top-3 -right-3 z-30">
+                      <span className="font-condensed text-sm text-[#042912]">
+                        PS
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Mobile Curved SVG Branching Lines from Name Hub into 2 Columns */}
+                <div className="relative h-12 -my-1 pointer-events-none z-10">
+                  <svg
+                    viewBox="0 0 400 56"
+                    className="w-full h-full"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <defs>
+                      <marker
+                        id="mobileArrowRed"
+                        markerWidth="7"
+                        markerHeight="7"
+                        refX="5"
+                        refY="3.5"
+                        orient="auto"
+                      >
+                        <path d="M0,1 L6,3.5 L0,6 Z" fill="#D90429" />
+                      </marker>
+                      <marker
+                        id="mobileArrowBlack"
+                        markerWidth="7"
+                        markerHeight="7"
+                        refX="5"
+                        refY="3.5"
+                        orient="auto"
+                      >
+                        <path d="M0,1 L6,3.5 L0,6 Z" fill="#141414" />
+                      </marker>
+                    </defs>
+                    {/* Left Curved Mind-Map Branch */}
+                    <path
+                      d="M 200 2 C 200 26, 98 18, 98 48"
+                      stroke="#D90429"
+                      strokeWidth="2.5"
+                      markerEnd="url(#mobileArrowRed)"
+                    />
+                    {/* Right Curved Mind-Map Branch */}
+                    <path
+                      d="M 200 2 C 200 26, 302 18, 302 48"
+                      stroke="#141414"
+                      strokeWidth="2.5"
+                      strokeDasharray="5 4"
+                      markerEnd="url(#mobileArrowBlack)"
+                    />
+                    {/* Center Trunk Dot */}
+                    <circle cx="200" cy="4" r="4" fill="#D90429" />
+                  </svg>
+                </div>
+
+                {/* 2-Column Mobile Mind-Map Grid with Central Dashed Spine */}
+                <div className="relative">
+                  {/* Vertical Mind-Map Spine Line between the 2 columns */}
+                  <div
+                    aria-hidden="true"
+                    className="absolute left-1/2 top-2 bottom-2 -translate-x-1/2 border-l-2 border-dashed border-[#141414]/35 pointer-events-none"
+                  />
+
+                  <div className="grid grid-cols-2 gap-2.5 sm:gap-4 relative z-10">
+                    {PORTFOLIO_DATA.brandIndex.map((item, idx) => (
+                      <a
+                        key={item.num}
+                        href={`#${item.anchorId}`}
+                        className="group bg-white border-2 border-[#141414] p-2.5 sm:p-3.5 shadow-[3px_3px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#D90429] transition-all flex flex-col justify-between relative"
+                      >
+                        {/* Small curved branch connector from center spine */}
+                        <span
+                          aria-hidden="true"
+                          className={`hidden xs:block absolute top-1/2 -translate-y-1/2 w-2 h-0.5 bg-[#D90429] ${
+                            idx % 2 === 0 ? "-right-2" : "-left-2"
+                          }`}
+                        />
+
+                        <div>
+                          <div className="flex items-center justify-between gap-1 mb-1.5">
+                            <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[9px] font-bold">
+                              #{item.num}
+                            </span>
+                            <span className="font-mono-code text-[9px] font-bold text-[#D90429]">
+                              TAP ↘
+                            </span>
+                          </div>
+
+                          <div className="mb-1.5 overflow-hidden">
+                            <span className="font-condensed text-base sm:text-lg uppercase tracking-wide text-[#141414] block leading-tight truncate">
+                              {item.brandName}
+                            </span>
+                            <span className="font-mono-code text-[8px] font-bold uppercase text-[#52525B] block truncate">
+                              {item.category}
+                            </span>
+                          </div>
+
+                          <p className="font-chunky text-[11px] sm:text-xs text-[#141414] leading-snug mb-1.5 line-clamp-2">
+                            {item.workDone}
+                          </p>
+                        </div>
+
+                        <p className="font-handwritten text-sm sm:text-base text-[#2962FF] leading-tight border-t border-dashed border-[#141414]/20 pt-1 line-clamp-2">
+                          {item.hookLine}
+                        </p>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* =============================================================
+                  2. DESKTOP 3-COLUMN MIND MAP (lg+ screens):
+                     Left 3 Brand Nodes + Center Cursive Hub + Right 3 Brand Nodes
+              ============================================================== */}
+              <div className="hidden lg:grid relative grid-cols-12 gap-6 items-center">
+                {/* Hand-Drawn Curved SVG Connector Lines */}
                 <svg
                   viewBox="0 0 1000 540"
                   fill="none"
                   aria-hidden="true"
-                  className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none z-0"
+                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
                 >
                   <defs>
                     <marker
@@ -1504,13 +1669,13 @@ export default function App() {
                 </svg>
 
                 {/* LEFT 3 BRAND NODES (Projects 01, 02, 03) */}
-                <div className="lg:col-span-4 space-y-4 relative z-10 order-2 lg:order-1">
+                <div className="col-span-4 space-y-4 relative z-10">
                   {PORTFOLIO_DATA.brandIndex.slice(0, 3).map((item, idx) => (
                     <a
                       key={item.num}
                       href={`#${item.anchorId}`}
                       className={`group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all ${
-                        idx === 1 ? "lg:-ml-2" : "lg:ml-2"
+                        idx === 1 ? "-ml-2" : "ml-2"
                       }`}
                     >
                       <div className="flex items-center justify-between gap-2 mb-2">
@@ -1530,7 +1695,7 @@ export default function App() {
                 </div>
 
                 {/* CENTER CURSIVE NAME HUB ("Preetpal Singh") */}
-                <div className="lg:col-span-4 flex flex-col items-center justify-center text-center relative z-20 order-1 lg:order-2 my-4 lg:my-0">
+                <div className="col-span-4 flex flex-col items-center justify-center text-center relative z-20">
                   <div className="relative">
                     <MaskingTape
                       className="mx-auto -mb-3 relative z-30"
@@ -1538,12 +1703,12 @@ export default function App() {
                     />
 
                     {/* Main Center Mind-Map Node */}
-                    <div className="bg-[#FFFDF9] border-4 border-[#141414] px-6 py-7 sm:px-8 sm:py-9 shadow-[10px_10px_0px_#141414] relative">
+                    <div className="bg-[#FFFDF9] border-4 border-[#141414] px-8 py-9 shadow-[10px_10px_0px_#141414] relative">
                       <span className="inline-block px-2.5 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-[10px] font-bold uppercase tracking-widest mb-2">
                         A COPYWRITER&apos;S PORTFOLIO
                       </span>
 
-                      <h1 className="font-handwritten text-5xl sm:text-6xl font-bold text-[#2962FF] leading-none py-2 drop-shadow-[2px_2px_0px_rgba(20,20,20,0.12)]">
+                      <h1 className="font-handwritten text-6xl font-bold text-[#2962FF] leading-none py-2 drop-shadow-[2px_2px_0px_rgba(20,20,20,0.12)]">
                         {PORTFOLIO_DATA.hero.stripBottom}
                       </h1>
 
@@ -1607,13 +1772,13 @@ export default function App() {
                 </div>
 
                 {/* RIGHT 3 BRAND NODES (Projects 04, 05, 06) */}
-                <div className="lg:col-span-4 space-y-4 relative z-10 order-3">
+                <div className="col-span-4 space-y-4 relative z-10">
                   {PORTFOLIO_DATA.brandIndex.slice(3, 6).map((item, idx) => (
                     <a
                       key={item.num}
                       href={`#${item.anchorId}`}
                       className={`group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all ${
-                        idx === 1 ? "lg:ml-2" : "lg:-ml-2"
+                        idx === 1 ? "ml-2" : "-ml-2"
                       }`}
                     >
                       <div className="flex items-center justify-between gap-2 mb-2">
@@ -1635,11 +1800,11 @@ export default function App() {
             </div>
 
             {/* Pinned Bio Card */}
-            <div className="max-w-3xl mx-auto relative mt-8">
+            <div className="max-w-3xl mx-auto relative mt-6 sm:mt-8">
               <MaskingTape className="mx-auto -mb-3 relative z-20" rotate="-rotate-2" />
-              <div className="bg-white border-2 border-[#141414] p-6 sm:p-8 shadow-[6px_6px_0px_#141414] relative">
+              <div className="bg-white border-2 border-[#141414] p-4 sm:p-8 shadow-[5px_5px_0px_#141414] sm:shadow-[6px_6px_0px_#141414] relative">
                 <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-4 border-b border-[#141414]/15">
-                  <span className="font-condensed text-lg sm:text-xl uppercase tracking-wide text-[#D90429]">
+                  <span className="font-condensed text-base sm:text-xl uppercase tracking-wide text-[#D90429]">
                     {PORTFOLIO_DATA.hero.headline}
                   </span>
                   <div className="flex flex-wrap gap-1.5">
@@ -1654,14 +1819,14 @@ export default function App() {
                   </div>
                 </div>
 
-                <p className="text-base sm:text-lg text-[#27272A] leading-relaxed mb-7">
+                <p className="text-sm sm:text-lg text-[#27272A] leading-relaxed mb-5 sm:mb-7">
                   {PORTFOLIO_DATA.hero.subheadline}
                 </p>
 
-                <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2.5 sm:gap-4">
                   <a
                     href="#work-section"
-                    className="px-6 py-3 bg-[#FF5C00] text-white font-chunky text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center gap-2"
+                    className="px-5 py-3 bg-[#FF5C00] text-white font-chunky text-sm sm:text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center justify-center gap-2"
                   >
                     <span>Explore 6 Case Studies</span>
                     <ArrowDownRight className="w-5 h-5" />
@@ -1678,7 +1843,7 @@ export default function App() {
                           : "Red-Pen X-Ray OFF."
                       );
                     }}
-                    className={`px-5 py-3 font-chunky text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center gap-2 ${
+                    className={`px-5 py-3 font-chunky text-sm sm:text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center justify-center gap-2 ${
                       xrayMode ? "bg-[#D90429] text-white" : "bg-[#FFD400] text-[#141414]"
                     }`}
                   >
@@ -1688,7 +1853,7 @@ export default function App() {
 
                   <a
                     href="#contact"
-                    className="px-5 py-3 bg-[#FAF6EE] text-[#141414] font-mono-code text-xs font-bold border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:bg-[#141414] hover:text-[#FFD400] transition-colors"
+                    className="px-5 py-3 bg-[#FAF6EE] text-[#141414] font-mono-code text-xs font-bold border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:bg-[#141414] hover:text-[#FFD400] transition-colors text-center"
                   >
                     GET IN TOUCH
                   </a>
