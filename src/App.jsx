@@ -115,6 +115,17 @@ const PORTFOLIO_DATA = {
       workDone: "Bliss Bag PDP Rewrite, 2 POV Reels & FAQ Microcopy",
       hookLine: "“Looks like a dinner date. Packs like a carry-on.”",
       deliverables: ["PDP Hero", "2 Reel Scripts", "FAQ Microcopy"]
+    },
+    {
+      num: "06",
+      anchorId: "project-06",
+      brandId: "zepto",
+      brandName: "Zepto",
+      category: "Quick-Commerce • India",
+      accent: "#FFD400",
+      workDone: "Bilingual Push Alerts, WhatsApp Nudges & Delay SMS",
+      hookLine: "“Iss waqt chai toh bana loge... Par saath mein kya khaoge?”",
+      deliverables: ["3 Push Alerts", "2 WhatsApp Nudges", "2 Delay SMS"]
     }
   ],
 
@@ -179,6 +190,18 @@ const PORTFOLIO_DATA = {
         "“Looks like a dinner date. Packs like a carry-on.”",
       whyItWorks:
         "Bridges Mokobara's core travel DNA ('carry-on') with everyday fashion utility in 9 punchy words."
+    },
+    {
+      id: "flip-zepto",
+      brand: "ZEPTO",
+      color: "#FFD400",
+      textColor: "#141414",
+      rawNote:
+        "Generic 20% off push notifications get swiped away. On a rainy evening people make chai at home and suddenly realize they have no hot snacks.",
+      finalLine:
+        "“Iss waqt chai toh bana loge... Par saath mein kya khaoge? Garam snacks 10 minute mein pahuncha dein?”",
+      whyItWorks:
+        "Enters the exact Indian kitchen moment with warm Hinglish instead of shouting a discount code."
     }
   ],
 
@@ -624,6 +647,83 @@ Team Peakflo`,
           copy: "“Maintaining me is easier than carrying your overthinking around. A quick brush keeps the plush suede looking fresh.”"
         }
       ]
+    },
+
+    project6: {
+      number: "PROJECT 06 // QUICK-COMMERCE CRM & RETENTION",
+      tag: "3 PUSH ALERTS + 2 WHATSAPP NUDGES + 2 DELAY SMS",
+      title: "Project 06 | Zepto: Bilingual Push Notifications & WhatsApp Retention Pack",
+      role: "Bilingual Microcopy (Hinglish + English), CRM Retention & CX De-escalation",
+      brand: "Zepto (Quick-Commerce, India)",
+      objective:
+        "Replace generic, spammy promotional alerts with culturally relatable Hinglish and English microcopy that drives late-night orders, recovers abandoned carts, and de-escalates delivery delays.",
+      voiceAndTone:
+        "Witty, conversational, hyper-local Indian youth humor paired with clear utility.",
+      pushNotifications: [
+        {
+          id: "zepto-push-1",
+          badge: "PUSH 01 // RAINY EVENING CRAVING",
+          time: "5:45 PM • MONSOON TRIGGER",
+          title: "Iss waqt chai toh bana loge...",
+          body: "Par saath mein kya khaoge? Garam snacks 10 minute mein pahuncha dein?",
+          xrayNote:
+            "SENSORY GAP HOOK: Completes an existing ritual (evening chai) so the 10-minute delivery feels like an instant rescue."
+        },
+        {
+          id: "zepto-push-2",
+          badge: "PUSH 02 // 1:30 AM MIDNIGHT HUNGER",
+          time: "1:30 AM • LATE-NIGHT TRIGGER",
+          title: "Too late to sneak out?",
+          body: "Mumma's going to scold anyway. Let us silently drop midnight snacks at your door in 10 mins.",
+          xrayNote:
+            "CULTURAL INSIGHT: Taps into the universal Indian household fear of waking parents up at 1:30 AM."
+        },
+        {
+          id: "zepto-push-3",
+          badge: "PUSH 03 // SUNDAY LAZY RESET",
+          time: "4:15 PM • SUNDAY TRIGGER",
+          title: "Sunday afternoon, zero energy?",
+          body: "Fridge is empty and Monday is dangerously close. Let us handle groceries while you stay in bed.",
+          xrayNote:
+            "PAIN-TO-RELIEF: Names Sunday-evening dread and positions Zepto as permission to stay in bed."
+        }
+      ],
+      whatsappNudges: [
+        {
+          id: "zepto-wa-1",
+          badge: "NUDGE 01 // EMOTIONAL HOOK",
+          trigger: "CART IDLE • 25 MINS",
+          copy: "Bhool gaye na mujhe? Jaise woh bhool gaye the. Your cart is still waiting. Tap here before your cravings expire.",
+          xrayNote:
+            "MEME-GRADE HUMOR: Playful heartbreak Hinglish stops the thumb on WhatsApp without sounding like an automated bot."
+        },
+        {
+          id: "zepto-wa-2",
+          badge: "NUDGE 02 // QUICK DECISION",
+          trigger: "CART IDLE • 45 MINS",
+          copy: "Stop overthinking and hit checkout, mate. Your snacks are packed and ready to roll in 10 minutes.",
+          xrayNote:
+            "MOMENTUM CLOSE: Uses 'already packed and ready to roll' ownership framing to eliminate checkout hesitation."
+        }
+      ],
+      delayApologies: [
+        {
+          id: "zepto-delay-1",
+          badge: "DELAY 01 // WARM HINGLISH DE-ESCALATION",
+          channel: "IN-APP BANNER + SMS",
+          copy: "Time pe nahi pahunch paaye aapke ghar tak, isliye dil se maafi. Par dil toh aapka hi hai na? Your rider is 4 mins away, and here is INR 50 off your next order.",
+          xrayNote:
+            "EMOTIONAL DISARM: Disarms frustration with warm shayari-style humility before pairing a concrete 4-min ETA and INR 50 credit."
+        },
+        {
+          id: "zepto-delay-2",
+          badge: "DELAY 02 // TRAFFIC DELAY REASSURANCE",
+          channel: "LIVE TRACKER + SMS",
+          copy: "Running a few minutes behind due to traffic, sorry to keep you waiting! Good snacks are never too late, your rider is almost at your gate.",
+          xrayNote:
+            "RHYTHMIC REASSURANCE: Transparent reason ('traffic') + light internal rhyme ('never too late / almost at your gate') keeps brand goodwill intact."
+        }
+      ]
     }
   },
 
@@ -910,6 +1010,26 @@ function BrandLogoBadge({ brandId, size = "md" }) {
     );
   }
 
+  if (brandId === "zepto") {
+    return (
+      <div
+        className={`${boxClass} bg-[#3B0764] text-[#FFFDF7] inline-flex items-center gap-2 shrink-0`}
+      >
+        <span className="w-6 h-6 bg-[#FF1E6E] border border-[#FFD400] text-[#FFD400] flex items-center justify-center font-condensed text-xs font-bold">
+          Z⚡
+        </span>
+        <div className="leading-none text-left">
+          <span className="font-chunky font-bold tracking-wider text-sm sm:text-base lowercase block text-[#FFD400]">
+            zepto
+          </span>
+          <span className="font-mono-code text-[8px] text-[#FCE7F3] tracking-widest uppercase block">
+            10-MIN QUICK COMMERCE
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   return null;
 }
 
@@ -952,6 +1072,10 @@ export default function App() {
   const p5 = PORTFOLIO_DATA.projects.project5;
   const [p5View, setP5View] = useState("hero"); // 'hero' | 'reels' | 'microcopy'
   const [mokobaraCompareMode, setMokobaraCompareMode] = useState("split"); // 'split' | 'after'
+
+  // Project 6 interactive state (Zepto Bilingual Push & WhatsApp Retention Pack)
+  const p6 = PORTFOLIO_DATA.projects.project6;
+  const [p6View, setP6View] = useState("push"); // 'push' | 'whatsapp' | 'delays'
 
   // Community edition active tab
   const [activeEditionIdx, setActiveEditionIdx] = useState(0);
@@ -1369,7 +1493,7 @@ export default function App() {
                     href="#work-section"
                     className="px-6 py-3 bg-[#FF5C00] text-white font-chunky text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center gap-2"
                   >
-                    <span>Explore 5 Case Studies</span>
+                    <span>Explore 6 Case Studies</span>
                     <ArrowDownRight className="w-5 h-5" />
                   </a>
 
@@ -1424,7 +1548,7 @@ export default function App() {
               </span>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {PORTFOLIO_DATA.notebookFlips.map((note, idx) => {
                 const isFlipped = !!flippedNotes[note.id];
                 return (
@@ -1479,7 +1603,7 @@ export default function App() {
           </section>
 
           {/* =================================================================
-              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 5 PROJECTS)
+              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 6 PROJECTS)
           ================================================================== */}
           <section
             id="work-section"
@@ -1491,7 +1615,7 @@ export default function App() {
                   SECTION 01 // CAMPAIGNS &amp; DEEP TEARDOWNS
                 </span>
                 <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
-                  Five Projects. Deep Strategy.
+                  Six Projects. Deep Strategy.
                 </h2>
               </div>
 
@@ -1518,7 +1642,7 @@ export default function App() {
               <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b-2 border-[#141414]">
                 <div className="flex items-center gap-2">
                   <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold uppercase">
-                    BRAND ROSTER // 05 CASE STUDIES
+                    BRAND ROSTER // 06 CASE STUDIES
                   </span>
                   <span className="font-mono-code text-xs font-bold text-[#52525B] hidden sm:inline">
                     BRANDS, LOGOS &amp; DELIVERABLES AT A GLANCE
@@ -1529,7 +1653,7 @@ export default function App() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {PORTFOLIO_DATA.brandIndex.map((item) => (
                   <a
                     key={item.num}
@@ -3202,6 +3326,327 @@ export default function App() {
                         {xrayMode && (
                           <div className="mt-4 bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2.5 py-1.5">
                             ✎ {item.xrayNote}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </article>
+
+            {/* ---------------------------------------------------------------
+                PROJECT 06: ZEPTO BILINGUAL PUSH & WHATSAPP RETENTION PACK
+            ---------------------------------------------------------------- */}
+            <article
+              id="project-06"
+              className="scroll-mt-20 bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative"
+            >
+              <MaskingTape className="absolute -top-3 right-10" rotate="rotate-2" />
+
+              {/* Classy Brand Identity & Scope Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-dashed border-[#141414]/25">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BrandLogoBadge brandId="zepto" size="lg" />
+                  <div>
+                    <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                      ROLE &amp; DELIVERABLES
+                    </span>
+                    <span className="font-chunky text-sm sm:text-base text-[#141414]">
+                      {p6.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    "3 Push Notifications",
+                    "2 WhatsApp Cart Nudges",
+                    "2 Delay Apology SMS"
+                  ].map((pill) => (
+                    <span
+                      key={pill}
+                      className="px-2.5 py-1 bg-[#FAF6EE] border border-[#141414] font-mono-code text-[10px] font-bold uppercase"
+                    >
+                      ✓ {pill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold">
+                      {p6.number}
+                    </span>
+                    <span className="px-2.5 py-0.5 bg-[#3B0764] text-[#FFD400] border border-[#141414] font-mono-code text-xs font-bold">
+                      {p6.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414]">
+                    {p6.title}
+                  </h3>
+                </div>
+
+                {/* Deliverable Switcher Tabs */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setP6View("push")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p6View === "push"
+                        ? "bg-[#FFD400] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]/50"
+                    }`}
+                  >
+                    01. PUSH NOTIFICATIONS (3)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP6View("whatsapp")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p6View === "whatsapp"
+                        ? "bg-[#00B84D] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#00B84D]/25"
+                    }`}
+                  >
+                    02. WHATSAPP NUDGES (2)
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP6View("delays")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p6View === "delays"
+                        ? "bg-[#141414] text-[#FFD400] shadow-[3px_3px_0px_#FF1E6E]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#141414]/10"
+                    }`}
+                  >
+                    03. DELAY APOLOGIES (2)
+                  </button>
+                </div>
+              </div>
+
+              {/* 1. THE BRIEF & STRATEGY BANNER (Always visible at top of Project 06) */}
+              <div className="bg-[#FAF6EE] border-2 border-[#141414] p-5 mb-8 shadow-[4px_4px_0px_#141414]">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+                  <div className="md:col-span-4 space-y-2.5 md:border-r-2 md:border-dashed md:border-[#141414]/25 md:pr-4">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                        BRAND
+                      </span>
+                      <span className="font-chunky text-base text-[#141414]">
+                        {p6.brand}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                        VOICE &amp; TONE
+                      </span>
+                      <span className="font-chunky text-sm text-[#D90429] leading-snug block">
+                        {p6.voiceAndTone}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="md:col-span-8">
+                    <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold uppercase mb-1.5">
+                      01. THE BRIEF &amp; STRATEGY
+                    </span>
+                    <p className="text-sm sm:text-base text-[#141414] leading-relaxed">
+                      {p6.objective}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. LATE-NIGHT & RAINY-DAY PUSH NOTIFICATIONS */}
+              {p6View === "push" && (
+                <div className="space-y-6">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#3B0764]">
+                        02. LATE-NIGHT &amp; RAINY-DAY PUSH NOTIFICATIONS
+                      </span>
+                      <h4 className="font-chunky text-xl sm:text-2xl text-[#141414]">
+                        High-CTR Lock-Screen Triggers (Hinglish &amp; English)
+                      </h4>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          p6.pushNotifications
+                            .map((p) => `${p.badge}\nTitle: "${p.title}"\nBody: "${p.body}"`)
+                            .join("\n\n"),
+                          "All 3 Zepto push notifications copied!"
+                        )
+                      }
+                      className="px-3 py-1.5 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#3B0764] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY ALL 3 PUSH ALERTS</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {p6.pushNotifications.map((push) => (
+                      <div
+                        key={push.id}
+                        className="bg-[#141414] text-[#FAF6EE] border-2 border-[#141414] p-5 shadow-[5px_5px_0px_#FFD400] flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 pb-3 mb-4 border-b border-white/15 font-mono-code text-[10px]">
+                            <span className="px-2 py-0.5 bg-[#3B0764] text-[#FFD400] border border-[#FFD400]/50 font-bold">
+                              zepto • now
+                            </span>
+                            <span className="text-white/60">{push.time}</span>
+                          </div>
+
+                          <span className="inline-block px-2 py-0.5 bg-[#FF1E6E] text-white font-mono-code text-[10px] font-bold uppercase mb-3">
+                            {push.badge}
+                          </span>
+
+                          <div className="bg-white text-[#141414] border-2 border-[#FFD400] p-4 mb-4">
+                            <p className="font-chunky text-lg leading-snug mb-1.5 text-[#141414]">
+                              “{push.title}”
+                            </p>
+                            <p className="text-sm text-[#27272A] leading-relaxed">
+                              “{push.body}”
+                            </p>
+                          </div>
+                        </div>
+
+                        {xrayMode && (
+                          <div className="bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2.5 py-1.5 border border-white/30">
+                            ✎ {push.xrayNote}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 3. ABANDONED-CART WHATSAPP NUDGES */}
+              {p6View === "whatsapp" && (
+                <div className="ruled-notepad border-2 border-[#141414] p-6 sm:p-8 shadow-[5px_5px_0px_#141414]">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-6 border-b-2 border-[#141414]">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#00B84D]">
+                        03. ABANDONED-CART WHATSAPP NUDGES
+                      </span>
+                      <h4 className="font-chunky text-xl sm:text-2xl text-[#141414]">
+                        Conversational Cart Recovery Without Discount Spam
+                      </h4>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          p6.whatsappNudges
+                            .map((n) => `${n.badge}: "${n.copy}"`)
+                            .join("\n\n"),
+                          "Zepto WhatsApp nudges copied!"
+                        )
+                      }
+                      className="px-3 py-1.5 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#00B84D] hover:text-[#141414] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY WHATSAPP NUDGES</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {p6.whatsappNudges.map((nudge) => (
+                      <div
+                        key={nudge.id}
+                        className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#00B84D] flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="px-2.5 py-0.5 bg-[#00B84D] text-[#141414] border border-[#141414] font-mono-code text-[11px] font-bold">
+                              {nudge.badge}
+                            </span>
+                            <span className="font-mono-code text-[10px] font-bold text-[#52525B]">
+                              {nudge.trigger}
+                            </span>
+                          </div>
+
+                          <div className="bg-[#DCF8C6] border-2 border-[#141414] p-4 mb-4 relative">
+                            <span className="block font-mono-code text-[10px] font-bold uppercase text-[#075E54] mb-1">
+                              WHATSAPP BUSINESS // ZEPTO
+                            </span>
+                            <p className="text-base font-semibold text-[#141414] leading-relaxed">
+                              “{nudge.copy}”
+                            </p>
+                          </div>
+                        </div>
+
+                        {xrayMode && (
+                          <div className="bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2.5 py-1.5">
+                            ✎ {nudge.xrayNote}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* 4. DELIVERY-DELAY APOLOGIES (IN-APP / SMS) */}
+              {p6View === "delays" && (
+                <div className="space-y-6">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#D90429]">
+                        04. DELIVERY-DELAY APOLOGIES (IN-APP / SMS)
+                      </span>
+                      <h4 className="font-chunky text-xl sm:text-2xl text-[#141414]">
+                        Turning Late-Order Friction Into Brand Affection
+                      </h4>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        copyText(
+                          p6.delayApologies
+                            .map((d) => `${d.badge}: "${d.copy}"`)
+                            .join("\n\n"),
+                          "Zepto delivery-delay apologies copied!"
+                        )
+                      }
+                      className="px-3 py-1.5 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#FF1E6E] inline-flex items-center gap-1.5"
+                    >
+                      <Copy className="w-3.5 h-3.5" />
+                      <span>COPY DELAY APOLOGIES</span>
+                    </button>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {p6.delayApologies.map((delay) => (
+                      <div
+                        key={delay.id}
+                        className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#FF1E6E] flex flex-col justify-between"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="px-2.5 py-0.5 bg-[#FFD400] text-[#141414] border border-[#141414] font-mono-code text-[11px] font-bold">
+                              {delay.badge}
+                            </span>
+                            <span className="font-mono-code text-[10px] font-bold text-[#52525B]">
+                              {delay.channel}
+                            </span>
+                          </div>
+
+                          <div className="bg-[#FAF6EE] border-l-4 border-[#3B0764] p-4 mb-4">
+                            <p className="text-base font-semibold text-[#141414] leading-relaxed">
+                              “{delay.copy}”
+                            </p>
+                          </div>
+                        </div>
+
+                        {xrayMode && (
+                          <div className="bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2.5 py-1.5">
+                            ✎ {delay.xrayNote}
                           </div>
                         )}
                       </div>
