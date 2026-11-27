@@ -126,6 +126,17 @@ const PORTFOLIO_DATA = {
       workDone: "Bilingual Push Alerts, WhatsApp Nudges & Delay SMS",
       hookLine: "“Iss waqt chai toh bana loge... Par saath mein kya khaoge?”",
       deliverables: ["3 Push Alerts", "2 WhatsApp Nudges", "2 Delay SMS"]
+    },
+    {
+      num: "07",
+      anchorId: "project-07",
+      brandId: "sorrysugar",
+      brandName: "Sorry Sugar",
+      category: "D2C Beverage • Zero-Sugar Coffee",
+      accent: "#FF5C00",
+      workDone: "35-40s Spec Commercial & 9:16 Shooting Script",
+      hookLine: "“Here, try this. Finally something worth sharing.”",
+      deliverables: ["35-40s Spec Script", "5-Beat Storyboard", "Camera Cues"]
     }
   ],
 
@@ -202,6 +213,18 @@ const PORTFOLIO_DATA = {
         "“Iss waqt chai toh bana loge... Par saath mein kya khaoge? Garam snacks 10 minute mein pahuncha dein?”",
       whyItWorks:
         "Enters the exact Indian kitchen moment with warm Hinglish instead of shouting a discount code."
+    },
+    {
+      id: "flip-sorrysugar",
+      brand: "SORRY SUGAR",
+      color: "#FF5C00",
+      textColor: "#FFFDF7",
+      rawNote:
+        "A thousand years of evolution and our coffee is still stuck in the Stone Age: either loaded with sugar or bitter black coffee you hide behind your laptop.",
+      finalLine:
+        "“Here, try this. Finally something worth sharing. Zero Added Sugar. Zero Boring Mornings.”",
+      whyItWorks:
+        "Uses visual mug-placement contrast (hiding a bitter cup vs. sharing across the table) to sell monk-fruit coffee without clinical preaching."
     }
   ],
 
@@ -724,6 +747,102 @@ Team Peakflo`,
             "RHYTHMIC REASSURANCE: Transparent reason ('traffic') + light internal rhyme ('never too late / almost at your gate') keeps brand goodwill intact."
         }
       ]
+    },
+
+    project7: {
+      number: "PROJECT 07 // 9:16 SPEC COMMERCIAL & SHOOTING SCRIPT",
+      tag: "35-40S BRAND FILM • 5 BEATS + CAMERA CUES",
+      title: "Project 07 | Same Old Coffee: Sorry Sugar (Spec Commercial & Shooting Script)",
+      role: "Concept, Visual Storytelling, Dialogue & 9:16 Shooting Script",
+      brand: "Sorry Sugar (Zero-added-sugar, monk-fruit-sweetened coffee premix concept)",
+      format: "35-40s Vertical Brand Film & Shooting Script (9:16)",
+      coreConcept:
+        "Contrasting mundane, sugar-heavy or bitter 'no-sugar' coffee routines with an elevated coffee & pre-workout ritual, told through visual storytelling and social shareability.",
+      endCard: "Zero Added Sugar. Zero Boring Mornings.",
+      beats: [
+        {
+          id: "ss-beat-1",
+          timestamp: "0:00 - 0:04",
+          beatTitle: "01. THE HOOK",
+          summary:
+            "Opening contrast on a thousand years of evolution vs. stuck-in-the-Stone-Age coffee routines at a cafe table.",
+          cameraCue:
+            "9:16 Vertical • Fast Whip-Pan to Tight Cafe Table Shot: Group of friends sitting around a table with identical sugar-heavy foamy drinks and one plain black coffee.",
+          dialogue:
+            "VO: “A thousand years of human evolution... and somehow our morning coffee routine is still stuck in the Stone Age.”",
+          xrayNote:
+            "3-SECOND HOOK: Hyperbolic 'thousand years of evolution vs. Stone Age coffee' contrast earns immediate thumb-stop retention."
+        },
+        {
+          id: "ss-beat-2",
+          timestamp: "0:04 - 0:11",
+          beatTitle: "02. SOCIAL FRICTION",
+          summary:
+            "Relatable awkwardness around boring drinks and the harsh 'no-sugar' coffee trade-off, shown visually through subtle mug placement.",
+          cameraCue:
+            "Close-Up on Hands & Subtle Mug Placement: Protagonist takes one sip of harsh, bitter 'no-sugar' coffee, winces slightly, and quietly slides the mug behind a laptop edge so nobody asks to try it.",
+          dialogue:
+            "VO: “Either you load up on sugar and crash by noon, or you force down bitter 'no-sugar' coffee you wouldn't even let your friends taste.”",
+          xrayNote:
+            "VISUAL SUBTEXT: Sliding the plain mug out of sight communicates 'healthy coffee usually tastes terrible' without preachy dialogue."
+        },
+        {
+          id: "ss-beat-3",
+          timestamp: "0:11 - 0:17",
+          beatTitle: "03. THE DISCOVERY",
+          summary:
+            "Spotting Sorry Sugar while scrolling and bringing the product into the frame.",
+          cameraCue:
+            "Over-the-Shoulder Phone Scroll → Match-Cut Product Reveal: Thumb stops on Sorry Sugar (monk-fruit-sweetened coffee premix). Hand reaches into frame and pulls a crisp Sorry Sugar sachet into the foreground.",
+          dialogue:
+            "VO: “Then I spotted Sorry Sugar. Monk-fruit sweetened coffee premix built for people who want the ritual without the sugar trade-off.”",
+          xrayNote:
+            "TRANSITION MECHANIC: Screen-to-hand match cut turns passive scrolling into tactile product curiosity."
+        },
+        {
+          id: "ss-beat-4",
+          timestamp: "0:17 - 0:27",
+          beatTitle: "04. TRANSFORMATION & PRE-WORKOUT RITUAL",
+          summary:
+            "Mixing and enjoying a rich, zero-sugar coffee before a workout and daily routine.",
+          cameraCue:
+            "Macro Pour & Pre-Workout Montage: Rich crema swirls as water hits the Sorry Sugar premix. Quick cuts of lacing up training shoes, taking an energized pre-workout sip, crushing a morning workout set, and transitioning smoothly into the workday.",
+          dialogue:
+            "VO: “Tears open in seconds, mixes rich, and fuels my pre-workout and morning grind with clean energy and zero bitter aftertaste.”",
+          xrayNote:
+            "RITUAL EXPANSION: Positioning Sorry Sugar as both a pre-workout fuel and a daily coffee ritual doubles its everyday use case."
+        },
+        {
+          id: "ss-beat-5",
+          timestamp: "0:27 - 0:34+",
+          beatTitle: "05. THE PAYOFF & END CARD",
+          summary:
+            "Confidently sharing the drink with friends ('Here, try this. Finally something worth sharing.') + end card ('Zero Added Sugar. Zero Boring Mornings.').",
+          cameraCue:
+            "Return to Cafe Table (Visual Callback to Beat 02): Instead of hiding the cup, protagonist slides a fresh cup of Sorry Sugar center-table toward a friend with an easy smile. Cut to bold 9:16 end card.",
+          dialogue:
+            "ON-CAMERA DIALOGUE: “Here, try this. Finally something worth sharing.” | END CARD: “Sorry Sugar. Zero Added Sugar. Zero Boring Mornings.”",
+          xrayNote:
+            "CALLBACK PAYOFF: Reverses Beat 02's hidden mug by sliding the drink across the table, turning taste into social proof."
+        }
+      ],
+      strategyPillars: [
+        {
+          title: "01. VISUAL CONTRAST OVER LECTURES",
+          detail:
+            "Instead of lecturing buyers about calories or glycemic indexes, the script uses mug body language (hiding a bitter cup vs. sliding Sorry Sugar across the table) to prove taste superiority."
+        },
+        {
+          title: "02. PRE-WORKOUT + DAILY RITUAL FIT",
+          detail:
+            "Weaves the pre-workout routine naturally into Beat 04 so fitness-conscious coffee drinkers see Sorry Sugar as clean performance fuel, not a compromise."
+        },
+        {
+          title: "03. DIRECTOR-READY 9:16 PACING",
+          detail:
+            "Every 4-to-10-second window pairs a tight camera movement (whip-pan, close-up mug slide, scroll match-cut, macro pour) with conversational dialogue built for Reels and Shorts retention."
+        }
+      ]
     }
   },
 
@@ -1030,6 +1149,26 @@ function BrandLogoBadge({ brandId, size = "md" }) {
     );
   }
 
+  if (brandId === "sorrysugar") {
+    return (
+      <div
+        className={`${boxClass} bg-[#2C1810] text-[#FFFDF7] inline-flex items-center gap-2 shrink-0`}
+      >
+        <span className="w-6 h-6 bg-[#FF5C00] border border-[#FFD400] text-[#FFFDF7] flex items-center justify-center font-condensed text-xs font-bold">
+          SS
+        </span>
+        <div className="leading-none text-left">
+          <span className="font-chunky font-bold tracking-wide text-sm sm:text-base uppercase block text-[#FFD400]">
+            SORRY SUGAR
+          </span>
+          <span className="font-mono-code text-[8px] text-[#FAF6EE]/80 tracking-widest uppercase block">
+            MONK-FRUIT COFFEE
+          </span>
+        </div>
+      </div>
+    );
+  }
+
   return null;
 }
 
@@ -1076,6 +1215,11 @@ export default function App() {
   // Project 6 interactive state (Zepto Bilingual Push & WhatsApp Retention Pack)
   const p6 = PORTFOLIO_DATA.projects.project6;
   const [p6View, setP6View] = useState("push"); // 'push' | 'whatsapp' | 'delays'
+
+  // Project 7 interactive state (Sorry Sugar Spec Commercial & Shooting Script)
+  const p7 = PORTFOLIO_DATA.projects.project7;
+  const [p7View, setP7View] = useState("script"); // 'script' | 'beats'
+  const [activeSSBeatIdx, setActiveSSBeatIdx] = useState(0);
 
   // Community edition active tab
   const [activeEditionIdx, setActiveEditionIdx] = useState(0);
@@ -1525,49 +1669,58 @@ export default function App() {
                   />
 
                   <div className="grid grid-cols-2 gap-2.5 sm:gap-4 relative z-10">
-                    {PORTFOLIO_DATA.brandIndex.map((item, idx) => (
-                      <a
-                        key={item.num}
-                        href={`#${item.anchorId}`}
-                        className="group bg-white border-2 border-[#141414] p-2.5 sm:p-3.5 shadow-[3px_3px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#D90429] transition-all flex flex-col justify-between relative"
-                      >
-                        {/* Small curved branch connector from center spine */}
-                        <span
-                          aria-hidden="true"
-                          className={`hidden xs:block absolute top-1/2 -translate-y-1/2 w-2 h-0.5 bg-[#D90429] ${
-                            idx % 2 === 0 ? "-right-2" : "-left-2"
+                    {PORTFOLIO_DATA.brandIndex.map((item, idx) => {
+                      const isLastOdd =
+                        idx === PORTFOLIO_DATA.brandIndex.length - 1 &&
+                        PORTFOLIO_DATA.brandIndex.length % 2 === 1;
+                      return (
+                        <a
+                          key={item.num}
+                          href={`#${item.anchorId}`}
+                          className={`group bg-white border-2 border-[#141414] p-2.5 sm:p-3.5 shadow-[3px_3px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#D90429] transition-all flex flex-col justify-between relative ${
+                            isLastOdd ? "col-span-2 max-w-sm mx-auto w-full" : ""
                           }`}
-                        />
+                        >
+                          {/* Small curved branch connector from center spine */}
+                          {!isLastOdd && (
+                            <span
+                              aria-hidden="true"
+                              className={`hidden xs:block absolute top-1/2 -translate-y-1/2 w-2 h-0.5 bg-[#D90429] ${
+                                idx % 2 === 0 ? "-right-2" : "-left-2"
+                              }`}
+                            />
+                          )}
 
-                        <div>
-                          <div className="flex items-center justify-between gap-1 mb-1.5">
-                            <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[9px] font-bold">
-                              #{item.num}
-                            </span>
-                            <span className="font-mono-code text-[9px] font-bold text-[#D90429]">
-                              TAP ↘
-                            </span>
+                          <div>
+                            <div className="flex items-center justify-between gap-1 mb-1.5">
+                              <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[9px] font-bold">
+                                #{item.num}
+                              </span>
+                              <span className="font-mono-code text-[9px] font-bold text-[#D90429]">
+                                TAP ↘
+                              </span>
+                            </div>
+
+                            <div className="mb-1.5 overflow-hidden">
+                              <span className="font-condensed text-base sm:text-lg uppercase tracking-wide text-[#141414] block leading-tight truncate">
+                                {item.brandName}
+                              </span>
+                              <span className="font-mono-code text-[8px] font-bold uppercase text-[#52525B] block truncate">
+                                {item.category}
+                              </span>
+                            </div>
+
+                            <p className="font-chunky text-[11px] sm:text-xs text-[#141414] leading-snug mb-1.5 line-clamp-2">
+                              {item.workDone}
+                            </p>
                           </div>
 
-                          <div className="mb-1.5 overflow-hidden">
-                            <span className="font-condensed text-base sm:text-lg uppercase tracking-wide text-[#141414] block leading-tight truncate">
-                              {item.brandName}
-                            </span>
-                            <span className="font-mono-code text-[8px] font-bold uppercase text-[#52525B] block truncate">
-                              {item.category}
-                            </span>
-                          </div>
-
-                          <p className="font-chunky text-[11px] sm:text-xs text-[#141414] leading-snug mb-1.5 line-clamp-2">
-                            {item.workDone}
+                          <p className="font-handwritten text-sm sm:text-base text-[#2962FF] leading-tight border-t border-dashed border-[#141414]/20 pt-1 line-clamp-2">
+                            {item.hookLine}
                           </p>
-                        </div>
-
-                        <p className="font-handwritten text-sm sm:text-base text-[#2962FF] leading-tight border-t border-dashed border-[#141414]/20 pt-1 line-clamp-2">
-                          {item.hookLine}
-                        </p>
-                      </a>
-                    ))}
+                        </a>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -1769,6 +1922,45 @@ export default function App() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Downward Curved SVG Branch -> Project 07 (Sorry Sugar) */}
+                  {PORTFOLIO_DATA.brandIndex[6] && (
+                    <div className="w-full mt-3 flex flex-col items-center">
+                      <svg
+                        viewBox="0 0 60 36"
+                        className="w-12 h-8 pointer-events-none"
+                        fill="none"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M 30 2 Q 20 18, 30 30"
+                          stroke="#D90429"
+                          strokeWidth="2.8"
+                          markerEnd="url(#inkArrowRed)"
+                        />
+                      </svg>
+                      <a
+                        href={`#${PORTFOLIO_DATA.brandIndex[6].anchorId}`}
+                        className="w-full group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all text-left"
+                      >
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <BrandLogoBadge
+                            brandId={PORTFOLIO_DATA.brandIndex[6].brandId}
+                            size="md"
+                          />
+                          <span className="px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold">
+                            #{PORTFOLIO_DATA.brandIndex[6].num} ↘
+                          </span>
+                        </div>
+                        <p className="font-chunky text-sm text-[#141414] leading-snug mb-1 group-hover:text-[#D90429] transition-colors">
+                          {PORTFOLIO_DATA.brandIndex[6].workDone}
+                        </p>
+                        <p className="font-handwritten text-lg text-[#3F3F46] leading-tight">
+                          {PORTFOLIO_DATA.brandIndex[6].hookLine}
+                        </p>
+                      </a>
+                    </div>
+                  )}
                 </div>
 
                 {/* RIGHT 3 BRAND NODES (Projects 04, 05, 06) */}
@@ -1828,7 +2020,7 @@ export default function App() {
                     href="#work-section"
                     className="px-5 py-3 bg-[#FF5C00] text-white font-chunky text-sm sm:text-base border-2 border-[#141414] shadow-[4px_4px_0px_#141414] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#141414] transition-all inline-flex items-center justify-center gap-2"
                   >
-                    <span>Explore 6 Case Studies</span>
+                    <span>Explore 7 Case Studies</span>
                     <ArrowDownRight className="w-5 h-5" />
                   </a>
 
@@ -1938,7 +2130,7 @@ export default function App() {
           </section>
 
           {/* =================================================================
-              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 6 PROJECTS)
+              SECTION 01: SELECTED CAMPAIGNS & DEEP ANALYSES (ALL 7 PROJECTS)
           ================================================================== */}
           <section
             id="work-section"
@@ -1950,7 +2142,7 @@ export default function App() {
                   SECTION 01 // CAMPAIGNS &amp; DEEP TEARDOWNS
                 </span>
                 <h2 className="font-condensed text-4xl sm:text-6xl uppercase tracking-tight text-[#141414]">
-                  Six Projects. Deep Strategy.
+                  Seven Projects. Deep Strategy.
                 </h2>
               </div>
 
@@ -1977,7 +2169,7 @@ export default function App() {
               <div className="flex flex-wrap items-center justify-between gap-2 pb-4 mb-5 border-b-2 border-[#141414]">
                 <div className="flex items-center gap-2">
                   <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold uppercase">
-                    BRAND ROSTER // 06 CASE STUDIES
+                    BRAND ROSTER // 07 CASE STUDIES
                   </span>
                   <span className="font-mono-code text-xs font-bold text-[#52525B] hidden sm:inline">
                     BRANDS, LOGOS &amp; DELIVERABLES AT A GLANCE
@@ -3984,6 +4176,309 @@ export default function App() {
                             ✎ {delay.xrayNote}
                           </div>
                         )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </article>
+
+            {/* ---------------------------------------------------------------
+                PROJECT 07: SORRY SUGAR SPEC COMMERCIAL & SHOOTING SCRIPT
+            ---------------------------------------------------------------- */}
+            <article
+              id="project-07"
+              className="scroll-mt-20 bg-white border-2 border-[#141414] p-6 sm:p-10 shadow-[8px_8px_0px_#141414] relative"
+            >
+              <MaskingTape className="absolute -top-3 left-10" rotate="-rotate-2" />
+
+              {/* Classy Brand Identity & Scope Bar */}
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-4 mb-5 border-b border-dashed border-[#141414]/25">
+                <div className="flex flex-wrap items-center gap-3">
+                  <BrandLogoBadge brandId="sorrysugar" size="lg" />
+                  <div>
+                    <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                      ROLE &amp; DELIVERABLES
+                    </span>
+                    <span className="font-chunky text-sm sm:text-base text-[#141414]">
+                      {p7.role}
+                    </span>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    "35-40s 9:16 Spec Script",
+                    "5-Beat Visual Storyboard",
+                    "Camera & Director Cues"
+                  ].map((pill) => (
+                    <span
+                      key={pill}
+                      className="px-2.5 py-1 bg-[#FAF6EE] border border-[#141414] font-mono-code text-[10px] font-bold uppercase"
+                    >
+                      ✓ {pill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 mb-6 border-b-2 border-[#141414]">
+                <div>
+                  <div className="flex flex-wrap items-center gap-2 mb-2">
+                    <span className="px-2.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-xs font-bold">
+                      {p7.number}
+                    </span>
+                    <span className="px-2.5 py-0.5 bg-[#FF5C00] text-white border border-[#141414] font-mono-code text-xs font-bold">
+                      {p7.tag}
+                    </span>
+                  </div>
+                  <h3 className="font-chunky text-2xl sm:text-4xl text-[#141414]">
+                    {p7.title}
+                  </h3>
+                </div>
+
+                {/* Deliverable Switcher Tabs */}
+                <div className="flex flex-wrap gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setP7View("script")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p7View === "script"
+                        ? "bg-[#FFD400] text-[#141414] shadow-[3px_3px_0px_#141414]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#FFD400]/50"
+                    }`}
+                  >
+                    01. SHOOTING SCRIPT &amp; CAMERA CUES
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setP7View("beats")}
+                    className={`px-3.5 py-2 font-mono-code text-xs font-bold border-2 border-[#141414] transition-all ${
+                      p7View === "beats"
+                        ? "bg-[#141414] text-[#FFD400] shadow-[3px_3px_0px_#FF5C00]"
+                        : "bg-[#FAF6EE] text-[#141414] hover:bg-[#141414]/10"
+                    }`}
+                  >
+                    02. 5-BEAT STORYBOARD &amp; STRATEGY
+                  </button>
+                </div>
+              </div>
+
+              {/* 1. THE BRIEF & CORE CONCEPT BANNER (Always visible at top of Project 07) */}
+              <div className="bg-[#FAF6EE] border-2 border-[#141414] p-5 mb-8 shadow-[4px_4px_0px_#141414]">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+                  <div className="md:col-span-4 space-y-2.5 md:border-r-2 md:border-dashed md:border-[#141414]/25 md:pr-4">
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                        BRAND
+                      </span>
+                      <span className="font-chunky text-sm sm:text-base text-[#141414] block">
+                        {p7.brand}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B]">
+                        FORMAT
+                      </span>
+                      <span className="font-chunky text-sm text-[#D90429] leading-snug block">
+                        {p7.format}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="md:col-span-8">
+                    <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold uppercase mb-1.5">
+                      CORE CONCEPT // “SAME OLD COFFEE”
+                    </span>
+                    <p className="text-sm sm:text-base text-[#141414] leading-relaxed">
+                      {p7.coreConcept}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {p7View === "script" ? (
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                  {/* Left Column: Interactive 9:16 Director Monitor Preview */}
+                  <div className="lg:col-span-5 flex flex-col items-center">
+                    <div className="w-full max-w-[320px] aspect-[9/16] bg-[#141414] border-4 border-[#141414] shadow-[6px_6px_0px_#FF5C00] flex flex-col justify-between p-5 text-[#FAF6EE]">
+                      <div className="flex items-center justify-between pb-3 border-b border-white/15 font-mono-code text-[10px]">
+                        <span className="text-[#FFD400] font-bold">
+                          9:16 DIRECTOR MONITOR
+                        </span>
+                        <span className="px-2 py-0.5 bg-[#FF5C00] text-white font-bold">
+                          {p7.beats[activeSSBeatIdx].timestamp}
+                        </span>
+                      </div>
+
+                      <div className="my-auto py-4 space-y-4">
+                        <span className="inline-block px-2.5 py-1 bg-[#FFD400] text-[#141414] font-mono-code text-[10px] font-bold uppercase">
+                          {p7.beats[activeSSBeatIdx].beatTitle}
+                        </span>
+
+                        <div className="bg-white/10 border border-white/15 p-3">
+                          <span className="block font-mono-code text-[9px] text-[#00E676] uppercase mb-1">
+                            CAMERA &amp; VISUAL DIRECTION:
+                          </span>
+                          <p className="text-xs text-white/90 leading-relaxed">
+                            {p7.beats[activeSSBeatIdx].cameraCue}
+                          </p>
+                        </div>
+
+                        <p className="font-handwritten text-2xl sm:text-3xl text-[#FFD400] leading-snug">
+                          {p7.beats[activeSSBeatIdx].dialogue}
+                        </p>
+                      </div>
+
+                      <div className="pt-3 border-t border-white/15">
+                        <span className="block font-mono-code text-[9px] text-white/60 uppercase mb-2 text-center">
+                          SELECT BEAT TO PREVIEW FRAME
+                        </span>
+                        <div className="grid grid-cols-5 gap-1.5">
+                          {p7.beats.map((b, idx) => (
+                            <button
+                              key={b.id}
+                              type="button"
+                              onClick={() => setActiveSSBeatIdx(idx)}
+                              className={`py-1.5 font-mono-code text-[10px] font-bold border transition-colors ${
+                                activeSSBeatIdx === idx
+                                  ? "bg-[#FFD400] text-[#141414] border-[#FFD400]"
+                                  : "bg-white/10 text-white border-white/20 hover:bg-white/20"
+                              }`}
+                            >
+                              0{idx + 1}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Ruled Notepad Full Shooting Script & Camera Cues */}
+                  <div className="lg:col-span-7 ruled-notepad border-2 border-[#141414] p-6 sm:p-8 shadow-[5px_5px_0px_#141414]">
+                    <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-5 border-b-2 border-[#141414]">
+                      <div className="flex items-center gap-2">
+                        <Film className="w-4 h-4 text-[#D90429]" />
+                        <span className="font-mono-code text-xs font-bold uppercase tracking-wider">
+                          FULL SHOOTING SCRIPT &amp; CAMERA CUES (CLICK ANY BEAT)
+                        </span>
+                      </div>
+
+                      <button
+                        type="button"
+                        onClick={() =>
+                          copyText(
+                            p7.beats
+                              .map(
+                                (b) =>
+                                  `${b.beatTitle} (${b.timestamp})\nSummary: ${b.summary}\nCamera: ${b.cameraCue}\n${b.dialogue}`
+                              )
+                              .join("\n\n"),
+                            "Sorry Sugar shooting script copied!"
+                          )
+                        }
+                        className="px-3 py-1 bg-[#141414] text-white font-mono-code text-xs font-bold hover:bg-[#FF5C00] transition-colors inline-flex items-center gap-1.5"
+                      >
+                        <Copy className="w-3.5 h-3.5" />
+                        <span>COPY SHOOTING SCRIPT</span>
+                      </button>
+                    </div>
+
+                    <div className="space-y-4">
+                      {p7.beats.map((beat, idx) => {
+                        const isSelected = activeSSBeatIdx === idx;
+                        return (
+                          <div
+                            key={beat.id}
+                            onClick={() => setActiveSSBeatIdx(idx)}
+                            className={`p-4 border-l-4 transition-all cursor-pointer ${
+                              isSelected
+                                ? "bg-[#FFD400]/30 border-[#D90429]"
+                                : "bg-white/80 border-[#141414]/25 hover:bg-[#FAF6EE] hover:border-[#FF5C00]"
+                            }`}
+                          >
+                            <div className="flex flex-wrap items-center justify-between gap-2 font-mono-code text-[11px] font-bold mb-1.5">
+                              <span className="text-[#141414]">{beat.beatTitle}</span>
+                              <span className="px-2 py-0.5 bg-[#141414] text-[#FFD400]">
+                                {beat.timestamp}
+                              </span>
+                            </div>
+
+                            <p className="text-xs font-semibold text-[#52525B] mb-2">
+                              Beat Focus: {beat.summary}
+                            </p>
+
+                            <div className="bg-[#FAF6EE] border border-[#141414]/20 p-2.5 mb-2.5 text-xs text-[#27272A]">
+                              <strong className="font-mono-code text-[10px] uppercase text-[#D90429] block mb-0.5">
+                                CAMERA &amp; VISUAL DIRECTION:
+                              </strong>
+                              {beat.cameraCue}
+                            </div>
+
+                            <p className="text-sm sm:text-base font-bold text-[#141414] leading-relaxed">
+                              {beat.dialogue}
+                            </p>
+
+                            {xrayMode && (
+                              <div className="mt-2.5 inline-block bg-[#D90429] text-white font-mono-code text-[10px] font-bold px-2.5 py-1 shadow-[2px_2px_0px_#141414]">
+                                ✎ {beat.xrayNote}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    <div className="mt-6 bg-[#141414] text-[#FFD400] border-2 border-[#141414] p-4 flex flex-wrap items-center justify-between gap-2">
+                      <span className="font-mono-code text-xs font-bold uppercase">
+                        FINAL END CARD LOCKUP:
+                      </span>
+                      <span className="font-chunky text-base sm:text-lg text-white">
+                        “{p7.endCard}”
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  <div>
+                    <span className="block font-mono-code text-xs font-bold uppercase mb-3">
+                      KEY 5-BEAT NARRATIVE ARCHITECTURE (0:00 TO 0:34+):
+                    </span>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                      {p7.beats.map((b) => (
+                        <div
+                          key={b.id}
+                          className="bg-[#FAF6EE] border-2 border-[#141414] p-4 shadow-[4px_4px_0px_#141414] flex flex-col justify-between"
+                        >
+                          <div>
+                            <div className="flex items-center justify-between gap-1 mb-2">
+                              <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[9px] font-bold">
+                                {b.timestamp}
+                              </span>
+                            </div>
+                            <h4 className="font-chunky text-base text-[#141414] mb-1.5">
+                              {b.beatTitle}
+                            </h4>
+                            <p className="text-xs text-[#27272A] leading-relaxed">
+                              {b.summary}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    {p7.strategyPillars.map((pillar) => (
+                      <div
+                        key={pillar.title}
+                        className="bg-white border-2 border-[#141414] p-5 shadow-[4px_4px_0px_#FF5C00]"
+                      >
+                        <span className="inline-block px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold mb-2">
+                          {pillar.title}
+                        </span>
+                        <p className="text-sm text-[#27272A] leading-relaxed">
+                          {pillar.detail}
+                        </p>
                       </div>
                     ))}
                   </div>
