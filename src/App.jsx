@@ -1556,7 +1556,7 @@ export default function App() {
 
               {/* =============================================================
                   1. MOBILE & TABLET MIND MAP (< lg screens):
-                     Center Cursive Hub at Top + Curved SVG Tree Branches + 2x3 Grid
+                     Center Cursive Hub at Top + Curved SVG Tree Branches + 2x3 Grid + 7th Branch
               ============================================================== */}
               <div className="lg:hidden">
                 {/* Center Cursive Name Hub for Mobile */}
@@ -1565,7 +1565,7 @@ export default function App() {
                     className="mx-auto -mb-3 relative z-30"
                     rotate="-rotate-2"
                   />
-                  <div className="bg-[#FFFDF9] border-3 border-[#141414] px-5 py-5 shadow-[6px_6px_0px_#141414] text-center relative">
+                  <div className="bg-[#FFFDF9] border-4 border-[#141414] px-5 py-5 shadow-[6px_6px_0px_#141414] text-center relative">
                     <span className="inline-block px-2 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-[9px] font-bold uppercase tracking-widest mb-1.5">
                       A COPYWRITER&apos;S PORTFOLIO
                     </span>
@@ -1660,334 +1660,389 @@ export default function App() {
                   </svg>
                 </div>
 
-                {/* 2-Column Mobile Mind-Map Grid with Central Dashed Spine */}
+                {/* 2-Column Mobile Mind-Map Grid (First 6 Brands) with Central Dashed Spine */}
                 <div className="relative">
                   {/* Vertical Mind-Map Spine Line between the 2 columns */}
                   <div
                     aria-hidden="true"
-                    className="absolute left-1/2 top-2 bottom-2 -translate-x-1/2 border-l-2 border-dashed border-[#141414]/35 pointer-events-none"
+                    className="absolute left-1/2 top-2 bottom-0 -translate-x-1/2 border-l-2 border-dashed border-[#141414]/35 pointer-events-none"
                   />
 
                   <div className="grid grid-cols-2 gap-2.5 sm:gap-4 relative z-10">
-                    {PORTFOLIO_DATA.brandIndex.map((item, idx) => {
-                      const isLastOdd =
-                        idx === PORTFOLIO_DATA.brandIndex.length - 1 &&
-                        PORTFOLIO_DATA.brandIndex.length % 2 === 1;
-                      return (
-                        <a
-                          key={item.num}
-                          href={`#${item.anchorId}`}
-                          className={`group bg-white border-2 border-[#141414] p-2.5 sm:p-3.5 shadow-[3px_3px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#D90429] transition-all flex flex-col justify-between relative ${
-                            isLastOdd ? "col-span-2 max-w-sm mx-auto w-full" : ""
-                          }`}
-                        >
-                          {/* Small curved branch connector from center spine */}
-                          {!isLastOdd && (
-                            <span
-                              aria-hidden="true"
-                              className={`hidden xs:block absolute top-1/2 -translate-y-1/2 w-2 h-0.5 bg-[#D90429] ${
-                                idx % 2 === 0 ? "-right-2" : "-left-2"
-                              }`}
-                            />
-                          )}
-
-                          <div>
-                            <div className="flex items-center justify-between gap-1 mb-1.5">
-                              <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[9px] font-bold">
-                                #{item.num}
-                              </span>
-                              <span className="font-mono-code text-[9px] font-bold text-[#D90429]">
-                                TAP ↘
-                              </span>
-                            </div>
-
-                            <div className="mb-1.5 overflow-hidden">
-                              <span className="font-condensed text-base sm:text-lg uppercase tracking-wide text-[#141414] block leading-tight truncate">
-                                {item.brandName}
-                              </span>
-                              <span className="font-mono-code text-[8px] font-bold uppercase text-[#52525B] block truncate">
-                                {item.category}
-                              </span>
-                            </div>
-
-                            <p className="font-chunky text-[11px] sm:text-xs text-[#141414] leading-snug mb-1.5 line-clamp-2">
-                              {item.workDone}
-                            </p>
+                    {PORTFOLIO_DATA.brandIndex.slice(0, 6).map((item) => (
+                      <a
+                        key={item.num}
+                        href={`#${item.anchorId}`}
+                        className="group bg-white border-2 border-[#141414] p-2.5 sm:p-3.5 shadow-[3px_3px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#D90429] transition-all flex flex-col justify-between relative"
+                      >
+                        <div>
+                          <div className="flex items-center justify-between gap-1 mb-1.5">
+                            <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[9px] font-bold">
+                              #{item.num}
+                            </span>
+                            <span className="font-mono-code text-[9px] font-bold text-[#D90429]">
+                              TAP ↘
+                            </span>
                           </div>
 
-                          <p className="font-handwritten text-sm sm:text-base text-[#2962FF] leading-tight border-t border-dashed border-[#141414]/20 pt-1 line-clamp-2">
-                            {item.hookLine}
+                          <div className="mb-1.5 overflow-hidden">
+                            <span className="font-condensed text-base sm:text-lg uppercase tracking-wide text-[#141414] block leading-tight truncate">
+                              {item.brandName}
+                            </span>
+                            <span className="font-mono-code text-[8px] font-bold uppercase text-[#52525B] block truncate">
+                              {item.category}
+                            </span>
+                          </div>
+
+                          <p className="font-chunky text-[11px] sm:text-xs text-[#141414] leading-snug mb-1.5 line-clamp-2">
+                            {item.workDone}
                           </p>
-                        </a>
-                      );
-                    })}
+                        </div>
+
+                        <p className="font-handwritten text-sm sm:text-base text-[#2962FF] leading-tight border-t border-dashed border-[#141414]/20 pt-1 line-clamp-2">
+                          {item.hookLine}
+                        </p>
+                      </a>
+                    ))}
                   </div>
                 </div>
+
+                {/* 7th Mobile Branch Node (Sorry Sugar) connected cleanly below the spine */}
+                {PORTFOLIO_DATA.brandIndex[6] && (
+                  <div className="flex flex-col items-center">
+                    <svg
+                      viewBox="0 0 60 32"
+                      className="w-12 h-7 pointer-events-none"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <defs>
+                        <marker
+                          id="mobileBottomArrowRed"
+                          markerWidth="7"
+                          markerHeight="7"
+                          refX="5"
+                          refY="3.5"
+                          orient="auto"
+                        >
+                          <path d="M0,1 L6,3.5 L0,6 Z" fill="#D90429" />
+                        </marker>
+                      </defs>
+                      <path
+                        d="M 30 0 Q 22 14, 30 26"
+                        stroke="#D90429"
+                        strokeWidth="2.5"
+                        markerEnd="url(#mobileBottomArrowRed)"
+                      />
+                    </svg>
+
+                    <a
+                      href={`#${PORTFOLIO_DATA.brandIndex[6].anchorId}`}
+                      className="w-full max-w-sm bg-white border-2 border-[#141414] p-3.5 shadow-[4px_4px_0px_#141414] active:translate-x-[1px] active:translate-y-[1px] transition-all"
+                    >
+                      <div className="flex items-center justify-between gap-2 mb-1.5">
+                        <div className="flex items-center gap-2">
+                          <span className="px-1.5 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[9px] font-bold">
+                            #{PORTFOLIO_DATA.brandIndex[6].num}
+                          </span>
+                          <span className="font-condensed text-base sm:text-lg uppercase tracking-wide text-[#141414]">
+                            {PORTFOLIO_DATA.brandIndex[6].brandName}
+                          </span>
+                        </div>
+                        <span className="font-mono-code text-[9px] font-bold text-[#D90429]">
+                          NEW SPEC ↘
+                        </span>
+                      </div>
+                      <p className="font-chunky text-xs text-[#141414] leading-snug mb-1">
+                        {PORTFOLIO_DATA.brandIndex[6].workDone}
+                      </p>
+                      <p className="font-handwritten text-base text-[#2962FF] leading-tight">
+                        {PORTFOLIO_DATA.brandIndex[6].hookLine}
+                      </p>
+                    </a>
+                  </div>
+                )}
               </div>
 
               {/* =============================================================
                   2. DESKTOP 3-COLUMN MIND MAP (lg+ screens):
                      Left 3 Brand Nodes + Center Cursive Hub + Right 3 Brand Nodes
+                     + Centered 7th Branch Below
               ============================================================== */}
-              <div className="hidden lg:grid relative grid-cols-12 gap-6 items-center">
-                {/* Hand-Drawn Curved SVG Connector Lines */}
-                <svg
-                  viewBox="0 0 1000 540"
-                  fill="none"
-                  aria-hidden="true"
-                  className="absolute inset-0 w-full h-full pointer-events-none z-0"
-                >
-                  <defs>
-                    <marker
-                      id="inkArrowRed"
-                      markerWidth="8"
-                      markerHeight="8"
-                      refX="6"
-                      refY="4"
-                      orient="auto"
-                    >
-                      <path d="M0,1 L7,4 L0,7 Z" fill="#D90429" />
-                    </marker>
-                    <marker
-                      id="inkArrowBlack"
-                      markerWidth="8"
-                      markerHeight="8"
-                      refX="6"
-                      refY="4"
-                      orient="auto"
-                    >
-                      <path d="M0,1 L7,4 L0,7 Z" fill="#141414" />
-                    </marker>
-                  </defs>
+              <div className="hidden lg:block">
+                <div className="relative grid grid-cols-12 gap-6 items-center">
+                  {/* Hand-Drawn Curved SVG Connector Lines */}
+                  <svg
+                    viewBox="0 0 1000 540"
+                    fill="none"
+                    aria-hidden="true"
+                    className="absolute inset-0 w-full h-full pointer-events-none z-0"
+                  >
+                    <defs>
+                      <marker
+                        id="inkArrowRed"
+                        markerWidth="8"
+                        markerHeight="8"
+                        refX="6"
+                        refY="4"
+                        orient="auto"
+                      >
+                        <path d="M0,1 L7,4 L0,7 Z" fill="#D90429" />
+                      </marker>
+                      <marker
+                        id="inkArrowBlack"
+                        markerWidth="8"
+                        markerHeight="8"
+                        refX="6"
+                        refY="4"
+                        orient="auto"
+                      >
+                        <path d="M0,1 L7,4 L0,7 Z" fill="#141414" />
+                      </marker>
+                    </defs>
 
-                  {/* Left Top Branch -> Project 01 (Royal Enfield) */}
-                  <path
-                    d="M 410 235 C 350 180, 325 100, 275 88"
-                    stroke="#141414"
-                    strokeWidth="2.8"
-                    strokeDasharray="6 5"
-                    markerEnd="url(#inkArrowBlack)"
-                  />
-                  {/* Left Middle Branch -> Project 02 (Cosmix Wellness) */}
-                  <path
-                    d="M 390 270 C 340 270, 315 262, 275 268"
-                    stroke="#D90429"
-                    strokeWidth="2.8"
-                    markerEnd="url(#inkArrowRed)"
-                  />
-                  {/* Left Bottom Branch -> Project 03 (Bose India) */}
-                  <path
-                    d="M 410 305 C 350 365, 325 440, 275 450"
-                    stroke="#141414"
-                    strokeWidth="2.8"
-                    strokeDasharray="6 5"
-                    markerEnd="url(#inkArrowBlack)"
-                  />
-
-                  {/* Right Top Branch -> Project 04 (Peakflo) */}
-                  <path
-                    d="M 590 235 C 650 180, 675 100, 725 88"
-                    stroke="#141414"
-                    strokeWidth="2.8"
-                    strokeDasharray="6 5"
-                    markerEnd="url(#inkArrowBlack)"
-                  />
-                  {/* Right Middle Branch -> Project 05 (Mokobara) */}
-                  <path
-                    d="M 610 270 C 660 270, 685 262, 725 268"
-                    stroke="#D90429"
-                    strokeWidth="2.8"
-                    markerEnd="url(#inkArrowRed)"
-                  />
-                  {/* Right Bottom Branch -> Project 06 (Zepto) */}
-                  <path
-                    d="M 590 305 C 650 365, 675 440, 725 450"
-                    stroke="#141414"
-                    strokeWidth="2.8"
-                    strokeDasharray="6 5"
-                    markerEnd="url(#inkArrowBlack)"
-                  />
-
-                  {/* Decorative Hand-Drawn Loop around Center Hub */}
-                  <ellipse
-                    cx="500"
-                    cy="270"
-                    rx="118"
-                    ry="95"
-                    stroke="#D90429"
-                    strokeWidth="1.8"
-                    strokeDasharray="4 6"
-                    transform="rotate(-3 500 270)"
-                  />
-                </svg>
-
-                {/* LEFT 3 BRAND NODES (Projects 01, 02, 03) */}
-                <div className="col-span-4 space-y-4 relative z-10">
-                  {PORTFOLIO_DATA.brandIndex.slice(0, 3).map((item, idx) => (
-                    <a
-                      key={item.num}
-                      href={`#${item.anchorId}`}
-                      className={`group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all ${
-                        idx === 1 ? "-ml-2" : "ml-2"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <BrandLogoBadge brandId={item.brandId} size="md" />
-                        <span className="px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold">
-                          #{item.num} ↘
-                        </span>
-                      </div>
-                      <p className="font-chunky text-sm text-[#141414] leading-snug mb-1 group-hover:text-[#D90429] transition-colors">
-                        {item.workDone}
-                      </p>
-                      <p className="font-handwritten text-lg text-[#3F3F46] leading-tight">
-                        {item.hookLine}
-                      </p>
-                    </a>
-                  ))}
-                </div>
-
-                {/* CENTER CURSIVE NAME HUB ("Preetpal Singh") */}
-                <div className="col-span-4 flex flex-col items-center justify-center text-center relative z-20">
-                  <div className="relative">
-                    <MaskingTape
-                      className="mx-auto -mb-3 relative z-30"
-                      rotate="-rotate-2"
+                    {/* Left Top Branch -> Project 01 (Royal Enfield) */}
+                    <path
+                      d="M 410 235 C 350 180, 325 100, 275 88"
+                      stroke="#141414"
+                      strokeWidth="2.8"
+                      strokeDasharray="6 5"
+                      markerEnd="url(#inkArrowBlack)"
+                    />
+                    {/* Left Middle Branch -> Project 02 (Cosmix Wellness) */}
+                    <path
+                      d="M 390 270 C 340 270, 315 262, 275 268"
+                      stroke="#D90429"
+                      strokeWidth="2.8"
+                      markerEnd="url(#inkArrowRed)"
+                    />
+                    {/* Left Bottom Branch -> Project 03 (Bose India) */}
+                    <path
+                      d="M 410 305 C 350 365, 325 440, 275 450"
+                      stroke="#141414"
+                      strokeWidth="2.8"
+                      strokeDasharray="6 5"
+                      markerEnd="url(#inkArrowBlack)"
                     />
 
-                    {/* Main Center Mind-Map Node */}
-                    <div className="bg-[#FFFDF9] border-4 border-[#141414] px-8 py-9 shadow-[10px_10px_0px_#141414] relative">
-                      <span className="inline-block px-2.5 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-[10px] font-bold uppercase tracking-widest mb-2">
-                        A COPYWRITER&apos;S PORTFOLIO
-                      </span>
+                    {/* Right Top Branch -> Project 04 (Peakflo) */}
+                    <path
+                      d="M 590 235 C 650 180, 675 100, 725 88"
+                      stroke="#141414"
+                      strokeWidth="2.8"
+                      strokeDasharray="6 5"
+                      markerEnd="url(#inkArrowBlack)"
+                    />
+                    {/* Right Middle Branch -> Project 05 (Mokobara) */}
+                    <path
+                      d="M 610 270 C 660 270, 685 262, 725 268"
+                      stroke="#D90429"
+                      strokeWidth="2.8"
+                      markerEnd="url(#inkArrowRed)"
+                    />
+                    {/* Right Bottom Branch -> Project 06 (Zepto) */}
+                    <path
+                      d="M 590 305 C 650 365, 675 440, 725 450"
+                      stroke="#141414"
+                      strokeWidth="2.8"
+                      strokeDasharray="6 5"
+                      markerEnd="url(#inkArrowBlack)"
+                    />
 
-                      <h1 className="font-handwritten text-6xl font-bold text-[#2962FF] leading-none py-2 drop-shadow-[2px_2px_0px_rgba(20,20,20,0.12)]">
-                        {PORTFOLIO_DATA.hero.stripBottom}
-                      </h1>
+                    {/* Decorative Hand-Drawn Loop around Center Hub */}
+                    <ellipse
+                      cx="500"
+                      cy="270"
+                      rx="118"
+                      ry="95"
+                      stroke="#D90429"
+                      strokeWidth="1.8"
+                      strokeDasharray="4 6"
+                      transform="rotate(-3 500 270)"
+                    />
+                  </svg>
 
-                      {/* Hand-drawn crimson underline SVG */}
-                      <svg
-                        viewBox="0 0 240 16"
-                        className="w-48 h-4 mx-auto -mt-1 mb-2"
-                        fill="none"
+                  {/* LEFT 3 BRAND NODES (Projects 01, 02, 03) */}
+                  <div className="col-span-4 space-y-4 relative z-10">
+                    {PORTFOLIO_DATA.brandIndex.slice(0, 3).map((item, idx) => (
+                      <a
+                        key={item.num}
+                        href={`#${item.anchorId}`}
+                        className={`group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all ${
+                          idx === 1 ? "-ml-2" : "ml-2"
+                        }`}
                       >
-                        <path
-                          d="M 6 11 Q 120 2, 234 10"
-                          stroke="#D90429"
-                          strokeWidth="3.5"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M 28 14 Q 130 7, 210 13"
-                          stroke="#FF5C00"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                        />
-                      </svg>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <BrandLogoBadge brandId={item.brandId} size="md" />
+                          <span className="px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold">
+                            #{item.num} ↘
+                          </span>
+                        </div>
+                        <p className="font-chunky text-sm text-[#141414] leading-snug mb-1 group-hover:text-[#D90429] transition-colors">
+                          {item.workDone}
+                        </p>
+                        <p className="font-handwritten text-lg text-[#3F3F46] leading-tight">
+                          {item.hookLine}
+                        </p>
+                      </a>
+                    ))}
+                  </div>
 
-                      <p className="font-mono-code text-[11px] font-bold uppercase tracking-wider text-[#141414]">
-                        COPYWRITER • SCRIPTWRITER
-                      </p>
-                      <p className="font-mono-code text-[10px] font-bold text-[#52525B] mt-0.5">
-                        B.TECH CSE • 2× AUTHOR • BLR
-                      </p>
+                  {/* CENTER CURSIVE NAME HUB ("Preetpal Singh") - Stays vertically centered! */}
+                  <div className="col-span-4 flex flex-col items-center justify-center text-center relative z-20">
+                    <div className="relative">
+                      <MaskingTape
+                        className="mx-auto -mb-3 relative z-30"
+                        rotate="-rotate-2"
+                      />
 
-                      {/* Halftone Green Stamp Overlapping Corner */}
-                      <div className="w-16 h-16 rounded-full halftone-green border-2 border-[#141414] shadow-[3px_3px_0px_#141414] flex items-center justify-center absolute -bottom-6 -right-5 z-30">
-                        <svg
-                          viewBox="0 0 100 100"
-                          className="w-full h-full animate-spin-slow p-0.5"
-                        >
-                          <defs>
-                            <path
-                              id="badgeCirclePath"
-                              d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"
-                            />
-                          </defs>
-                          <text
-                            fill="#042912"
-                            fontSize="10"
-                            fontWeight="800"
-                            letterSpacing="2"
-                            className="font-mono-code uppercase"
-                          >
-                            <textPath href="#badgeCirclePath">
-                              AUTHOR • SCRIPTWRITER • CSE •
-                            </textPath>
-                          </text>
-                        </svg>
-                        <span className="absolute font-condensed text-base text-[#042912]">
-                          PS
+                      {/* Main Center Mind-Map Node */}
+                      <div className="bg-[#FFFDF9] border-4 border-[#141414] px-8 py-9 shadow-[10px_10px_0px_#141414] relative">
+                        <span className="inline-block px-2.5 py-0.5 bg-[#FFD400] border border-[#141414] font-mono-code text-[10px] font-bold uppercase tracking-widest mb-2">
+                          A COPYWRITER&apos;S PORTFOLIO
                         </span>
+
+                        <h1 className="font-handwritten text-6xl font-bold text-[#2962FF] leading-none py-2 drop-shadow-[2px_2px_0px_rgba(20,20,20,0.12)]">
+                          {PORTFOLIO_DATA.hero.stripBottom}
+                        </h1>
+
+                        {/* Hand-drawn crimson underline SVG */}
+                        <svg
+                          viewBox="0 0 240 16"
+                          className="w-48 h-4 mx-auto -mt-1 mb-2"
+                          fill="none"
+                        >
+                          <path
+                            d="M 6 11 Q 120 2, 234 10"
+                            stroke="#D90429"
+                            strokeWidth="3.5"
+                            strokeLinecap="round"
+                          />
+                          <path
+                            d="M 28 14 Q 130 7, 210 13"
+                            stroke="#FF5C00"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                          />
+                        </svg>
+
+                        <p className="font-mono-code text-[11px] font-bold uppercase tracking-wider text-[#141414]">
+                          COPYWRITER • SCRIPTWRITER
+                        </p>
+                        <p className="font-mono-code text-[10px] font-bold text-[#52525B] mt-0.5">
+                          B.TECH CSE • 2× AUTHOR • BLR
+                        </p>
+
+                        {/* Halftone Green Stamp Overlapping Top-Right Corner so bottom stays clear */}
+                        <div className="w-16 h-16 rounded-full halftone-green border-2 border-[#141414] shadow-[3px_3px_0px_#141414] flex items-center justify-center absolute -top-6 -right-5 z-30">
+                          <svg
+                            viewBox="0 0 100 100"
+                            className="w-full h-full animate-spin-slow p-0.5"
+                          >
+                            <defs>
+                              <path
+                                id="badgeCirclePath"
+                                d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0"
+                              />
+                            </defs>
+                            <text
+                              fill="#042912"
+                              fontSize="10"
+                              fontWeight="800"
+                              letterSpacing="2"
+                              className="font-mono-code uppercase"
+                            >
+                              <textPath href="#badgeCirclePath">
+                                AUTHOR • SCRIPTWRITER • CSE •
+                              </textPath>
+                            </text>
+                          </svg>
+                          <span className="absolute font-condensed text-base text-[#042912]">
+                            PS
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {/* Downward Curved SVG Branch -> Project 07 (Sorry Sugar) */}
-                  {PORTFOLIO_DATA.brandIndex[6] && (
-                    <div className="w-full mt-3 flex flex-col items-center">
-                      <svg
-                        viewBox="0 0 60 36"
-                        className="w-12 h-8 pointer-events-none"
-                        fill="none"
-                        aria-hidden="true"
-                      >
-                        <path
-                          d="M 30 2 Q 20 18, 30 30"
-                          stroke="#D90429"
-                          strokeWidth="2.8"
-                          markerEnd="url(#inkArrowRed)"
-                        />
-                      </svg>
+                  {/* RIGHT 3 BRAND NODES (Projects 04, 05, 06) */}
+                  <div className="col-span-4 space-y-4 relative z-10">
+                    {PORTFOLIO_DATA.brandIndex.slice(3, 6).map((item, idx) => (
                       <a
-                        href={`#${PORTFOLIO_DATA.brandIndex[6].anchorId}`}
-                        className="w-full group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all text-left"
+                        key={item.num}
+                        href={`#${item.anchorId}`}
+                        className={`group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all ${
+                          idx === 1 ? "ml-2" : "-ml-2"
+                        }`}
                       >
                         <div className="flex items-center justify-between gap-2 mb-2">
-                          <BrandLogoBadge
-                            brandId={PORTFOLIO_DATA.brandIndex[6].brandId}
-                            size="md"
-                          />
+                          <BrandLogoBadge brandId={item.brandId} size="md" />
                           <span className="px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold">
-                            #{PORTFOLIO_DATA.brandIndex[6].num} ↘
+                            #{item.num} ↘
                           </span>
                         </div>
                         <p className="font-chunky text-sm text-[#141414] leading-snug mb-1 group-hover:text-[#D90429] transition-colors">
-                          {PORTFOLIO_DATA.brandIndex[6].workDone}
+                          {item.workDone}
                         </p>
                         <p className="font-handwritten text-lg text-[#3F3F46] leading-tight">
-                          {PORTFOLIO_DATA.brandIndex[6].hookLine}
+                          {item.hookLine}
                         </p>
                       </a>
-                    </div>
-                  )}
+                    ))}
+                  </div>
                 </div>
 
-                {/* RIGHT 3 BRAND NODES (Projects 04, 05, 06) */}
-                <div className="col-span-4 space-y-4 relative z-10">
-                  {PORTFOLIO_DATA.brandIndex.slice(3, 6).map((item, idx) => (
+                {/* Desktop 7th Featured Branch Node (Project 07: Sorry Sugar) Below Center Hub */}
+                {PORTFOLIO_DATA.brandIndex[6] && (
+                  <div className="flex flex-col items-center -mt-3 relative z-20">
+                    <svg
+                      viewBox="0 0 80 44"
+                      className="w-16 h-10 pointer-events-none"
+                      fill="none"
+                      aria-hidden="true"
+                    >
+                      <defs>
+                        <marker
+                          id="desktopBottomArrowRed"
+                          markerWidth="8"
+                          markerHeight="8"
+                          refX="6"
+                          refY="4"
+                          orient="auto"
+                        >
+                          <path d="M0,1 L7,4 L0,7 Z" fill="#D90429" />
+                        </marker>
+                      </defs>
+                      <path
+                        d="M 40 2 C 28 18, 52 24, 40 36"
+                        stroke="#D90429"
+                        strokeWidth="2.8"
+                        markerEnd="url(#desktopBottomArrowRed)"
+                      />
+                    </svg>
+
                     <a
-                      key={item.num}
-                      href={`#${item.anchorId}`}
-                      className={`group block bg-white border-2 border-[#141414] p-4 shadow-[5px_5px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[7px_7px_0px_#D90429] transition-all ${
-                        idx === 1 ? "ml-2" : "-ml-2"
-                      }`}
+                      href={`#${PORTFOLIO_DATA.brandIndex[6].anchorId}`}
+                      className="w-full max-w-md group block bg-white border-2 border-[#141414] p-4 shadow-[6px_6px_0px_#141414] hover:bg-[#FAF6EE] hover:-translate-y-1 hover:shadow-[8px_8px_0px_#D90429] transition-all"
                     >
                       <div className="flex items-center justify-between gap-2 mb-2">
-                        <BrandLogoBadge brandId={item.brandId} size="md" />
+                        <BrandLogoBadge
+                          brandId={PORTFOLIO_DATA.brandIndex[6].brandId}
+                          size="md"
+                        />
                         <span className="px-2 py-0.5 bg-[#141414] text-[#FFD400] font-mono-code text-[10px] font-bold">
-                          #{item.num} ↘
+                          #{PORTFOLIO_DATA.brandIndex[6].num} • LATEST SPEC ↘
                         </span>
                       </div>
                       <p className="font-chunky text-sm text-[#141414] leading-snug mb-1 group-hover:text-[#D90429] transition-colors">
-                        {item.workDone}
+                        {PORTFOLIO_DATA.brandIndex[6].workDone}
                       </p>
                       <p className="font-handwritten text-lg text-[#3F3F46] leading-tight">
-                        {item.hookLine}
+                        {PORTFOLIO_DATA.brandIndex[6].hookLine}
                       </p>
                     </a>
-                  ))}
-                </div>
+                  </div>
+                )}
               </div>
             </div>
 
@@ -2078,13 +2133,18 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {PORTFOLIO_DATA.notebookFlips.map((note, idx) => {
                 const isFlipped = !!flippedNotes[note.id];
+                const isSeventh = idx === 6;
                 return (
                   <button
                     key={note.id}
                     type="button"
                     onClick={() => toggleNoteFlip(note.id)}
                     className={`text-left p-6 border-2 border-[#FAF6EE] transition-all duration-200 relative group cursor-pointer ${
-                      idx % 2 === 1 ? "md:rotate-1" : "md:-rotate-1"
+                      isSeventh
+                        ? "sm:col-span-2 lg:col-span-3 max-w-2xl mx-auto w-full"
+                        : idx % 2 === 1
+                        ? "md:rotate-1"
+                        : "md:-rotate-1"
                     } hover:rotate-0 hover:-translate-y-1`}
                     style={{
                       backgroundColor: isFlipped ? "#FAF6EE" : note.color,
@@ -2181,51 +2241,73 @@ export default function App() {
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {PORTFOLIO_DATA.brandIndex.map((item) => (
-                  <a
-                    key={item.num}
-                    href={`#${item.anchorId}`}
-                    className="group bg-[#FAF6EE] border-2 border-[#141414] p-4 shadow-[4px_4px_0px_#141414] hover:bg-white hover:-translate-y-1 hover:shadow-[6px_6px_0px_#141414] transition-all flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="font-mono-code text-[10px] font-bold px-2 py-0.5 bg-[#141414] text-[#FFD400]">
-                          PROJECT {item.num}
-                        </span>
-                        <span className="font-mono-code text-[10px] font-bold text-[#52525B] group-hover:text-[#D90429] transition-colors">
-                          VIEW ↓
-                        </span>
+                {PORTFOLIO_DATA.brandIndex.map((item, idx) => {
+                  const isSeventh = idx === 6;
+                  return (
+                    <a
+                      key={item.num}
+                      href={`#${item.anchorId}`}
+                      className={`group bg-[#FAF6EE] border-2 border-[#141414] p-4 shadow-[4px_4px_0px_#141414] hover:bg-white hover:-translate-y-1 hover:shadow-[6px_6px_0px_#141414] transition-all flex flex-col justify-between ${
+                        isSeventh ? "sm:col-span-2 lg:col-span-3" : ""
+                      }`}
+                    >
+                      <div
+                        className={
+                          isSeventh
+                            ? "lg:flex lg:items-center lg:justify-between lg:gap-6"
+                            : ""
+                        }
+                      >
+                        <div className={isSeventh ? "lg:shrink-0" : ""}>
+                          <div className="flex items-center justify-between gap-2 mb-3">
+                            <span className="font-mono-code text-[10px] font-bold px-2 py-0.5 bg-[#141414] text-[#FFD400]">
+                              PROJECT {item.num}
+                            </span>
+                            <span className="font-mono-code text-[10px] font-bold text-[#52525B] group-hover:text-[#D90429] transition-colors lg:hidden">
+                              VIEW ↓
+                            </span>
+                          </div>
+
+                          <div className="mb-3">
+                            <BrandLogoBadge brandId={item.brandId} size="md" />
+                          </div>
+
+                          <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B] mb-1">
+                            {item.category}
+                          </span>
+                        </div>
+
+                        <div className={isSeventh ? "lg:flex-1" : ""}>
+                          <p className="font-chunky text-sm sm:text-base text-[#141414] leading-snug mb-2">
+                            {item.workDone}
+                          </p>
+
+                          <p className="text-xs sm:text-sm italic text-[#3F3F46] leading-relaxed mb-3 border-l-2 border-[#141414]/30 pl-2">
+                            {item.hookLine}
+                          </p>
+                        </div>
                       </div>
 
-                      <div className="mb-3">
-                        <BrandLogoBadge brandId={item.brandId} size="md" />
+                      <div className="pt-2.5 border-t border-[#141414]/15 flex flex-wrap items-center justify-between gap-2">
+                        <div className="flex flex-wrap gap-1">
+                          {item.deliverables.map((d) => (
+                            <span
+                              key={d}
+                              className="font-mono-code text-[9px] font-bold px-1.5 py-0.5 bg-white border border-[#141414]"
+                            >
+                              {d}
+                            </span>
+                          ))}
+                        </div>
+                        {isSeventh && (
+                          <span className="hidden lg:inline font-mono-code text-[10px] font-bold text-[#D90429]">
+                            JUMP TO PROJECT 07 ↓
+                          </span>
+                        )}
                       </div>
-
-                      <span className="block font-mono-code text-[10px] font-bold uppercase text-[#52525B] mb-1">
-                        {item.category}
-                      </span>
-
-                      <p className="font-chunky text-sm text-[#141414] leading-snug mb-2">
-                        {item.workDone}
-                      </p>
-
-                      <p className="text-xs italic text-[#3F3F46] leading-relaxed mb-3 border-l-2 border-[#141414]/30 pl-2">
-                        {item.hookLine}
-                      </p>
-                    </div>
-
-                    <div className="pt-2.5 border-t border-[#141414]/15 flex flex-wrap gap-1">
-                      {item.deliverables.map((d) => (
-                        <span
-                          key={d}
-                          className="font-mono-code text-[9px] font-bold px-1.5 py-0.5 bg-white border border-[#141414]"
-                        >
-                          {d}
-                        </span>
-                      ))}
-                    </div>
-                  </a>
-                ))}
+                    </a>
+                  );
+                })}
               </div>
             </div>
 
@@ -4299,7 +4381,7 @@ export default function App() {
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   {/* Left Column: Interactive 9:16 Director Monitor Preview */}
                   <div className="lg:col-span-5 flex flex-col items-center">
-                    <div className="w-full max-w-[320px] aspect-[9/16] bg-[#141414] border-4 border-[#141414] shadow-[6px_6px_0px_#FF5C00] flex flex-col justify-between p-5 text-[#FAF6EE]">
+                    <div className="w-full max-w-[320px] min-h-[520px] bg-[#141414] border-4 border-[#141414] shadow-[6px_6px_0px_#FF5C00] flex flex-col justify-between p-5 text-[#FAF6EE]">
                       <div className="flex items-center justify-between pb-3 border-b border-white/15 font-mono-code text-[10px]">
                         <span className="text-[#FFD400] font-bold">
                           9:16 DIRECTOR MONITOR
